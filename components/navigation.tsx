@@ -29,7 +29,7 @@ export const Header = () => {
             <nav
                 data-state={menuState && 'active'}
                 className="fixed left-0 w-full z-20 px-2">
-                <div className={cn('mx-auto mt-2 max-w-6xl px-6 transition-all duration-300 lg:px-12', isScrolled && 'bg-background/50 max-w-4xl rounded-2xl border backdrop-blur-lg lg:px-5')}>
+                <div className={cn('mx-auto mt-2 max-w-6xl px-6 transition-all duration-300 lg:px-12', isScrolled && 'bg-[#072d45] max-w-4xl rounded-2xl border backdrop-blur-lg lg:px-5')}>
                     <div className="relative flex flex-wrap items-center justify-between gap-6 lg:gap-0 py-2">
                         <div className="flex w-full justify-between lg:w-auto">
                             <Link
@@ -61,7 +61,7 @@ export const Header = () => {
                                     <li key={index}>
                                         <Link
                                             href={item.href}
-                                            className="text-muted-foreground hover:text-accent-foreground block duration-150">
+                                            className={cn("text-muted-foreground hover:text-accent-foreground block duration-150", isScrolled && 'text-white')}>
                                             <span>{item.name}</span>
                                         </Link>
                                     </li>
@@ -76,7 +76,7 @@ export const Header = () => {
                                         <li key={index}>
                                             <Link
                                                 href={item.href}
-                                                className="text-muted-foreground hover:text-accent-foreground block duration-150">
+                                                className={cn("text-muted-foreground hover:text-accent-foreground block duration-150", isScrolled && 'text-white')}>
                                                 <span>{item.name}</span>
                                             </Link>
                                         </li>
@@ -105,7 +105,7 @@ export const Header = () => {
                                 <Button
                                     asChild
                                     size="sm"
-                                    className={cn(isScrolled ? 'lg:inline-flex' : 'hidden')}>
+                                    className={cn(isScrolled ? 'lg:inline-flex text-white' : 'hidden')}>
                                     <Link href="#">
                                         <span>Get Started</span>
                                     </Link>
@@ -118,3 +118,5 @@ export const Header = () => {
         </header>
     )
 }
+
+export default Header

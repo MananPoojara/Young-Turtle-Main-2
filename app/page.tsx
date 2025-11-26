@@ -1,12 +1,16 @@
-import HeroSection from "@/components/HeroSection";
-import { Header } from "@/components/navigation";
-import Image from "next/image";
+import HeroSection from '@/components/HeroSection'
+import Header from '@/components/navigation'
+import ServiceSection from '@/components/ServiceSection'
+import React from 'react'
 
-export default function Home() {
+const Home = () => {
   return (
     <>
       <Header />
       <HeroSection />
+      <ServiceSection />
     </>
-  );
+  )
 }
+
+export default Home
