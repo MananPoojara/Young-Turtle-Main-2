@@ -46,7 +46,8 @@ const ServiceSection = () => {
       <section className="py-20 sm:py-24 relative">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#275669] mb-6">Our Core Philosophy</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-black mb-6">Our Core Philosophy</h2>
+            <div className="w-80 h-1 bg-accent mx-auto mb-4 -mt-3 rounded-full bg-[#275669]"></div>
             <p className="text-lg text-slate-600 leading-relaxed">
               Successful trading is built on three pillars: rigorous analysis, disciplined risk management, and psychological resilience. Our platform combines AI-driven insights with time-tested trading principles.
             </p>
