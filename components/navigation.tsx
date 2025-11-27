@@ -29,7 +29,7 @@ export const Header = () => {
             <nav
                 data-state={menuState && 'active'}
                 className="fixed left-0 w-full z-20 px-2">
-                <div className={cn('mx-auto mt-2 max-w-6xl px-6 transition-all duration-300 lg:px-12', isScrolled && 'bg-[#072d45] max-w-4xl rounded-2xl border backdrop-blur-lg lg:px-5')}>
+                <div className={cn('mx-auto mt-3 max-w-5xl px-6 transition-all duration-300 lg:px-12', isScrolled && 'bg-[#275669] max-w-4xl rounded-2xl backdrop-blur-lg lg:px-5')}>
                     <div className="relative flex flex-wrap items-center justify-between gap-6 lg:gap-0 py-2">
                         <div className="flex w-full justify-between lg:w-auto">
                             <Link
@@ -40,7 +40,7 @@ export const Header = () => {
                                     <img
                                         src={logo.src}
                                         alt="Young Turtle Logo"
-                                        className="h-10 w-auto object-contain"
+                                        className="h-13 w-auto object-contain"
                                     />
                                     {/* <span className="font-semibold text-xl tracking-tighter">Young Turtle</span> */}
                                 </div>
@@ -50,18 +50,18 @@ export const Header = () => {
                                 onClick={() => setMenuState(!menuState)}
                                 aria-label={menuState == true ? 'Close Menu' : 'Open Menu'}
                                 className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden">
-                                <Equal className="in-data-[state=active]:rotate-180 in-data-[state=active]:scale-0 in-data-[state=active]:opacity-0 m-auto size-6 duration-200" />
-                                <X className="in-data-[state=active]:rotate-0 in-data-[state=active]:scale-100 in-data-[state=active]:opacity-100 absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 duration-200" />
+                                <Equal className="in-data-[state=active]:rotate-180 in-data-[state=active]:scale-0 in-data-[state=active]:opacity-0 m-auto size-6 duration-200 text-white text-2xl" />
+                                <X className="in-data-[state=active]:rotate-0 in-data-[state=active]:scale-100 in-data-[state=active]:opacity-100 absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 duration-200 text-white text-2xl" />
                             </button>
                         </div>
 
                         <div className="absolute inset-0 m-auto hidden size-fit lg:block">
-                            <ul className="flex gap-8 text-sm">
+                            <ul className="flex gap-8 text-2xl">
                                 {menuItems.map((item, index) => (
                                     <li key={index}>
                                         <Link
                                             href={item.href}
-                                            className={cn("text-muted-foreground hover:text-accent-foreground block duration-150 text-white")}>
+                                            className={cn("text-muted-foreground hover:text-accent-foreground block duration-150", isScrolled && 'text-white')}>
                                             <span>{item.name}</span>
                                         </Link>
                                     </li>
@@ -76,7 +76,7 @@ export const Header = () => {
                                         <li key={index}>
                                             <Link
                                                 href={item.href}
-                                                className={cn("text-muted-foreground hover:text-accent-foreground block duration-150 text-white")}>
+                                                className={cn("text-muted-foreground hover:text-accent-foreground block duration-150", isScrolled && 'text-white')}>
                                                 <span>{item.name}</span>
                                             </Link>
                                         </li>
@@ -88,18 +88,18 @@ export const Header = () => {
                                 <Button
                                     asChild
                                     variant="outline"
-                                    size="sm"
+                                    size="default"
                                     className={cn(isScrolled && 'lg:hidden')}>
                                     <Link href="#">
-                                        <span>Login</span>
+                                        <span className='text-[16px]'>Login</span>
                                     </Link>
                                 </Button>
                                 <Button
                                     asChild
-                                    size="sm"
+                                    size="default"
                                     className={cn(isScrolled && 'lg:hidden')}>
                                     <Link href="#">
-                                        <span className='text-white'>Sign Up</span>
+                                        <span>Sign Up</span>
                                     </Link>
                                 </Button>
                                 <Button

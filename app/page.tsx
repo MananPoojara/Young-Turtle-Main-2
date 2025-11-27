@@ -1,3 +1,4 @@
+import { Footer } from '@/components/footer'
 import HeroSection from '@/components/HeroSection'
 import Header from '@/components/navigation'
 import ServiceSection from '@/components/ServiceSection'
@@ -9,6 +10,7 @@ const Home = () => {
       <Header />
       <HeroSection />
       <ServiceSection />
+      <Footer />
     </>
   )
 }

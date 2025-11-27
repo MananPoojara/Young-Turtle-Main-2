@@ -9,9 +9,15 @@ interface WordData {
     scale?: number;
 }
 
+const QUOTES = [
+    "We don’t predict the markets. We measure them.",
+    "Slow is smooth. Smooth is fast. In markets, discipline always compounds.",
+    "Where mathematics meets the market and evidence guides every decision.",
+    "Insight is found where data, patience, and discipline intersect.",
+    "Progress isn’t defined by speed it’s defined by direction."
+];
+
 interface BlurTextAnimationProps {
-    text?: string;
-    words?: WordData[];
     className?: string;
     fontSize?: string;
     fontFamily?: string;
@@ -20,21 +26,22 @@ interface BlurTextAnimationProps {
 }
 
 export default function BlurTextAnimation({
-    text = "Elegant blur animation that brings your words to life with cinematic transitions.",
-    words,
     className = "",
     fontSize = "text-4xl md:text-5xl lg:text-6xl",
     fontFamily = "font-['Avenir_Next',_'Avenir',_system-ui,_sans-serif]",
     textColor = "text-white",
-    animationDelay = 4000
+    animationDelay = 2500
 }: BlurTextAnimationProps) {
+
+    const [quoteIndex, setQuoteIndex] = useState(0);
     const [isAnimating, setIsAnimating] = useState(false);
-    const animationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-    const resetTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+    const animationTimeoutRef = useRef<number | null>(null);
+    const resetTimeoutRef = useRef<number | null>(null);
+
+    const text = QUOTES[quoteIndex];
 
     const textWords = useMemo(() => {
-        if (words) return words;
-
         const splitWords = text.split(" ");
         const totalWords = splitWords.length;
 
@@ -42,9 +49,7 @@ export default function BlurTextAnimation({
             const progress = index / totalWords;
 
             const exponentialDelay = Math.pow(progress, 0.8) * 0.5;
-
             const baseDelay = index * 0.06;
-
             const microVariation = (Math.random() - 0.5) * 0.05;
 
             return {
@@ -55,7 +60,7 @@ export default function BlurTextAnimation({
                 scale: 0.9 + Math.sin(index * 0.2) * 0.05
             };
         });
-    }, [text, words]);
+    }, [text]);
 
     useEffect(() => {
         const startAnimation = () => {
@@ -69,11 +74,11 @@ export default function BlurTextAnimation({
                 maxTime = Math.max(maxTime, totalTime);
             });
 
-            animationTimeoutRef.current = setTimeout(() => {
+            animationTimeoutRef.current = window.setTimeout(() => {
                 setIsAnimating(false);
 
-                resetTimeoutRef.current = setTimeout(() => {
-                    startAnimation();
+                resetTimeoutRef.current = window.setTimeout(() => {
+                    setQuoteIndex(prev => (prev + 1) % QUOTES.length);
                 }, animationDelay);
             }, (maxTime + 1) * 1000);
         };
@@ -87,30 +92,24 @@ export default function BlurTextAnimation({
     }, [textWords, animationDelay]);
 
     return (
-        <div className={`flex items-center justify-center min-h-screen bg-black ${className}`}>
+        <div className={`flex items-center justify-center -mt-20 ${className}`}>
             <div className="text-center max-w-5xl px-8">
                 <p className={`${textColor} ${fontSize} ${fontFamily} font-light leading-relaxed tracking-wide`}>
                     {textWords.map((word, index) => (
                         <span
                             key={index}
-                            className={`inline-block transition-all ${isAnimating ? 'opacity-100' : 'opacity-0'}`}
+                            className={`inline-block transition-all ${isAnimating ? "opacity-100" : "opacity-0"}`}
                             style={{
                                 transitionDuration: `${word.duration}s`,
                                 transitionDelay: `${word.delay}s`,
-                                transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                                 filter: isAnimating
-                                    ? 'blur(0px) brightness(1)'
+                                    ? "blur(0px) brightness(1)"
                                     : `blur(${word.blur}px) brightness(0.6)`,
                                 transform: isAnimating
-                                    ? 'translateY(0) scale(1) rotateX(0deg)'
-                                    : `translateY(20px) scale(${word.scale || 1}) rotateX(-15deg)`,
-                                marginRight: '0.35em',
-                                willChange: 'filter, transform, opacity',
-                                transformStyle: 'preserve-3d',
-                                backfaceVisibility: 'hidden',
-                                textShadow: isAnimating
-                                    ? '0 2px 8px rgba(255,255,255,0.1)'
-                                    : '0 0 40px rgba(255,255,255,0.4)'
+                                    ? "translateY(0) scale(1) rotateX(0deg)"
+                                    : `translateY(20px) scale(${word.scale}) rotateX(-15deg)`,
+                                marginRight: "0.35em",
+                                willChange: "filter, transform, opacity"
                             }}
                         >
                             {word.text}
@@ -121,8 +120,3 @@ export default function BlurTextAnimation({
         </div>
     );
 }
-
-export function Component() {
-    return <BlurTextAnimation />;
-}
-
