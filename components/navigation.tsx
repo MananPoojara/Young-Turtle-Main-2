@@ -61,7 +61,7 @@ export const Header = () => {
                                     <li key={index}>
                                         <Link
                                             href={item.href}
-                                            className={cn("text-muted-foreground hover:text-accent-foreground block duration-150", isScrolled && 'text-white')}>
+                                            className={cn("text-muted-foreground hover:text-accent-foreground block duration-150 text-white")}>
                                             <span>{item.name}</span>
                                         </Link>
                                     </li>
@@ -76,7 +76,7 @@ export const Header = () => {
                                         <li key={index}>
                                             <Link
                                                 href={item.href}
-                                                className={cn("text-muted-foreground hover:text-accent-foreground block duration-150", isScrolled && 'text-white')}>
+                                                className={cn("text-muted-foreground hover:text-accent-foreground block duration-150 text-white")}>
                                                 <span>{item.name}</span>
                                             </Link>
                                         </li>
@@ -99,7 +99,7 @@ export const Header = () => {
                                     size="sm"
                                     className={cn(isScrolled && 'lg:hidden')}>
                                     <Link href="#">
-                                        <span>Sign Up</span>
+                                        <span className='text-white'>Sign Up</span>
                                     </Link>
                                 </Button>
                                 <Button

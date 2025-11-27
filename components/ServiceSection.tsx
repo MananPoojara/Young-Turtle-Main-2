@@ -11,22 +11,7 @@ export const metadata = {
 const ServiceSection = () => {
   return (
     <>
-      <Header />
       <main className="min-h-screen">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden bg-linear-to-b from-background to-background py-16 sm:py-24">
-          <BackgroundElements />
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center mb-12">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-balance mb-4">Our Approach</h1>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
-                A scientifically-backed, multi-layered methodology combining technical analysis, quantitative research,
-                and risk management to deliver actionable trading insights.
-              </p>
-            </div>
-          </div>
-        </section>
-
         {/* Core Philosophy */}
         <section className="py-16 sm:py-24 bg-card/30">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
