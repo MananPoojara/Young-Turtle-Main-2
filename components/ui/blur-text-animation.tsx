@@ -27,10 +27,10 @@ interface BlurTextAnimationProps {
 
 export default function BlurTextAnimation({
     className = "",
-    fontSize = "text-4xl md:text-5xl lg:text-6xl",
-    fontFamily = "font-['Avenir_Next',_'Avenir',_system-ui,_sans-serif]",
+    fontSize = "text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-5xl",
+    fontFamily = "Montserrat",
     textColor = "text-white",
-    animationDelay = 2500
+    animationDelay = 2300
 }: BlurTextAnimationProps) {
 
     const [quoteIndex, setQuoteIndex] = useState(0);
@@ -93,8 +93,8 @@ export default function BlurTextAnimation({
 
     return (
         <div className={`flex items-center justify-center -mt-20 ${className}`}>
-            <div className="text-center max-w-5xl px-8">
-                <p className={`${textColor} ${fontSize} ${fontFamily} font-light leading-relaxed tracking-wide`}>
+            <div className="text-center max-w-7xl px-8">
+                <p className={`${textColor} ${fontSize} ${fontFamily} font-light leading-tight sm:leading-snug md:leading-relaxed tracking-wide`}>
                     {textWords.map((word, index) => (
                         <span
                             key={index}
