@@ -27,7 +27,11 @@ interface BlurTextAnimationProps {
 
 export default function BlurTextAnimation({
     className = "",
+<<<<<<< HEAD
     fontSize = "text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-5xl",
+=======
+    fontSize = "text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-5xl",
+>>>>>>> c990bd33c578e7d30dc86459ce71e11824d52976
     fontFamily = "Montserrat",
     textColor = "text-white",
     animationDelay = 2300
