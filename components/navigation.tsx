@@ -19,6 +19,18 @@ export const Header = () => {
 
     return (
         <header>
+            {/* <nav
+                data-state={menuState && "active"}
+                className="fixed top-0 left-0 w-full z-50 px-2 bg-yellow-500 backdrop-blur-lg shadow-sm"
+            > */}
+            {/* <nav
+                data-state={menuState && "active"}
+                className="fixed top-0 left-0 w-full z-50 px-2 bg-gray-500 backdrop-blur-lg shadow-sm"
+            > */}
+            {/* <nav
+                        data-state={menuState && "active"}
+                        className="fixed top-0 left-0 w-full z-50 px-2 bg-white backdrop-blur-lg shadow-sm"
+                    > */}
             <nav
                 data-state={menuState && "active"}
                 className="fixed top-0 left-0 w-full z-50 px-2 bg-[#275669] backdrop-blur-lg shadow-sm"
@@ -109,7 +121,7 @@ export const Header = () => {
                     </div>
                 </div>
             </nav>
-        </header>
+        </header >
     )
 }
 

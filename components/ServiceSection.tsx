@@ -103,22 +103,14 @@ const items3 = [
 
 const ServiceSection = () => {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+    <main className="min-h-screen -mt-20 bg-gradient-to-b from-slate-50 to-white">
       {/* Hero Section */}
-      <section className="relative py-12 sm:py-16 overflow-hidden bg-gradient-to-br from-[#275669] via-[#2d6a7f] to-[#1e4552]">
-        <div className="absolute inset-0 w-full h-full">
-          <Image
-            src={office}
-            alt="Office"
-            layout="fill"
-            objectFit="cover"
-            quality={100}
-            priority
-          />
-        </div>
+      {/* <section className="relative py-12 sm:py-16 overflow-hidden  bg-yellow-500 "> */}
+      {/* <section className="relative py-12 sm:py-16 overflow-hidden  bg-gray-500 "> */}
+      {/* <section className="relative py-12 sm:py-16 overflow-hidden  bg-white "> */}
+      <section className="relative py-12 sm:py-16 overflow-hidden  bg-[#275669] ">
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-[#0b2332]/92"></div>
 
 
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 relative z-10">
@@ -389,7 +381,7 @@ const ServiceSection = () => {
           </div>
         </div>
       </section>
-    </main>
+    </main >
   );
 };
 
