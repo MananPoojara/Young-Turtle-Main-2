@@ -20,11 +20,6 @@ interface DocumentItem {
 const complianceDocs: DocumentItem[] = [
   { id: '1', title: 'PMS Investor Charter', url: '#' },
   { id: '2', title: 'PMS Disclosure Document', url: '#' },
-  { id: '3', title: 'PMS Complaints Disclosure', url: '#' },
-  { id: '4', title: 'AIF Stewardship Code', url: '#' },
-  { id: '5', title: 'AIF Stewardship Code Compliance Disclosure', url: '#' },
-  { id: '6', title: 'PMS Fee Calculator Tool', url: '#' },
-  { id: '7', title: 'Payment via UPI for PMS Accounts', url: '#' },
 ]
 
 export default function RegulatoryPage() {
@@ -169,12 +164,12 @@ export default function RegulatoryPage() {
                   <div className='space-y-10'>
                     {/* Step 1 */}
                     <div className='relative pl-8 md:pl-0'>
-                      <div className='md:hidden absolute left-0 top-1 w-6 h-6 bg-brand-gold text-white rounded-full flex items-center justify-center text-xs font-bold'>
+                      <div className='md:hidden absolute left-0 top-1 w-6 h-6 bg-brand-gold text-black rounded-full flex items-center justify-center text-xs font-bold'>
                         1
                       </div>
                       <div className='grid md:grid-cols-[100px_1fr] gap-6'>
                         <div className='hidden md:flex flex-col items-center'>
-                          <div className='w-10 h-10 bg-brand-gold text-white rounded-full flex items-center justify-center font-bold text-lg shadow-md mb-2'>
+                          <div className='w-10 h-10 bg-white border-2 border-brand-gold text-brand-gold rounded-full flex items-center justify-center font-bold text-lg mb-2'>
                             1
                           </div>
                           <div className='flex-1 w-px bg-gray-200 border-l border-dashed border-gray-300'></div>

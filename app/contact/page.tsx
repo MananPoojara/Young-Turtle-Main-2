@@ -10,25 +10,11 @@ import { useState } from "react"
 
 const offices = [
   {
-    city: "New York",
-    address: "450 Park Avenue, 28th Floor",
-    location: "New York, NY 10022",
+    city: "Ahmedabad, India",
+    address: "4th Floor, Safal Profitaire, A-6, Corporate Rd,",
+    location: "opp. AUDA Garden, Satellite, Prahlad Nagar,",
     phone: "+1 212 555 0100",
     isPrimary: true,
-  },
-  {
-    city: "London",
-    address: "30 St Mary Axe",
-    location: "London EC3A 8BF, UK",
-    phone: "+44 20 7555 0100",
-    isPrimary: false,
-  },
-  {
-    city: "Singapore",
-    address: "One Raffles Quay, Level 35",
-    location: "Singapore 048583",
-    phone: "+65 6555 0100",
-    isPrimary: false,
   },
 ]
 
@@ -136,7 +122,7 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="px-10 py-4 bg-abyssal-blue text-sunbeam-pearl hover:bg-[#0D3A54] transition-all duration-300 text-sm uppercase tracking-widest"
+                  className="px-10 py-4 bg-[#275669] text-white hover:bg-[#0D3A54] transition-all duration-300 text-sm uppercase tracking-widest"
                 >
                   Submit Inquiry
                 </button>

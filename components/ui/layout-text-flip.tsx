@@ -4,9 +4,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 export const LayoutTextFlip = ({
-    text = "Build Amazing",
-    words = ["Landing Pages", "Component Blocks", "Page Sections", "3D Shaders"],
-    duration = 3000,
+    text = "With,",
+    words = ["Vision", "Understanding", "Clarity", "Agility"],
+    duration = 2500,
 }: {
     text: string;
     words: string[];
@@ -23,30 +23,35 @@ export const LayoutTextFlip = ({
     }, []);
 
     return (
-        <>
+        <div className="flex items-baseline gap-1">
+
+            {/* Left static text "With," */}
             <motion.span
                 layoutId="subtext"
-                className="text-2xl font-bold tracking-tight drop-shadow-lg md:text-4xl"
+                className="text-xl md:text-2xl lg:text-3xl font-serif font-light text-white tracking-wide"
             >
                 {text}
             </motion.span>
 
+            {/* Gold rotating words */}
             <motion.span
                 layout
-                className="relative w-fit overflow-hidden px-1 py-1 text-[#ffb900] 
-           font-serif text-2xl font-light tracking-wide bg-transparent shadow-sm ring shadow-black/10 ring-black/10 drop-shadow-lg md:text-4xl dark:bg-neutral-900 dark:text-white dark:shadow-sm dark:ring-1 dark:shadow-white/10 dark:ring-white/10">
-            
+                className="relative w-fit overflow-hidden 
+        text-[#ffb900] font-serif 
+        text-3xl md:text-4xl lg:text-5xl font-light tracking-wide"
+            >
                 <AnimatePresence mode="popLayout">
                     <motion.span
                         key={currentIndex}
-                        initial={{ y: -40, filter: "blur(10px)" }}
+                        initial={{ y: -40, filter: "blur(0px)" }}
                         animate={{
                             y: 0,
                             filter: "blur(0px)",
                         }}
-                        exit={{ y: 50, filter: "blur(10px)", opacity: 0 }}
+                        exit={{ y: 40, filter: "blur(20px)", opacity: 0 }}
                         transition={{
-                            duration: 0.5,
+                            duration: 0.55,
+                            ease: "easeOut",
                         }}
                         className={cn("inline-block whitespace-nowrap")}
                     >
@@ -54,6 +59,11 @@ export const LayoutTextFlip = ({
                     </motion.span>
                 </AnimatePresence>
             </motion.span>
-        </>
+
+            {/* Static end text ", and Adaptability" */}
+            <span className="text-2xl md:text-2xl lg:text-3xl font-serif font-light text-white tracking-wide">
+                {currentIndex === words.length - 1 ? "" : ""}
+            </span>
+        </div>
     );
 };
