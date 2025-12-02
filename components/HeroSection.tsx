@@ -3,7 +3,7 @@ import BlurTextAnimation from './ui/blur-text-animation'
 
 const HeroSection = () => {
     return (
-        <section className='relative w-full  h-screen flex items-center justify-center overflow-hidden'>
+        <section className='relative w-full h-[90vh] flex items-start justify-center py-30 overflow-hidden'>
             {/* Video Background */}
             <video
                 autoPlay
@@ -18,11 +18,11 @@ const HeroSection = () => {
             </video>
 
             {/* Overlay */}
-            <div className='absolute inset-0 bg-[#275669]/20 lg:bg-[#275669]/20'></div>
+            <div className='absolute inset-0 bg-[#275669]/20'></div>
 
             {/* Content */}
-            <div className='relative z-10 text-center text-white px-4 sm:px-4 md:px-4 lg:px-12 w-[110%]'>
-                <BlurTextAnimation className='bg-transparent' />
+            <div className='relative z-10 px-4 sm:px-4 md:px-4 lg:px-12 w-[110%]'>
+                <BlurTextAnimation />
                 {/* Buttons */}
                 {/* <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <button className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition duration-300 transform hover:scale-105">

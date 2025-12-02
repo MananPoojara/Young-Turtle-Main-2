@@ -1,116 +1,111 @@
-"use client"
+'use client'
 
-import Link from "next/link"
-import { Equal, X } from "lucide-react"
-import { Button } from "../components/ui/liquid-glass-button"
-import React from "react"
-import { cn } from "../lib/utils"
-import logo from "../public/logo.png"
+import Link from 'next/link'
+import { useState } from 'react'
+import { Menu, X } from 'lucide-react'
+import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 
-const menuItems = [
-    { name: "Home", href: "#link" },
-    { name: "About Us", href: "#link" },
-    { name: "Careers", href: "#link" },
-    { name: "Contact Us", href: "#link" },
+const navLinks = [
+    { href: '/', label: 'Home' },
+    { href: '/about', label: 'About' },
+    { href: '/strategies', label: 'Strategies' },
+    { href: '/people', label: 'People' },
+    { href: '/careers', label: 'Careers' },
+    { href: '/regulatory', label: 'Regulatory' },
+    { href: '/contact', label: 'Contact' },
 ]
 
-export const Header = () => {
-    const [menuState, setMenuState] = React.useState(false)
+function NavLink({ href, label, isActive }: { href: string; label: string; isActive: boolean }) {
+    const [isHovered, setIsHovered] = useState(false)
 
     return (
-        <header>
-            <nav
-                data-state={menuState && "active"}
-                className="fixed top-0 left-0 w-full z-50 px-2 bg-[#275669] backdrop-blur-lg shadow-sm"
+        <div className='relative' onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+            <Link
+                href={href}
+                className='block text-sm uppercase tracking-wide font-semibold transition-colors duration-300 pb-2'
+                style={{
+                    color: isActive || isHovered ? '#ffb900' : '#ffffff',
+                }}
             >
-                <div className="mx-auto max-w-8xl px-8 py-4 lg:px-16 flex items-center justify-between">
-                    {/* LOGO - LEFT */}
-                    <Link href="/" aria-label="home" className="flex gap-2 items-center z-10">
-                        <img
-                            src={logo.src}
-                            alt="Young Turtle Logo"
-                            className="h-16 w-auto object-contain"
-                        />
-                    </Link>
-
-                    {/* DESKTOP MENU - CENTER */}
-                    <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2">
-                        <ul className="flex gap-10 text-2xl">
-                            {menuItems.map((item, index) => (
-                                <li key={index}>
-                                    <Link
-                                        href={item.href}
-                                        className="text-white hover:text-white/80 duration-150 font-medium"
-                                    >
-                                        {item.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    {/* BUTTONS - RIGHT (Desktop) */}
-                    <div className="hidden lg:flex gap-3 items-center">
-                        <Button asChild variant="outline" size="lg">
-                            <Link href="#">
-                                <span className="text-2xl">Login</span>
-                            </Link>
-                        </Button>
-
-                        <Button asChild size="lg">
-                            <Link href="#">
-                                <span className="text-white text-2xl">Sign Up</span>
-                            </Link>
-                        </Button>
-                    </div>
-
-                    {/* MOBILE MENU BUTTON */}
-                    <button
-                        onClick={() => setMenuState(!menuState)}
-                        aria-label={menuState ? "Close Menu" : "Open Menu"}
-                        className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden"
-                    >
-                        <Equal className="in-data-[state=active]:rotate-180 in-data-[state=active]:scale-0 in-data-[state=active]:opacity-0 m-auto size-7 duration-200 text-white" />
-                        <X className="in-data-[state=active]:rotate-0 in-data-[state=active]:scale-100 in-data-[state=active]:opacity-100 absolute inset-0 m-auto size-7 -rotate-180 scale-0 opacity-0 duration-200 text-white" />
-                    </button>
-
-                    {/* MOBILE PANEL */}
-                    <div className="in-data-[state=active]:block lg:hidden mb-6 hidden w-full absolute top-full left-0 mt-2 px-4">
-                        <div className="bg-[#1e3f4d] rounded-3xl border border-white/20 p-6 shadow-2xl">
-                            {/* Mobile menu items */}
-                            <ul className="space-y-6 text-lg mb-6">
-                                {menuItems.map((item, index) => (
-                                    <li key={index}>
-                                        <Link
-                                            href={item.href}
-                                            className="text-white hover:text-white/80 duration-150 block font-medium"
-                                        >
-                                            {item.name}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-
-                            {/* Mobile Buttons */}
-                            <div className="flex flex-col space-y-3">
-                                <Button asChild variant="outline" size="default">
-                                    <Link href="#">
-                                        <span className="text-[18px]">Login</span>
-                                    </Link>
-                                </Button>
-
-                                <Button asChild size="default">
-                                    <Link href="#">
-                                        <span className="text-white text-[18px]">Sign Up</span>
-                                    </Link>
-                                </Button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </header>
+                {label}
+            </Link>
+            <div
+                className='absolute bottom-0 left-0 h-[2px] transition-all duration-300'
+                style={{
+                    backgroundColor: '#ffb900',
+                    width: isActive || isHovered ? '100%' : '0%',
+                }}
+            />
+        </div>
     )
 }
 
-export default Header
+export default function Header() {
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+    const pathname = usePathname()
+
+    return (
+        <>
+            <header className='fixed top-0 left-0 right-0 z-50 bg-[#275669] shadow-lg'>
+                <nav className='max-w-7xl mx-auto px-6 lg:px-8'>
+                    <div className='flex items-center justify-between h-20'>
+                        {/* Logo */}
+                        <Link href='/' className='flex items-center gap-3'>
+                            <Image src='/logo.png' alt='YT-Logo' width={160} height={160} />
+                        </Link>
+
+                        {/* Desktop Navigation */}
+                        <div className='hidden lg:flex items-center gap-8'>
+                            {navLinks.map((link) => (
+                                <NavLink
+                                    key={link.href}
+                                    href={link.href}
+                                    label={link.label}
+                                    isActive={pathname === link.href}
+                                />
+                            ))}
+                        </div>
+
+                        {/* Mobile Menu Button */}
+                        <button
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            className='lg:hidden p-2 text-white'
+                            aria-label='Toggle menu'
+                        >
+                            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                        </button>
+                    </div>
+                </nav>
+            </header>
+
+            {/* Mobile Menu */}
+            {isMobileMenuOpen && (
+                <div className='fixed inset-0 z-40 pt-20 lg:hidden'>
+                    <nav className='flex flex-col justify-start items-start px-12 gap-1 py-12 bg-[#275669] w-full h-[60vh]'>
+                        {navLinks.map((link) => {
+                            const isActive = pathname === link.href
+                            return (
+                                <Link
+                                    key={link.href}
+                                    href={link.href}
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className='text-xl tracking-wide uppercase font-light py-4 transition-colors duration-300'
+                                    style={{
+                                        color: isActive ? '#ffb900' : '#ffffff',
+                                    }}
+                                    onMouseEnter={(e) => (e.currentTarget.style.color = '#ffb900')}
+                                    onMouseLeave={(e) =>
+                                        (e.currentTarget.style.color = isActive ? '#ffb900' : '#ffffff')
+                                    }
+                                >
+                                    {link.label}
+                                </Link>
+                            )
+                        })}
+                    </nav>
+                </div>
+            )}
+        </>
+    )
+}
