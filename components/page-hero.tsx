@@ -10,7 +10,7 @@ interface PageHeroProps {
     variant?: 'grid' | 'dots' | 'lines' | 'lattice' | 'network'
 }
 
-export function PageHero({ title, subtitle }: PageHeroProps) {
+export function PageHero({ title, subtitle, variant = 'grid' }: PageHeroProps) {
     return (
         <section className='relative py-20 h-[80vh] flex items-center justify-center bg-abyssal-blue overflow-hidden'>
             <OtherUnderwaterHero />
