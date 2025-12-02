@@ -1,65 +1,75 @@
-"use client"
+'use client'
 
-import { motion } from "framer-motion"
-import { PageHero } from "@/components/page-hero"
-import { SectionWrapper } from "@/components/section-wrapper"
-import { Shield, FileText, Lock, Scale } from "lucide-react"
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { FileText, Users, ChevronRight, ShieldAlert } from 'lucide-react'
+import { PageHero } from '@/components/page-hero'
+import { SectionWrapper } from '@/components/section-wrapper'
+import Link from 'next/link'
 
-const complianceAreas = [
-  {
-    icon: Shield,
-    title: "Regulatory Framework",
-    description:
-      "Young Turtle Capital Management is registered with the Securities and Exchange Commission (SEC) as an investment adviser and complies with all applicable federal and state regulations.",
-  },
-  {
-    icon: FileText,
-    title: "Disclosure Documents",
-    description:
-      "Our Form ADV and other regulatory filings are available upon request. We maintain full transparency with regulators and clients regarding our operations and investment practices.",
-  },
-  {
-    icon: Lock,
-    title: "Data Protection",
-    description:
-      "We implement robust cybersecurity measures and data protection protocols in compliance with applicable privacy regulations including GDPR and CCPA.",
-  },
-  {
-    icon: Scale,
-    title: "Fiduciary Duty",
-    description:
-      "As a registered investment adviser, we maintain a fiduciary duty to our clients, placing their interests first in all advisory activities.",
-  },
+// Types
+type TabID = 'disclosure' | 'complaints'
+
+interface DocumentItem {
+    id: string
+    title: string
+    url: string
+}
+
+// Data Content
+const complianceDocs: DocumentItem[] = [
+    { id: '1', title: 'PMS Investor Charter', url: '#' },
+    { id: '2', title: 'PMS Disclosure Document', url: '#' },
+    { id: '3', title: 'PMS Complaints Disclosure', url: '#' },
+    { id: '4', title: 'AIF Stewardship Code', url: '#' },
+    { id: '5', title: 'AIF Stewardship Code Compliance Disclosure', url: '#' },
+    { id: '6', title: 'PMS Fee Calculator Tool', url: '#' },
+    { id: '7', title: 'Payment via UPI for PMS Accounts', url: '#' },
 ]
 
 export default function RegulatoryPage() {
-  return (
-    <>
-      <PageHero
-        title="Compliance & Governance"
-        subtitle="Committed to the highest standards of regulatory compliance"
-        variant="grid"
-      />
+    const [activeTab, setActiveTab] = useState<TabID>('disclosure')
 
-      {/* Compliance Overview */}
-      <SectionWrapper className="py-32 bg-sunbeam-pearl">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8">
-            {complianceAreas.map((area, index) => (
-              <motion.div
-                key={area.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white border border-border p-10"
-              >
-                <div className="w-14 h-14 flex items-center justify-center border border-aqua-mist/30 text-aqua-mist mb-6">
-                  <area.icon size={28} strokeWidth={1.5} />
-                </div>
-                <h3 className="font-serif text-xl text-abyssal-blue mb-4">{area.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{area.description}</p>
-              </motion.div>
+    const renderDocumentList = (documents: DocumentItem[]) => (
+        <div className='grid gap-4'>
+            {documents.map((doc, index) => (
+                <motion.div
+                    key={doc.title}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    className='group flex items-center justify-between p-6 bg-white border border-border hover:border-brand-gold/50 hover:shadow-lg transition-all duration-300 rounded-sm'
+                >
+                    <div className='flex items-center gap-4'>
+                        <div className='flex-shrink-0 w-10 h-10 rounded-full bg-sunbeam-pearl flex items-center justify-center text-brand-gold transition-colors duration-300'>
+                            <FileText size={20} />
+                        </div>
+                        <span className='text-brand-dark font-medium text-lg'>{doc.title}</span>
+                    </div>
+                    <div className='flex items-center gap-3'>
+                        <Link
+                            href={doc.url}
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            className='relative bg-white px-4 py-2 text-[#275669] font-medium text-md transition-colors duration-200 group/btn inline-block'
+                        >
+                            <span className='relative pb-1.5'>
+                                View PDF
+                                <div className='absolute bottom-0 left-0 h-[2px] bg-[#275669] transition-all duration-300 ease-in-out w-0 group-hover/btn:w-full' />
+                            </span>
+                        </Link>
+                        <Link
+                            href={doc.url}
+                            download
+                            className='relative bg-white px-4 py-2 text-[#275669] font-medium text-md transition-colors duration-200 group/btn inline-block'
+                        >
+                            <span className='relative pb-1.5'>
+                                Download PDF
+                                <div className='mt-1 absolute bottom-0 left-0 h-[2px] bg-[#275669] transition-all duration-300 ease-in-out w-0 group-hover/btn:w-full' />
+                            </span>
+                        </Link>
+                    </div>
+                </motion.div>
             ))}
           </div>
         </div>
@@ -147,9 +157,6 @@ export default function RegulatoryPage() {
                 information provided herein.
               </p>
             </div>
-          </div>
-        </div>
-      </SectionWrapper>
-    </>
-  )
+        </>
+    )
 }
