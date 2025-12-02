@@ -66,7 +66,7 @@ export default function RegulatoryPage() {
       </SectionWrapper>
 
       {/* Important Disclosures */}
-      <SectionWrapper className="py-32 bg-white" id="disclosures">
+      <SectionWrapper className="py-32 bg-white" >
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <h2 className="font-serif text-3xl md:text-4xl text-abyssal-blue text-center mb-12">Important Disclosures</h2>
           <div className="space-y-8 text-sm text-muted-foreground leading-relaxed">
@@ -98,7 +98,7 @@ export default function RegulatoryPage() {
       </SectionWrapper>
 
       {/* Privacy Policy */}
-      <SectionWrapper className="py-32 bg-sunbeam-pearl" id="privacy">
+      <SectionWrapper className="py-32 bg-sunbeam-pearl">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <h2 className="font-serif text-3xl md:text-4xl text-abyssal-blue text-center mb-12">Privacy Policy</h2>
           <div className="space-y-8 text-sm text-muted-foreground leading-relaxed">
@@ -125,7 +125,7 @@ export default function RegulatoryPage() {
       </SectionWrapper>
 
       {/* Terms */}
-      <SectionWrapper className="py-32 bg-white" id="terms">
+      <SectionWrapper className="py-32 bg-white" >
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <h2 className="font-serif text-3xl md:text-4xl text-abyssal-blue text-center mb-12">Terms of Use</h2>
           <div className="space-y-8 text-sm text-muted-foreground leading-relaxed">
