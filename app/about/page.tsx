@@ -5,11 +5,13 @@ import { SectionWrapper } from '@/components/section-wrapper'
 import PeoplePage from '@/components/team'
 import Image from 'next/image'
 import team from '@/public/hired.jpeg'
+import About from '@/public/about-hero.png'
 
 export default function AboutPage() {
     return (
         <>
             <PageHero
+                src={About.src}
                 title='About Young Turtle'
                 subtitle='A legacy of quantitative excellence and institutional trust'
                 variant='dots'

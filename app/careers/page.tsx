@@ -5,6 +5,7 @@ import { PageHero } from "@/components/page-hero"
 import { SectionWrapper } from "@/components/section-wrapper"
 import { ArrowRight, BookOpen, Clock, Heart, MapPin, ShieldCheck, TrendingUp, Users } from "lucide-react"
 import React, { useState } from "react"
+import careers from '@/public/career-hero.jpg'
 
 // ===== BENEFITS =====
 const benefitsList = [
@@ -91,6 +92,7 @@ export default function CareersPage() {
     <>
       {/* HERO */}
       <PageHero
+        src={careers.src}
         title="Join Young Turtle"
         subtitle="Build your career at the forefront of quantitative finance"
         variant="network"
@@ -252,7 +254,7 @@ export default function CareersPage() {
                     </div>
 
                     <div className="flex items-center">
-                      <button className="relative overflow-hidden pl-6 pr-12 py-3 bg-[#275669] text-white text-xs uppercase tracking-widest transition-all duration-300 group/btn">
+                      <button className="relative overflow-hidden pl-6 pr-12 py-3 bg-[#275669] text-white text-xs uppercase tracking-widest transition-all duration-300 group/btn cursor-pointer">
                         <span className="relative z-10">Apply Now</span>
                         <div className="absolute inset-0 bg-aqua-mist w-full h-full -translate-x-full group-hover/btn:translate-x-0 transition-transform duration-300 ease-out z-0 opacity-20" />
                         <ArrowRight size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-aqua-mist group-hover/btn:right-3 transition-all duration-300" />

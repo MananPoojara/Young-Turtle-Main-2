@@ -3,6 +3,7 @@ import { PageHero } from '@/components/page-hero'
 import React from 'react'
 import { SectionWrapper } from '@/components/section-wrapper'
 import { AnimatePresence, motion } from 'framer-motion'
+import aif from '@/public/aif-hero.png'
 
 
 interface Product {
@@ -48,6 +49,7 @@ const page = () => {
     return (
         <>
             <PageHero
+                src={aif.src}
                 title="Alternative Investment Funds"
                 subtitle="Build your career at the forefront of quantitative finance"
                 variant="network"

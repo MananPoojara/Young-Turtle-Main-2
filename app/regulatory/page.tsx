@@ -6,6 +6,7 @@ import { FileText, Users, ChevronRight, ShieldAlert } from 'lucide-react'
 import { PageHero } from '@/components/page-hero'
 import { SectionWrapper } from '@/components/section-wrapper'
 import Link from 'next/link'
+import reulatory from '@/public/regulatory-hero.png'
 
 // Types
 type TabID = 'disclosure' | 'complaints'
@@ -72,6 +73,7 @@ export default function RegulatoryPage() {
   return (
     <>
       <PageHero
+        src={reulatory.src}
         title='Regulatory'
         subtitle='Transparency and compliance are the cornerstones of our relationship with investors.'
         variant='grid'
