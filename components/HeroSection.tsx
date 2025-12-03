@@ -20,7 +20,7 @@ export default function HeroSection() {
             </video>
 
             {/* Content */}
-            <div className='relative  z-20 w-full max-w-7xl mx-auto px-6 flex flex-col items-center text-center'>
+            <div className='relative -mt-50 z-20 w-full max-w-7xl mx-auto px-6 flex flex-col items-center text-center'>
                 <TortoiseQuote />
             </div>
         </section>
