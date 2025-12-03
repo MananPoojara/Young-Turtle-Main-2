@@ -51,7 +51,7 @@ const ServiceSection = () => {
             {/* Badge */}
             <div className='text-center pt-16'>
                 <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-[#275669] mb-6'>Our Philosophy</h2>
-                <div className='w-85 h-1 bg-[#275669] mx-auto mb-4 -mt-1 rounded-full'></div>
+                <div className='w-75 h-1 bg-[#275669] mx-auto mb-4 -mt-1 rounded-full'></div>
             </div>
 
             {/* Core Philosophy */}
