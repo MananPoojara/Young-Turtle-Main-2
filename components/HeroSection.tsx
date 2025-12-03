@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { TortoiseQuote } from './ui/wavytext'
 
 export default function HeroSection() {
