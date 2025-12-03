@@ -1,23 +1,5 @@
-"use client"
+'use client'
 import React from 'react'
-import {
-    Brain,
-    Database,
-    Zap,
-    CheckCircle,
-    TrendingUp,
-    Shield,
-    LineChart,
-    BarChart3,
-    Target,
-    Sparkles,
-    Users,
-    Compass,
-    Anchor,
-    Award
-} from 'lucide-react'
-import { motion } from 'framer-motion'
-import { SectionWrapper } from './section-wrapper'
 import AnimatedTestimonialsDemo from './animated-testimonials-demo'
 
 const items = [
@@ -38,57 +20,6 @@ const items = [
     },
 ]
 
-const items2 = [
-    {
-        icon: Brain,
-        title: 'Intelligent Analysis',
-        desc: 'Our machine learning models identify market patterns and anomalies that human analysis might miss.',
-        bgColor: 'bg-[#275669]',
-    },
-    {
-        icon: Database,
-        title: 'Comprehensive Data',
-        desc: 'We aggregate price data, volume information, and macroeconomic indicators for holistic market view.',
-        bgColor: 'bg-[#275669]',
-    },
-    {
-        icon: Zap,
-        title: 'Real-Time Execution',
-        desc: 'Instant signal generation with millisecond latency ensures you capture market opportunities.',
-        bgColor: 'bg-[#275669]',
-    },
-    {
-        icon: TrendingUp,
-        title: 'Continuous Optimization',
-        desc: 'Our algorithms learn and evolve with market conditions through constant backtesting.',
-        bgColor: 'bg-[#275669]',
-    },
-]
-
-const values = [
-    {
-        icon: Target,
-        title: "Precision",
-        description: "We employ rigorous quantitative models to identify opportunities with the highest probability of success."
-    },
-    {
-        icon: Compass,
-        title: "Integrity",
-        description: "Transparency and ethical governance are the bedrock of our client relationships and investment decisions."
-    },
-    {
-        icon: Anchor,
-        title: "Stability",
-        description: "Our risk management frameworks are designed to preserve capital while seeking consistent long-term growth."
-    },
-    {
-        icon: Award,
-        title: "Excellence",
-        description: "We are relentless in our pursuit of alpha, constantly refining our strategies to stay ahead of market curves."
-    }
-];
-
-
 const ServiceSection = () => {
     return (
         <main className='min-h-screen bg-gradient-to-b from-slate-50 to-white'>
@@ -101,17 +32,17 @@ const ServiceSection = () => {
 
                 <div className='mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 relative z-10 '>
                     <div className='max-w-3xl mx-auto text-center'>
-                        <h1 className='text-3xl sm:text-4xl lg:text-5xl font-light tracking-wide text-white mb-4'>
-                            Where Mathematics Meets
+                        <h1 className='text-2xl sm:text-3xl lg:text-4xl font-light tracking-wide text-white mb-4'>
                             <span className='block pb-6 text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-400 mt-1'>
-                                Market Intelligence
+                                Precision Over Pace
                             </span>
                         </h1>
 
                         <p className='text-base sm:text-lg text-slate-200 leading-relaxed'>
-                            Young Turtle is a technology-driven, multi-strategy quantitative trading firm operating in
-                            global financial markets. We&apos;re a Math and Technology company—scientists and engineers
-                            working as a unified team to solve complex problems in the dynamic world of finance.
+                            Our name isn&apos;t incidental. In a world racing toward short-term noise, we build
+                            deliberate quant systems—strategies that measure thoroughly, validate rigorously, and
+                            execute precisely. We&apos;re not trying to be the hare. We&apos;re engineering a better
+                            tortoise.
                         </p>
                     </div>
                 </div>
@@ -178,13 +109,9 @@ const ServiceSection = () => {
                         </div>
                     </div>
                 </div>
-
-
             </section>
 
-
             <AnimatedTestimonialsDemo />
-
         </main>
     )
 }

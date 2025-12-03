@@ -25,8 +25,7 @@ export function Footer() {
                                 height={150}
                             />
                             <p className='text-sm text-slate-300 max-w-xs'>
-                                Where mathematics meets market intelligence
-                            </p>
+                                The Fusion is The Edge. </p>
                         </div>
 
                         {/* Social Icons */}

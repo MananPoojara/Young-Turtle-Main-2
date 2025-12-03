@@ -1,58 +1,46 @@
-"use client";
-import React from "react";
-import { motion } from "framer-motion";
-import { VucaCycler } from "../components/ui/VucaCycler";
+'use client'
+
+import { motion } from 'framer-motion'
+import { TortoiseQuote } from './ui/wavytext'
 
 export default function HeroSection() {
     return (
-        <section className="relative w-full h-[90vh] xl:h-[93vh] flex items-center overflow-hidden bg-[#275669]">
-            {/* ===== VIDEO BACKGROUND ===== */}
+        <section className='relative w-full h-[90vh] xl:h-[93vh] flex items-center justify-center overflow-hidden bg-[#1a3d4d]'>
+            {/* Gradient overlay for depth */}
+            <div className='absolute inset-0 bg-gradient-to-b from-[#275669]/80 via-[#1a3d4d]/60 to-[#0f2832]/90' />
+
+            {/* Subtle animated background glow */}
+            <div className='absolute inset-0 overflow-hidden'>
+                <motion.div
+                    className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-cyan-500/10 blur-[120px]'
+                    animate={{
+                        scale: [1, 1.2, 1],
+                        opacity: [0.3, 0.5, 0.3],
+                    }}
+                    transition={{
+                        duration: 8,
+                        repeat: Number.POSITIVE_INFINITY,
+                        ease: 'easeInOut',
+                    }}
+                />
+            </div>
+
+            {/* Video background */}
             <video
                 autoPlay
                 muted
                 loop
                 playsInline
-                preload="metadata"
-                className="absolute inset-0 w-full h-full object-cover opacity-60"
+                preload='metadata'
+                className='absolute inset-0 w-full h-full object-cover opacity-40'
             >
-                {/* Fallback to a dark gradient if video fails or while loading */}
-                <source src="/turtle2_crop.mp4" type="video/mp4" />
+                <source src='/turtle2_crop.mp4' type='video/mp4' />
             </video>
 
-            {/* ===== CONTENT WRAPPER ===== */}
-            <div className="relative z-20 px-6 w-full xl:max-w-7xl 2xl:max-w-7xl mx-auto flex flex-col justify-center h-full 2xl:-mt-60 xl:-mt-30 -mt-80 md:-mt-90 lg:-mt-10">
-                {/* ===== HEADER: Redefining Market VUCA ===== */}
-                <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="py-2 sm:ml-4 lg:ml-10 xl:ml-2 2xl:-ml-60 "
-                >
-                    {/* MAIN HEADING */}
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, delay: 0.2 }}
-                        className="font-serif text-white leading-[1.1] tracking-tight 
-                       text-[2.75rem] md:text-6xl lg:text-7xl xl:text-[4rem] 2xl:text-[6rem] mb-1"
-                    >
-                        Redefining <br />
-                        Market <span className="text-amber-400">VUCA</span>
-                    </motion.h1>
-
-                    {/* DYNAMIC SUBTITLE */}
-                    <motion.h6
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, delay: 0.4 }}
-                        className="font-serif text-white leading-relaxed tracking-wide 
-                       text-sm sm:text-xl md:text-xl lg:text-3xl xl:text-[1.00rem] 2xl:text-[2.25rem] flex flex-wrap gap-2 items-center"
-                    >
-                        <span className="opacity-90">With</span>
-                        <VucaCycler />
-                    </motion.h6>
-                </motion.div>
+            {/* Content */}
+            <div className='relative -mt-100 z-20 w-full max-w-7xl mx-auto px-6 flex flex-col items-center text-center'>
+                <TortoiseQuote />
             </div>
-        </section >
-    );
+        </section>
+    )
 }
