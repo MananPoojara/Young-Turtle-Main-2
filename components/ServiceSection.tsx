@@ -1,23 +1,5 @@
 'use client'
 import React from 'react'
-import {
-    Brain,
-    Database,
-    Zap,
-    CheckCircle,
-    TrendingUp,
-    Shield,
-    LineChart,
-    BarChart3,
-    Target,
-    Sparkles,
-    Users,
-    Compass,
-    Anchor,
-    Award,
-} from 'lucide-react'
-import { motion } from 'framer-motion'
-import { SectionWrapper } from './section-wrapper'
 import AnimatedTestimonialsDemo from './animated-testimonials-demo'
 
 const items = [
@@ -57,9 +39,10 @@ const ServiceSection = () => {
                         </h1>
 
                         <p className='text-base sm:text-lg text-slate-200 leading-relaxed'>
-                            Our name isn't incidental. In a world racing toward short-term noise, we build deliberate
-                            quant systems—strategies that measure thoroughly, validate rigorously, and execute
-                            precisely. We're not trying to be the hare. We're engineering a better tortoise.
+                            Our name isn&apos;t incidental. In a world racing toward short-term noise, we build
+                            deliberate quant systems—strategies that measure thoroughly, validate rigorously, and
+                            execute precisely. We&apos;re not trying to be the hare. We&apos;re engineering a better
+                            tortoise.
                         </p>
                     </div>
                 </div>
