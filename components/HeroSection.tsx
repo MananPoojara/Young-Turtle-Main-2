@@ -26,7 +26,7 @@ export default function HeroSection() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="py-2 sm:ml-4 lg:ml-10 xl:ml-2 2xl:-ml-70 "
+                    className="py-2 sm:ml-4 lg:ml-10 xl:ml-2 2xl:-ml-60 "
                 >
                     {/* MAIN HEADING */}
                     <motion.h1
