@@ -327,14 +327,14 @@ export default function Header() {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        className='fixed inset-0 z-40 pt-20 lg:hidden bg-[#275669] overflow-hidden'
+                        className='fixed inset-0 z-40 pt-16 lg:hidden bg-[#275669] overflow-y-auto overflow-x-hidden max-h-[calc(100vh-64px)]'
                     >
-                        <nav className='px-12 py-12 space-y-6'>
+                        <nav className='px-4 py-6 sm:px-6 md:px-8 space-y-3 sm:space-y-4'>
                             {/* Home */}
                             <Link
                                 href='/'
                                 onClick={() => setIsMobileMenuOpen(false)}
-                                className='block text-xl uppercase font-light py-3'
+                                className='block text-base sm:text-lg md:text-xl uppercase font-light py-2 sm:py-3 transition-colors duration-200'
                                 style={{ color: isActive('/') ? '#ffb900' : '#ffffff' }}
                             >
                                 Home
@@ -344,12 +344,12 @@ export default function Header() {
                             <div>
                                 <button
                                     onClick={() => setIsMobileAboutOpen(!isMobileAboutOpen)}
-                                    className='flex items-center justify-between text-xl uppercase font-light w-full py-3 text-white'
+                                    className='flex items-center justify-between text-base sm:text-lg md:text-xl uppercase font-light w-full py-2 sm:py-3 text-white hover:text-[#ffb900] transition-colors duration-200'
                                 >
                                     About
                                     <ChevronDown
-                                        size={20}
-                                        className={`transition-transform ${isMobileAboutOpen ? 'rotate-180' : ''}`}
+                                        size={18}
+                                        className={`flex-shrink-0 transition-transform duration-300 ${isMobileAboutOpen ? 'rotate-180' : ''}`}
                                     />
                                 </button>
 
@@ -359,23 +359,23 @@ export default function Header() {
                                             initial={{ opacity: 0, y: -5 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             exit={{ opacity: 0, y: -5 }}
-                                            className='pl-4 space-y-4 mt-2'
+                                            className='pl-4 sm:pl-6 space-y-3 mt-2'
                                         >
                                             <a
                                                 href='#mission-section'
-                                                className='block text-white text-lg cursor-pointer'
+                                                className='block text-white text-sm sm:text-base cursor-pointer hover:text-[#ffb900] transition-colors duration-200'
                                                 onClick={(e) => handleMobileAboutSectionClick(e, 'mission-section')}
                                             >
-                                                Who We Are
-                                                <span className='text-xs block'>Our philosophy, vision and values</span>
+                                                <span className='font-light'>Who We Are</span>
+                                                <span className='text-xs sm:text-sm block text-gray-200'>Our philosophy, vision and values</span>
                                             </a>
                                             <a
                                                 href='#leadership-section'
-                                                className='block text-white text-lg cursor-pointer'
+                                                className='block text-white text-sm sm:text-base cursor-pointer hover:text-[#ffb900] transition-colors duration-200'
                                                 onClick={(e) => handleMobileAboutSectionClick(e, 'leadership-section')}
                                             >
-                                                Team
-                                                <span className='text-xs block'>Investment and leadership team</span>
+                                                <span className='font-light'>Team</span>
+                                                <span className='text-xs sm:text-sm block text-gray-200'>Investment and leadership team</span>
                                             </a>
                                         </motion.div>
                                     )}
@@ -386,12 +386,12 @@ export default function Header() {
                             <div>
                                 <button
                                     onClick={() => setIsMobileProductOpen(!isMobileProductOpen)}
-                                    className='flex items-center justify-between text-xl uppercase font-light w-full py-3 text-white'
+                                    className='flex items-center justify-between text-base sm:text-lg md:text-xl uppercase font-light w-full py-2 sm:py-3 text-white hover:text-[#ffb900] transition-colors duration-200'
                                 >
                                     Products
                                     <ChevronDown
-                                        size={20}
-                                        className={`transition-transform ${isMobileProductOpen ? 'rotate-180' : ''}`}
+                                        size={18}
+                                        className={`flex-shrink-0 transition-transform duration-300 ${isMobileProductOpen ? 'rotate-180' : ''}`}
                                     />
                                 </button>
 
@@ -401,23 +401,23 @@ export default function Header() {
                                             initial={{ opacity: 0, y: -5 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             exit={{ opacity: 0, y: -5 }}
-                                            className='pl-4 space-y-4 mt-2'
+                                            className='pl-4 sm:pl-6 space-y-3 mt-2'
                                         >
                                             <Link
                                                 href='/aif'
-                                                className='block text-white text-lg'
+                                                className='block text-white text-sm sm:text-base hover:text-[#ffb900] transition-colors duration-200'
                                                 onClick={() => setIsMobileMenuOpen(false)}
                                             >
-                                                AIF
-                                                <span className='text-xs block'>Alternative Investment Funds</span>
+                                                <span className='font-light'>AIF</span>
+                                                <span className='text-xs sm:text-sm block text-gray-200'>Alternative Investment Funds</span>
                                             </Link>
                                             <Link
                                                 href='/pms'
-                                                className='block text-white text-lg'
+                                                className='block text-white text-sm sm:text-base hover:text-[#ffb900] transition-colors duration-200'
                                                 onClick={() => setIsMobileMenuOpen(false)}
                                             >
-                                                PMS
-                                                <span className='text-xs block'>Portfolio Management Services</span>
+                                                <span className='font-light'>PMS</span>
+                                                <span className='text-xs sm:text-sm block text-gray-200'>Portfolio Management Services</span>
                                             </Link>
                                         </motion.div>
                                     )}
@@ -430,7 +430,7 @@ export default function Header() {
                                     key={link.href}
                                     href={link.href}
                                     onClick={() => setIsMobileMenuOpen(false)}
-                                    className='block text-xl uppercase font-light py-3'
+                                    className='block text-base sm:text-lg md:text-xl uppercase font-light py-2 sm:py-3 hover:text-[#ffb900] transition-colors duration-200'
                                     style={{
                                         color: isActive(link.href) ? '#ffb900' : '#ffffff',
                                     }}
@@ -442,6 +442,8 @@ export default function Header() {
                     </motion.div>
                 )}
             </AnimatePresence>
+
+
         </>
     )
 }

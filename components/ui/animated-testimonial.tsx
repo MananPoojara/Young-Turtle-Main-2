@@ -40,11 +40,11 @@ export const AnimatedTestimonials = ({
     const randomRotateY = () => Math.floor(Math.random() * 21) - 10
 
     return (
-        <div className='mx-auto max-w-sm px-4 py-20 font-sans antialiased md:max-w-4xl md:px-8 lg:px-12'>
-            <div className='relative grid grid-cols-1 gap-20 md:grid-cols-2'>
+        <div className='mx-auto max-w-full px-4 py-12 font-sans antialiased sm:max-w-sm md:max-w-4xl md:px-8 lg:px-12'>
+            <div className='relative grid grid-cols-1 gap-8 md:grid-cols-2'>
                 {/* Image stack */}
-                <div>
-                    <div className='relative h-90 w-full'>
+                <div className='w-full'>
+                    <div className='relative h-80 w-full overflow-hidden sm:h-96 md:h-[400px]'>
                         <AnimatePresence>
                             {testimonials.map((testimonial, index) => (
                                 <motion.div
@@ -73,13 +73,13 @@ export const AnimatedTestimonials = ({
                                         duration: 0.4,
                                         ease: 'easeInOut',
                                     }}
-                                    className='absolute inset-0 origin-bottom'
+                                    className='absolute inset-0'
                                 >
                                     <img
                                         src={testimonial.src}
                                         alt={testimonial.name}
-                                        width={500}
-                                        height={500}
+                                        width='100%' // Changed to percentage for responsiveness
+                                        height='auto' // Auto height to maintain aspect ratio
                                         draggable={false}
                                         className='h-full w-full rounded-3xl object-cover object-center'
                                     />
@@ -90,7 +90,7 @@ export const AnimatedTestimonials = ({
                 </div>
 
                 {/* Text + controls */}
-                <div className='flex text-[#275669] flex-col justify-between py-4'>
+                <div className='flex flex-col justify-between py-4 text-[#275669]'>
                     <motion.div
                         key={active}
                         initial={{ y: 20, opacity: 0 }}
@@ -98,10 +98,9 @@ export const AnimatedTestimonials = ({
                         exit={{ y: -20, opacity: 0 }}
                         transition={{ duration: 0.2, ease: 'easeInOut' }}
                     >
-                        <h3 className='text-2xl font-bold text-[#275669] '>{testimonials[active].name}</h3>
-                        <p className='text-lg text-[#275669] '>{testimonials[active].designation}</p>
-
-                        <motion.p className='mt-8 mb-9 text-2xl text-[#275669] '>
+                        <h3 className='text-xl font-bold sm:text-2xl'>{testimonials[active].name}</h3>
+                        <p className='text-base sm:text-lg'>{testimonials[active].designation}</p>
+                        <motion.p className='mt-6 mb-6 text-lg sm:text-2xl'>
                             {testimonials[active].quote.split(' ').map((word, index) => (
                                 <motion.span
                                     key={index}
@@ -128,16 +127,16 @@ export const AnimatedTestimonials = ({
                         </motion.p>
                     </motion.div>
 
-                    <div className='flex gap-4 pt-20 md:pt-0'>
+                    <div className='flex gap-4 pt-10 md:pt-0'>
                         <button
                             onClick={handlePrev}
-                            className='group/button flex h-7 w-7 items-center justify-center rounded-full bg-[#275669] '
+                            className='group/button flex h-7 w-7 items-center justify-center rounded-full bg-[#275669]'
                         >
                             <IconArrowLeft className='h-5 w-5 text-[#ffffff] transition-transform duration-300 group-hover/button:rotate-12' />
                         </button>
                         <button
                             onClick={handleNext}
-                            className='group/button flex h-7 w-7 items-center cursor-pointer justify-center rounded-full bg-[#275669] '
+                            className='group/button flex h-7 w-7 items-center justify-center rounded-full bg-[#275669]'
                         >
                             <IconArrowRight className='h-5 w-5 text-[#ffffff] transition-transform duration-300 group-hover/button:-rotate-12' />
                         </button>
