@@ -55,7 +55,7 @@ const perspectivesData = [
     {
         id: 4,
         name: 'Jim Simons',
-        title: 'Navigating Market Volatility in 2025',
+        title: 'The Signal and the Noise: Why Volatility Is Our Friend',
         date: 'August 5, 2025',
         content:
             "Renaissance Technologies' models thrive on reasonable volatility, sifting through historical data for nonrandom anomalous patterns that emerge during turbulent periods like 2025's tariff-induced swings and quant drawdowns. By maintaining market neutrality and diversifying across thousands of small positions in liquid assets—from AI leaders like Palantir and NVIDIA to blue-chips—the firm minimizes drawdown risks while harvesting subtle edges in noise. Long-term success demands continuous adaptation, as signals erode over time; in 2025's environment, this means layering statistical tests on economic drivers to exploit inefficiencies without emotional bias or overexposure.",
@@ -65,7 +65,7 @@ const perspectivesData = [
     {
         id: 5,
         name: 'Ken Griffin',
-        title: 'Navigating Market Volatility in 2025',
+        title: 'Volatility Is the Price of Admission for Superior Returns',
         date: 'August 5, 2025',
         content:
             "Citadel's multi-strategy funds posted gains through H1 2025's volatility—Wellington up 2.5%, tactical trading at 6.1%—by layering hedges and reducing risk swiftly, as seen in the 2020 COVID drawdown. Griffin's view of the U.S. economy on a 'sugar high' from stimulus prompts de-risking via gold ETFs, now outperforming Bitcoin and Nvidia by wide margins, signaling concerns over sovereign debt and inflation above 2026 forecasts. Opportunities arise for those blending equities, quant models, and fixed income to navigate the rally's fragility while preserving capital in uncertain terrain.",
