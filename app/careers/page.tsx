@@ -5,7 +5,7 @@ import { PageHero } from "@/components/page-hero"
 import { SectionWrapper } from "@/components/section-wrapper"
 import { ArrowRight, BookOpen, Clock, Heart, MapPin, ShieldCheck, TrendingUp, Users } from "lucide-react"
 import React, { useState } from "react"
-import careers from '@/public/career-hero.jpg'
+import careers from '@/public/Hero-img/career-hero.jpg'
 
 // ===== BENEFITS =====
 const benefitsList = [

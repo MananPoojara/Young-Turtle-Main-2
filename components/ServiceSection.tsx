@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import AnimatedTestimonialsDemo from './animated-testimonials-demo'
+import { PerspectivesCarousel } from './perspective-carousel'
 
 const items = [
     {
@@ -20,9 +21,62 @@ const items = [
     },
 ]
 
+const perspectivesData = [
+    {
+        id: 1,
+        name: 'Ray Dalio',
+        title: "There Ain't No Such Thing as a Free Lunch",
+        date: 'August 11, 2025',
+        content:
+            "Diversification remains the closest thing to a 'free lunch' in investing, but even it comes with trade-offs in a world of rising U.S. debt exceeding $37 trillion. Recent analysis from Bridgewater shows that buffered strategies, promising downside protection without full cost, often underperform simpler diversified portfolios empirically, delivering lower risk-adjusted returns over multi-year cycles. Investors chasing complexity for comfort end up paying hidden fees in opportunity costs, as uncorrelated assets like gold—now recommended at 10-15% allocation—provide genuine hedging without illusory guarantees.",
+        image: '/RayDalio.jpg',
+        slug: 'ray',
+    },
+    {
+        id: 2,
+        name: 'John Paulson',
+        title: 'The Future of Sustainable Investing',
+        date: 'August 8, 2025',
+        content:
+            "Sustainable investing has shifted from niche to mainstream, with ESG factors now driving $4.9 billion in net inflows to global funds in Q2 2025 alone, reversing earlier outflows. Paulson & Co.'s recent stakes in critical minerals like antimony via Perpetua Resources highlight how companies advancing green supply chains—such as the $425 million-financed Stibnite Gold Project—yield lower volatility and superior long-term performance. Gold mining projects like Donlin Gold, where Paulson acquired a 40% interest in a $1 billion deal, exemplify sustainable practices that align environmental responsibility with robust financial returns amid the energy transition.",
+        image: '/JohnPaulson.webp',
+        slug: 'john',
+    },
+    {
+        id: 3,
+        name: 'Stanley Druckenmiller',
+        title: 'Navigating Market Volatility in 2025',
+        date: 'August 5, 2025',
+        content:
+            "2025's market swings, fueled by sticky inflation and slower U.S. growth, underscore the need for high-conviction bets in volatile sectors like biotech, where Duquesne's portfolio allocates 30% to names like Natera (up 48% YTD). Disciplined strategies involve rapid position sizing—exiting Nvidia and Eli Lilly while entering cheaper Magnificent Seven stocks—to capitalize on earnings hand-offs from cyclicals to innovators. Maintaining a long-term view amid 56% portfolio turnover helps mitigate random volatility, echoing Druckenmiller's 30-year streak of positive annual returns through macro hedging.",
+        image: '/StanleyDruckenmiller.webp',
+        slug: 'stanley',
+    },
+    {
+        id: 4,
+        name: 'Jim Simons',
+        title: 'The Signal and the Noise: Why Volatility Is Our Friend',
+        date: 'August 5, 2025',
+        content:
+            "Renaissance Technologies' models thrive on reasonable volatility, sifting through historical data for nonrandom anomalous patterns that emerge during turbulent periods like 2025's tariff-induced swings and quant drawdowns. By maintaining market neutrality and diversifying across thousands of small positions in liquid assets—from AI leaders like Palantir and NVIDIA to blue-chips—the firm minimizes drawdown risks while harvesting subtle edges in noise. Long-term success demands continuous adaptation, as signals erode over time; in 2025's environment, this means layering statistical tests on economic drivers to exploit inefficiencies without emotional bias or overexposure.",
+        image: '/JamesHarrisSimons.jpg',
+        slug: 'jim',
+    },
+    {
+        id: 5,
+        name: 'Ken Griffin',
+        title: 'Volatility Is the Price of Admission for Superior Returns',
+        date: 'August 5, 2025',
+        content:
+            "Citadel's multi-strategy funds posted gains through H1 2025's volatility—Wellington up 2.5%, tactical trading at 6.1%—by layering hedges and reducing risk swiftly, as seen in the 2020 COVID drawdown. Griffin's view of the U.S. economy on a 'sugar high' from stimulus prompts de-risking via gold ETFs, now outperforming Bitcoin and Nvidia by wide margins, signaling concerns over sovereign debt and inflation above 2026 forecasts. Opportunities arise for those blending equities, quant models, and fixed income to navigate the rally's fragility while preserving capital in uncertain terrain.",
+        image: '/kengriffin.jpg',
+        slug: 'ken',
+    },
+]
+
 const ServiceSection = () => {
     return (
-        <main className='min-h-screen bg-gradient-to-b from-slate-50 to-white'>
+        <main className='min-h-screen'>
             {/* Hero Section */}
             <section className='relative py-12 sm:py-16 overflow-hidden bg-gradient-to-br from-[#275669] via-[#2d6a7f] to-[#1e4552]'>
                 <div className='absolute inset-0 w-full h-full'></div>
@@ -55,10 +109,10 @@ const ServiceSection = () => {
             </div>
 
             {/* Core Philosophy */}
-            <section className='py-16 relative bg-gradient-to-b from-white to-slate-50'>
+            <section className='py-16 relative'>
                 <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
                     {/* Single Card Container */}
-                    <div className='relative rounded-3xl overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 shadow-2xl'>
+                    <div className='relative rounded-3xl overflow-hidden  shadow-2xl'>
                         {/* Background Image */}
                         <div className='absolute inset-0'>
                             {/* Overlay */}
@@ -111,7 +165,8 @@ const ServiceSection = () => {
                 </div>
             </section>
 
-            <AnimatedTestimonialsDemo />
+            {/* <AnimatedTestimonialsDemo /> */}
+            <PerspectivesCarousel perspectives={perspectivesData} />
         </main>
     )
 }

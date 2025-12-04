@@ -123,7 +123,9 @@ export default function Header() {
                 <nav className='ml-auto px-6 lg:px-8'>
                     <div className='flex justify-between h-20'>
                         <div className='flex items-center'>
-                            <Image src='/logo.png' alt='YT-Logo' width={200} height={200} />
+                            <Link href='/' className='flex items-center'>
+                                <Image src='/logo.png' alt='YT-Logo' width={200} height={200} />
+                            </Link>
                         </div>
 
                         {/* DESKTOP NAVIGATION */}

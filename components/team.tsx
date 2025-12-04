@@ -9,25 +9,25 @@ const leadership = [
         name: 'Dr. Eleanor Chen',
         role: 'Chief Executive Officer',
         bio: 'Former Head of Quantitative Strategies at Goldman Sachs. PhD in Applied Mathematics from MIT.',
-        image: '/professional-woman-executive-portrait-corporate.jpg',
+        image: '/misc-img/professional-woman-executive-portrait-corporate.jpg',
     },
     {
         name: 'Marcus Webb',
         role: 'Chief Investment Officer',
         bio: '20+ years in systematic trading. Previously Portfolio Manager at Two Sigma.',
-        image: '/professional-man-executive-portrait-corporate.jpg',
+        image: '/misc-img/professional-man-executive-portrait-corporate.jpg',
     },
     {
         name: 'Dr. Raj Patel',
         role: 'Head of Research',
         bio: 'Former Tenured Professor at Princeton. Pioneer in machine learning applications for finance.',
-        image: '/professional-man-researcher-portrait-corporate.jpg',
+        image: '/misc-img/professional-man-researcher-portrait-corporate.jpg',
     },
     {
         name: 'Sarah Lindqvist',
         role: 'Chief Risk Officer',
         bio: '15 years in risk management. Previously at Bridgewater Associates.',
-        image: '/professional-woman-executive-portrait-corporate.jpg',
+        image: '/misc-img/professional-woman-executive-portrait-corporate.jpg',
     },
 ]
 
@@ -109,7 +109,7 @@ export default function PeoplePage() {
                         </div>
                         <div className='w-full h-full relative aspect-video bg-muted rounded-xl overflow-hidden shadow-2xl'>
                             <Image
-                                src='/modern-office-collaboration-meeting-professional.jpg'
+                                src='/misc-img/modern-office-collaboration-meeting-professional.jpg'
                                 alt='Team collaboration'
                                 className='object-cover hover:scale-105 transition-transform duration-1000'
                                 fill

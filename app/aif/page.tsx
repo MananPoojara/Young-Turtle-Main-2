@@ -3,7 +3,7 @@ import { PageHero } from '@/components/page-hero'
 import React from 'react'
 import { SectionWrapper } from '@/components/section-wrapper'
 import { AnimatePresence, motion } from 'framer-motion'
-import aif from '@/public/aif-hero.png'
+import aif from '@/public/Hero-img/aif-hero.png'
 
 
 interface Product {
