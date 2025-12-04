@@ -2,24 +2,8 @@
 import React from 'react'
 import AnimatedTestimonialsDemo from './animated-testimonials-demo'
 import { PerspectivesCarousel } from './perspective-carousel'
-
-const items = [
-    {
-        title: 'Data-Driven Decisions',
-        desc: "Every signal backed by years of market data and rigorous statistical analysis. We don't predict markets—we measure them with mathematical precision.",
-        color: 'from-blue-500 to-cyan-500',
-    },
-    {
-        title: 'Risk-First Approach',
-        desc: 'Capital preservation is our foundation. We prioritize protecting your investments before pursuing profit opportunities through systematic risk management.',
-        color: 'from-emerald-500 to-teal-500',
-    },
-    {
-        title: 'Complete Transparency',
-        desc: 'You understand exactly why we make specific recommendations. Our models are explainable, our reasoning is clear, and our track record is verifiable.',
-        color: 'from-amber-500 to-orange-500',
-    },
-]
+import { Activity, ArrowRight, ShieldCheck, TrendingUp } from 'lucide-react'
+// import { PerspectivesCarousel } from './perspective-carousel'
 
 const perspectivesData = [
     {
@@ -102,63 +86,56 @@ const ServiceSection = () => {
                 </div>
             </section>
 
-            {/* Badge */}
-            <div className='text-center pt-16'>
-                <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-[#275669] mb-6'>Our Philosophy</h2>
-                <div className='w-75 h-1 bg-[#275669] mx-auto mb-4 -mt-1 rounded-full'></div>
-            </div>
-
             {/* Core Philosophy */}
-            <section className='py-16 relative'>
+            <section className='py-20 lg:py-28 relative'>
                 <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
-                    {/* Single Card Container */}
-                    <div className='relative rounded-3xl overflow-hidden  shadow-2xl'>
-                        {/* Background Image */}
-                        <div className='absolute inset-0'>
-                            {/* Overlay */}
-                            <div className='absolute inset-0 bg-[#275669]'></div>
+                    <div className='relative rounded-[2.5rem] overflow-hidden bg-[#275669] shadow-2xl ring-1 ring-white/10 group'>
+
+                        {/* Decorative Background Elements */}
+                        <div className='absolute inset-0 opacity-10'>
+                            <svg className="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                <path d="M0 100 C 20 0 50 0 100 100 Z" fill="none" stroke="white" strokeWidth="0.5" />
+                                <path d="M0 100 C 30 20 70 20 100 100 Z" fill="none" stroke="white" strokeWidth="0.5" opacity="0.5" />
+                            </svg>
                         </div>
 
-                        {/* Content */}
-                        <div className='relative z-10 p-8 sm:p-12 lg:p-16'>
-                            {/* Title */}
-                            <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 max-w-2xl'>
-                                By Experts. For You.
-                            </h2>
+                        {/* Subtle Gradient Glow */}
+                        <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-bl from-white/5 to-transparent pointer-events-none"></div>
 
-                            {/* Description */}
-                            <p className='text-base sm:text-lg text-slate-200 leading-relaxed mb-12 max-w-3xl'>
-                                Young Turtle was founded by mathematicians and engineers who have experienced the core
-                                challenges of quantitative trading—limited technology, fragmented research, and a lack
-                                of precision. With deep expertise in mathematics and finance, we&apos;re building
-                                algorithms that are rigorous, transparent, and powerful. Through strong mathematical
-                                models, clear analytics, and advanced infrastructure, we provide a trusted foundation
-                                for systematic trading to thrive.
-                            </p>
-
-                            {/* Three Pillars Grid */}
-                            <div className='grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8'>
-                                {items.map((item, i) => (
-                                    <div
-                                        key={i}
-                                        className='group p-6 lg:p-8 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300'
-                                    >
-                                        <div className='flex items-center gap-3 mb-4'>
-                                            <span
-                                                className={`h-1.5 w-12 rounded-full bg-gradient-to-r ${item.color}`}
-                                            ></span>
-                                            <span className='text-xs font-semibold text-slate-300 uppercase tracking-wider'>
-                                                Pillar {i + 1}
-                                            </span>
-                                        </div>
-
-                                        <h3 className='text-xl lg:text-2xl font-bold text-white mb-3'>{item.title}</h3>
-
-                                        <p className='text-sm lg:text-base text-slate-300 leading-relaxed'>
-                                            {item.desc}
-                                        </p>
+                        <div className='relative z-10 flex flex-col lg:flex-row'>
+                            {/* Left Column: Heading & Branding */}
+                            <div className='lg:w-2/5 p-10 sm:p-14 lg:p-16 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-white/10 bg-black/10 backdrop-blur-sm'>
+                                <h2 className='text-4xl sm:text-5xl lg:text-5xl font-bold font-serif text-white mb-6 leading-tight'>
+                                    Our <br />Philosophy
+                                </h2>
+                                <div className='w-20 h-1.5 bg-gradient-to-r from-amber-300 to-amber-500 rounded-full mb-8'></div>
+                                <div className="flex flex-col gap-4 text-slate-300 text-sm font-medium">
+                                    <div className="flex items-center gap-3">
+                                        <ShieldCheck className="w-5 h-5 text-amber-400" />
+                                        <span>Rigorous Risk Management</span>
                                     </div>
-                                ))}
+                                    <div className="flex items-center gap-3">
+                                        <TrendingUp className="w-5 h-5 text-amber-400" />
+                                        <span>Mathematical Precision</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Right Column: Content */}
+                            <div className='lg:w-3/5 p-10 sm:p-14 lg:p-16 bg-[#275669] flex items-center'>
+                                <div>
+                                    <p className='text-lg sm:text-xl text-slate-100 leading-relaxed font-light text-opacity-90'>
+                                        <span className="font-semibold text-white">Young Turtle</span> was founded by mathematicians and engineers who have experienced the core
+                                        challenges of quantitative trading—limited technology, fragmented research, and a lack
+                                        of precision.
+                                    </p>
+                                    <p className='mt-6 text-base sm:text-lg text-slate-300 leading-relaxed'>
+                                        With deep expertise in mathematics and finance, we&apos;re building
+                                        algorithms that are rigorous, transparent, and powerful. Through strong mathematical
+                                        models, clear analytics, and advanced infrastructure, we provide a trusted foundation
+                                        for systematic trading to thrive.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
