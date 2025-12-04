@@ -14,7 +14,7 @@ export default function HeroSection() {
                 preload='metadata'
                 className='absolute inset-0 w-full h-full object-cover opacity-40'
             >
-                <source src='/turtle2_crop.mp4' type='video/mp4' />
+                <source src='/misc-img/turtle2_crop.mp4' type='video/mp4' />
             </video>
 
             {/* Content */}

@@ -13,11 +13,10 @@ export const TortoiseQuote = () => {
                 The future of wealth is quant-driven and human-centered.
                 <br />
                 Bridging ultra-modern <span className="text-[#ffb900] italic">research with grounded financial wisdom.</span>{" "}
-                {/* <span className="text-[#ffb900] italic">Real results.</span> */}
             </h1>
 
             <p className="mt-3 text-white/80 text-lg md:text-xl font-light tracking-wide">
-                Expectations beat predictions            
+                Expectations beat predictions
             </p>
         </div>
     );

@@ -50,7 +50,7 @@ export function PerspectivesCarousel({ perspectives }: PerspectivesCarouselProps
                             <Image
                                 src={current.image || '/placeholder.svg'}
                                 alt={`${current.name}'s perspective`}
-                                className='rounded-2xl object-cover grayscale'
+                                className='rounded-2xl object-cover grayscale hover:grayscale-0 transition-all'
                                 fill
                             />
                         </div>
@@ -65,11 +65,10 @@ export function PerspectivesCarousel({ perspectives }: PerspectivesCarouselProps
                             <button
                                 key={index}
                                 onClick={() => setCurrentIndex(index)}
-                                className={`w-2 h-2 rounded-full transition-all ${
-                                    index === currentIndex
-                                        ? 'bg-[#275669] w-6'
-                                        : 'bg-[#275669]/30 hover:bg-[#275669]/50'
-                                }`}
+                                className={`w-2 h-2 rounded-full transition-all ${index === currentIndex
+                                    ? 'bg-[#275669] w-6'
+                                    : 'bg-[#275669]/30 hover:bg-[#275669]/50'
+                                    }`}
                                 aria-label={`Go to slide ${index + 1}`}
                             />
                         ))}

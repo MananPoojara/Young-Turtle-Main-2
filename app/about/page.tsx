@@ -4,8 +4,8 @@ import { PageHero } from '@/components/page-hero'
 import { SectionWrapper } from '@/components/section-wrapper'
 import PeoplePage from '@/components/team'
 import Image from 'next/image'
-import team from '@/public/hired.jpeg'
-import About from '@/public/about-hero.png'
+import team from '@/public/misc-img/hired.jpeg'
+import About from '@/public/Hero-img/about-hero.png'
 
 export default function AboutPage() {
     return (

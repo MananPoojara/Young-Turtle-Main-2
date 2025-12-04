@@ -7,7 +7,7 @@ import { SectionWrapper } from "@/components/section-wrapper";
 import { MapPin, Phone, Mail, Clock, ChevronRight, ArrowRight, Building2, Globe } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
-import contact from "@/public/contact-hero.png";
+import contact from "@/public/Hero-img/contact-hero.png";
 
 const offices = [
   {
