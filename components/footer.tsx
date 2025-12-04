@@ -139,7 +139,7 @@ export function Footer() {
                                 <p>
                                     Email:{' '}
                                     <a href="mailto:compliance@youngturtle.in" className="underline">
-                                        compliance@youngturtle.in
+                                        compliance@youngturtle.ooo
                                     </a>
                                 </p>
                                 <p>Phone: +91-0000000000</p>

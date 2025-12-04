@@ -26,7 +26,7 @@ export function PageHero({ title, subtitle, variant = 'grid', src }: PageHeroPro
             )}
 
             {/* Gradient overlay (unchanged) */}
-            <div className="absolute inset-0 bg-[#275669]/70" />
+            <div className="absolute inset-0 bg-[#275669]/85" />
 
             <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-8 py-32 text-center">
                 <motion.h1
