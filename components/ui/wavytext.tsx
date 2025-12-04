@@ -7,10 +7,10 @@ export const TortoiseQuote = () => {
                     text-white 
                     text-2xl
                     sm:text-3xl
-                    md:text-4xl
-                    lg:text-5xl
-                    xl:text-6xl
-                    2xl:text-7xl
+                    md:text-2xl
+                    lg:text-3xl
+                    xl:text-4xl
+                    2xl:text-5xl
                     leading-snug
                     sm:leading-tight
                     md:leading-tight
