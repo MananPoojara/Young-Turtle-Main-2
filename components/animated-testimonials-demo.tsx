@@ -20,7 +20,7 @@ export default function AnimatedTestimonialsDemo() {
             src: '/marty-schwartz.jpeg',
         },
         {
-            quote: 'The best investors do not target return; they focus first on risk, and only then decide whether the projected return justifies taking each particular risk.',
+            quote: 'The best investors do not target returns - they focus first on risk, and only then decide whether the projected return justifies taking each particular risk.',
             name: 'Seth Klarman',
             src: '/seth-klarman.jpeg',
         },
