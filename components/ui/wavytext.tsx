@@ -5,7 +5,7 @@ export const TortoiseQuote = () => {
                 className='
                     font-serif 
                     text-white 
-                    sm:text-5xl md:text-5xl lg:text-6xl xl:text-5xl 2xl:text-5xl
+                    text-xl md:text-4xl lg:text-4xl xl:text-4xl 2xl:text-5xl
                     leading-tight 
                     tracking-tight
                 '
