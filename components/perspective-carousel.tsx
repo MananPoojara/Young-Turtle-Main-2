@@ -41,11 +41,11 @@ export function PerspectivesCarousel({ perspectives }: PerspectivesCarouselProps
 
     // Handle touch swipe
     const handleTouchStart = (e: React.TouchEvent) => {
-        touchStartX.current = e.clientX || e.touches[0].clientX
+        touchStartX.current = e.touches[0].clientX
     }
 
     const handleTouchEnd = (e: React.TouchEvent) => {
-        touchEndX.current = e.clientX || e.changedTouches[0].clientX
+        touchEndX.current = e.changedTouches[0].clientX
         handleSwipe()
     }
 
