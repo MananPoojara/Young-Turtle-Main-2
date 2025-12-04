@@ -113,7 +113,8 @@ export default function PeoplePage() {
                                 alt='Team collaboration'
                                 className='object-cover hover:scale-105 transition-transform duration-1000'
                                 fill
-                            />
+                            /> 
+                            
                         </div>
                     </div>
                 </div>

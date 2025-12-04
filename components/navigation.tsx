@@ -124,7 +124,7 @@ export default function Header() {
                     <div className='flex justify-between h-20'>
                         <div className='flex items-center'>
                             <Link href='/' className='flex items-center'>
-                                <Image src='/logo.png' alt='YT-Logo' width={200} height={200} />
+                                <Image src='/misc-img/logo.png' alt='YT-Logo' width={200} height={200} />
                             </Link>
                         </div>
 
