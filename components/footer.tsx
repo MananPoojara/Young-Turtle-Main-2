@@ -16,7 +16,7 @@ export function Footer() {
                 <div className="flex flex-col items-start gap-6 border-b border-white/10 py-10 sm:flex-row sm:items-center sm:justify-between">
                     <div className="space-y-2">
                         <Image
-                            src="/logo.png"
+                            src="/misc-img/logo.png"
                             alt="Young Turtle Logo"
                             width={150}
                             height={150}
