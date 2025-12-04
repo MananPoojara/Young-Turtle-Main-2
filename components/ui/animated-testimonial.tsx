@@ -2,12 +2,12 @@
 
 import { IconArrowLeft, IconArrowRight } from '@tabler/icons-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
 type Testimonial = {
     quote: string
     name: string
-    designation: string
     src: string
 }
 
@@ -73,15 +73,14 @@ export const AnimatedTestimonials = ({
                                         duration: 0.4,
                                         ease: 'easeInOut',
                                     }}
-                                    className='absolute inset-0'
+                                    className='absolute inset-0 h-full w-full rounded-3xl object-cover object-center'
                                 >
-                                    <img
+                                    <Image
                                         src={testimonial.src}
                                         alt={testimonial.name}
-                                        width='100%' // Changed to percentage for responsiveness
-                                        height='auto' // Auto height to maintain aspect ratio
+                                        fill
                                         draggable={false}
-                                        className='h-full w-full rounded-3xl object-cover object-center'
+                                        className='rounded-3xl object-cover object-center'
                                     />
                                 </motion.div>
                             ))}
@@ -98,9 +97,8 @@ export const AnimatedTestimonials = ({
                         exit={{ y: -20, opacity: 0 }}
                         transition={{ duration: 0.2, ease: 'easeInOut' }}
                     >
-                        <h3 className='text-xl font-bold sm:text-2xl'>{testimonials[active].name}</h3>
-                        <p className='text-base sm:text-lg'>{testimonials[active].designation}</p>
-                        <motion.p className='mt-6 mb-6 text-lg sm:text-2xl'>
+                        <motion.p className='italic mt-6 mb-6 text-xl'>
+                            <span className='font-bold'>&quot;&nbsp;</span>
                             {testimonials[active].quote.split(' ').map((word, index) => (
                                 <motion.span
                                     key={index}
@@ -124,7 +122,9 @@ export const AnimatedTestimonials = ({
                                     {word}&nbsp;
                                 </motion.span>
                             ))}
+                            <span className='font-bold'>&quot;</span>
                         </motion.p>
+                        <h3 className='text-xl font-bold sm:text-2xl'>-&nbsp;{testimonials[active].name}</h3>
                     </motion.div>
 
                     <div className='flex gap-4 pt-10 md:pt-0'>
