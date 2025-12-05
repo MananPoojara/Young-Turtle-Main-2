@@ -1,8 +1,11 @@
 'use client'
 import React from 'react'
 import AnimatedTestimonialsDemo from './animated-testimonials-demo'
+<<<<<<< HEAD
 import { PerspectivesCarousel } from './perspective-carousel'
 import { Activity, ArrowRight, ShieldCheck, TrendingUp } from 'lucide-react'
+=======
+>>>>>>> eaeec3cf6ecb0ca1fe246c782dc35022525ace55
 // import { PerspectivesCarousel } from './perspective-carousel'
 
 const perspectivesData = [
@@ -89,6 +92,7 @@ const ServiceSection = () => {
             {/* Core Philosophy */}
             <section className='py-20 lg:py-28 relative'>
                 <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
+<<<<<<< HEAD
                     <div className='relative rounded-[2.5rem] overflow-hidden bg-[#275669] shadow-2xl ring-1 ring-white/10 group'>
 
                         {/* Decorative Background Elements */}
@@ -136,14 +140,81 @@ const ServiceSection = () => {
                                         for systematic trading to thrive.
                                     </p>
                                 </div>
+=======
+                    {/* Single Card Container */}
+                    <div className='relative rounded-3xl overflow-hidden shadow-2xl'>
+                        {/* Content */}
+                        <div className='bg-[#275669] my-3 relative z-10 flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 p-8 sm:p-12 lg:p-16'>
+                            {/* Left Section */}
+                            <div className='w-[25vw] flex-none text-center lg:text-left'>
+                                <h2 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-3 leading-tight'>
+                                    Our
+                                    <br />
+                                    <span className='text-amber-400'>Philosophy</span>
+                                </h2>
+
+                                {/* Underline */}
+                            </div>
+                            <div
+                                className='
+        bg-amber-400 rounded-full
+        w-full h-[3px]
+        lg:w-1 lg:h-auto lg:self-stretch
+        mx-auto lg:mx-0
+        '
+                            ></div>
+                            {/* Right Section */}
+                            <p className='w-[45vw] flex-none text-base sm:text-lg text-slate-200/90 leading-relaxed text-center lg:text-left'>
+                                <span className='text-amber-400'>Young Turtle</span> was founded by mathematicians and
+                                engineers who have experienced the core challenges of quantitative trading—limited
+                                technology, fragmented research, and a lack of precision. With deep expertise in
+                                mathematics and finance, we&apos;re building algorithms that are rigorous, transparent,
+                                and powerful. Through strong mathematical models, clear analytics, and advanced
+                                infrastructure, we provide a trusted foundation for systematic trading to thrive.
+                            </p>
+                        </div>
+
+                        <div className='my-3 relative z-10 flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 p-8 sm:p-12 lg:p-16'>
+                            {/* Left Section */}
+                            <div className='w-[25vw] flex-none text-center lg:text-left'>
+                                <h2 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-3 leading-tight'>
+                                    <span className='text-[#275669]'>Our</span>
+                                    <br />
+                                    <span className='text-amber-400'>Mission</span>
+                                </h2>
+                            </div>
+                            {/* Underline */}
+                            <div
+                                className='
+        bg-amber-400 rounded-full
+        w-full h-[3px]
+        lg:w-1 lg:h-auto lg:self-stretch
+        mx-auto lg:mx-0
+        '
+                            ></div>
+                            {/* Right Section */}
+                            <div className='text-[#275669] w-[45vw] flex-none text-base sm:text-lg leading-relaxed text-center lg:text-left'>
+                                <p className=' text-base sm:text-lg  leading-relaxed max-w-3xl text-center lg:text-left'>
+                                    <span className='text-amber-400'>We</span> strive to generate superior risk-adjusted
+                                    returns for our investors by harnessing advanced mathematical models, cutting-edge
+                                    technology, and rigorous scientific research to identify and exploit persistent
+                                    market inefficiencies.
+                                </p>
+                                <p className='text-base sm:text-lg leading-relaxed max-w-3xl text-center lg:text-left'>
+                                    In an era of unprecedented data velocity and complexity, we remain committed to
+                                    intellectual honesty, continuous innovation, and disciplined execution—delivering
+                                    alpha through quantifiable edge while upholding the highest standards of integrity
+                                    and transparency.
+                                </p>
+>>>>>>> eaeec3cf6ecb0ca1fe246c782dc35022525ace55
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* <AnimatedTestimonialsDemo /> */}
-            <PerspectivesCarousel perspectives={perspectivesData} />
+            <AnimatedTestimonialsDemo />
+            {/* <PerspectivesCarousel perspectives={perspectivesData} /> */}
         </main>
     )
 }
