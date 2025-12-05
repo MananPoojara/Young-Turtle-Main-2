@@ -3,9 +3,7 @@ import React from 'react'
 import AnimatedTestimonialsDemo from './animated-testimonials-demo'
 import { PerspectivesCarousel } from './perspective-carousel'
 import { Activity, ArrowRight, ShieldCheck, TrendingUp } from 'lucide-react'
-
 // import { PerspectivesCarousel } from './perspective-carousel'
-
 
 const perspectivesData = [
     {
