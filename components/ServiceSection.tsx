@@ -85,14 +85,14 @@ const ServiceSection = () => {
             </section>
 
             {/* Core Philosophy */}
-            <section className='py-16 relative'>
+            <section className='py-16 2xl:py-8 relative'>
                 <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
                     {/* Single Card Container */}
                     <div className='relative rounded-3xl overflow-hidden shadow-2xl'>
                         {/* Content */}
-                        <div className='bg-[#275669] my-3 relative z-10 flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 p-8 sm:p-12 lg:p-16'>
+                        <div className='bg-[#275669] relative z-10 flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 p-8 sm:p-12 lg:p-16'>
                             {/* Left Section */}
-                            <div className='w-[25vw] flex-none text-center lg:text-left'>
+                            <div className='w-full lg:w-64 xl:w-80 lg:flex-shrink-0 text-center lg:text-left flex items-center justify-center lg:justify-start'>
                                 <h2 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-3 leading-tight'>
                                     Our
                                     <br />
@@ -106,23 +106,26 @@ const ServiceSection = () => {
         bg-amber-400 rounded-full
         w-full h-[3px]
         lg:w-1 lg:h-auto lg:self-stretch
-        mx-auto lg:mx-0
+        lg:mx-0
         '
                             ></div>
                             {/* Right Section */}
-                            <p className='w-[45vw] flex-none text-base sm:text-lg text-slate-200/90 leading-relaxed text-center lg:text-left'>
-                                <span className='text-amber-400'>Young Turtle</span> was founded by mathematicians and
-                                engineers who have experienced the core challenges of quantitative trading—limited
-                                technology, fragmented research, and a lack of precision. With deep expertise in
-                                mathematics and finance, we&apos;re building algorithms that are rigorous, transparent,
-                                and powerful. Through strong mathematical models, clear analytics, and advanced
-                                infrastructure, we provide a trusted foundation for systematic trading to thrive.
-                            </p>
+                            <div className='w-full lg:flex-1 text-base sm:text-lg text-slate-200/90 leading-relaxed text-center lg:text-left flex items-center'>
+                                <p>
+                                    <span className='text-amber-400'>Young Turtle</span> was founded by mathematicians
+                                    and engineers who have experienced the core challenges of quantitative
+                                    trading—limited technology, fragmented research, and a lack of precision. With deep
+                                    expertise in mathematics and finance, we&apos;re building algorithms that are
+                                    rigorous, transparent, and powerful. Through strong mathematical models, clear
+                                    analytics, and advanced infrastructure, we provide a trusted foundation for
+                                    systematic trading to thrive.
+                                </p>
+                            </div>
                         </div>
 
-                        <div className='my-3 relative z-10 flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 p-8 sm:p-12 lg:p-16'>
+                        <div className='relative z-10 flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 p-8 sm:p-12 lg:p-16'>
                             {/* Left Section */}
-                            <div className='w-[25vw] flex-none text-center lg:text-left'>
+                            <div className='w-full lg:w-64 xl:w-80 lg:flex-shrink-0 text-center lg:text-left flex items-center justify-center lg:justify-start'>
                                 <h2 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-3 leading-tight'>
                                     <span className='text-[#275669]'>Our</span>
                                     <br />
@@ -135,18 +138,18 @@ const ServiceSection = () => {
         bg-amber-400 rounded-full
         w-full h-[3px]
         lg:w-1 lg:h-auto lg:self-stretch
-        mx-auto lg:mx-0
+        lg:mx-0
         '
                             ></div>
                             {/* Right Section */}
-                            <div className='text-[#275669] w-[45vw] flex-none text-base sm:text-lg leading-relaxed text-center lg:text-left'>
-                                <p className=' text-base sm:text-lg  leading-relaxed max-w-3xl text-center lg:text-left'>
+                            <div className='text-[#275669] w-full lg:flex-1 text-base sm:text-lg leading-relaxed text-center lg:text-left flex items-center'>
+                                <p>
                                     <span className='text-amber-400'>We</span> strive to generate superior risk-adjusted
                                     returns for our investors by harnessing advanced mathematical models, cutting-edge
                                     technology, and rigorous scientific research to identify and exploit persistent
                                     market inefficiencies.
                                 </p>
-                                <p className='text-base sm:text-lg leading-relaxed max-w-3xl text-center lg:text-left'>
+                                <p>
                                     In an era of unprecedented data velocity and complexity, we remain committed to
                                     intellectual honesty, continuous innovation, and disciplined execution—delivering
                                     alpha through quantifiable edge while upholding the highest standards of integrity

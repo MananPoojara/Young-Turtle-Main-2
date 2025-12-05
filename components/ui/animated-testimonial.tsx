@@ -44,7 +44,7 @@ export const AnimatedTestimonials = ({
             <div className='relative grid grid-cols-1 gap-8 md:grid-cols-2'>
                 {/* Image stack */}
                 <div className='w-full'>
-                    <div className='relative h-80 w-full overflow-hidden sm:h-96 md:h-[400px]'>
+                    <div className='relative h-80 overflow-hidden sm:h-96 md:h-[400px]'>
                         <AnimatePresence>
                             {testimonials.map((testimonial, index) => (
                                 <motion.div
