@@ -73,10 +73,8 @@ export default function RegulatoryPage() {
   return (
     <>
       <PageHero
-        src={reulatory.src}
         title='Regulatory'
         subtitle='Transparency and compliance are the cornerstones of our relationship with investors.'
-        variant='grid'
       />
 
       <SectionWrapper className='pt-20 lg:py-24'>

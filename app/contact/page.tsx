@@ -44,10 +44,8 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
-        src={contact.src}
         title="Get in Touch"
         subtitle="We welcome inquiries from institutional investors and qualified individuals"
-        variant="dots"
       />
 
       <SectionWrapper className="py-32 bg-sunbeam-pearl">

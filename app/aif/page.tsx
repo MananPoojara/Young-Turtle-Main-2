@@ -49,10 +49,8 @@ const page = () => {
     return (
         <>
             <PageHero
-                src={aif.src}
                 title="Alternative Investment Funds"
                 subtitle="Build your career at the forefront of quantitative finance"
-                variant="network"
             />
             <div className="min-h-screen bg-deep-teal text-[#275669] selection:bg-rich-gold selection:text-deep-teal font-sans">
 
