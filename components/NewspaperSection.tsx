@@ -11,11 +11,6 @@ export const NewspaperSection = () => {
 
                 {/* Left: The Narrative (History of Turtle Strategy) */}
                 <div className="w-full lg:w-3/5 space-y-6">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#275669]/10 text-[#275669]">
-                        <span className="w-2 h-2 rounded-full bg-[#275669]"></span>
-                        <span className="text-xs font-bold uppercase tracking-widest">Our Heritage</span>
-                    </div>
-
                     <h3 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 leading-tight">
                         The Origin of <br />
                         <span className="text-[#275669]">"The Turtle"</span>
