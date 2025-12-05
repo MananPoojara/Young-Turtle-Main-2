@@ -92,10 +92,8 @@ export default function CareersPage() {
     <>
       {/* HERO */}
       <PageHero
-        src={careers.src}
         title="Join Young Turtle"
         subtitle="Build your career at the forefront of quantitative finance"
-        variant="network"
       />
 
       {/* WHY YOUNG TURTLE */}

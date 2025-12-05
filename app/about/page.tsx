@@ -11,10 +11,8 @@ export default function AboutPage() {
     return (
         <>
             <PageHero
-                src={About.src}
                 title='About Young Turtle'
                 subtitle='A legacy of quantitative excellence and institutional trust'
-                variant='dots'
             />
 
             {/* Mission Section */}
