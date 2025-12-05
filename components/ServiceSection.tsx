@@ -1,12 +1,11 @@
 'use client'
 import React from 'react'
 import AnimatedTestimonialsDemo from './animated-testimonials-demo'
-<<<<<<< HEAD
 import { PerspectivesCarousel } from './perspective-carousel'
 import { Activity, ArrowRight, ShieldCheck, TrendingUp } from 'lucide-react'
-=======
->>>>>>> eaeec3cf6ecb0ca1fe246c782dc35022525ace55
+
 // import { PerspectivesCarousel } from './perspective-carousel'
+
 
 const perspectivesData = [
     {
