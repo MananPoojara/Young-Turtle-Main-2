@@ -9,7 +9,7 @@ import About from '@/public/Hero-img/about-hero.png'
 
 export default function AboutPage() {
     return (
-        <>
+        <div className='pt-20'>
             <PageHero
                 title='About Young Turtle'
                 subtitle='A legacy of quantitative excellence and institutional trust'
@@ -86,6 +86,6 @@ export default function AboutPage() {
                     </div>
                 </div>
             </SectionWrapper>
-        </>
+        </div>
     )
 }

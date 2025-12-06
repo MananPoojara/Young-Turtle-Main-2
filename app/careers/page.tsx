@@ -90,7 +90,7 @@ export default function CareersPage() {
     const filteredOpenings = selectedDept === 'All' ? openings : openings.filter((o) => o.department === selectedDept)
 
     return (
-        <>
+        <div className='pt-20'>
             {/* HERO */}
             <PageHero title='Join Young Turtle' subtitle='Build your career at the forefront of quantitative finance' />
 
@@ -296,6 +296,6 @@ export default function CareersPage() {
                     </motion.div>
                 </div>
             </SectionWrapper>
-        </>
+        </div>
     )
 }

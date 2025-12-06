@@ -47,6 +47,17 @@ export default function Header() {
     const [isAboutOpen, setIsAboutOpen] = useState(false)
     const [isMobileProductOpen, setIsMobileProductOpen] = useState(false)
     const [isMobileAboutOpen, setIsMobileAboutOpen] = useState(false)
+    const [isScrolled, setIsScrolled] = useState(false)
+
+    const isHomePage = pathname === '/'
+
+    // Determine background color based on page and scroll state
+    const getBackgroundColor = () => {
+        if (isHomePage) {
+            return '#275669' // Always original color on home page
+        }
+        return isScrolled ? '#275669' : '#112733' // Dark initially, original after scroll
+    }
 
     useEffect(() => {
         const handleResize = () => {
@@ -63,6 +74,19 @@ export default function Header() {
 
         // Cleanup
         return () => window.removeEventListener('resize', handleResize)
+    }, [])
+
+    useEffect(() => {
+        const handleScroll = () => {
+            // Change color after scrolling 50px
+            setIsScrolled(window.scrollY > 50)
+        }
+
+        // Check initial scroll position
+        handleScroll()
+
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
     const isActive = (href: string) => pathname === href
@@ -119,7 +143,10 @@ export default function Header() {
 
     return (
         <>
-            <header className='fixed top-0 left-0 right-0 z-50 bg-[#275669] shadow-lg'>
+            <header
+                className='fixed top-0 left-0 right-0 z-50 shadow-lg transition-colors duration-300'
+                style={{ backgroundColor: getBackgroundColor() }}
+            >
                 <nav className='ml-auto px-6 lg:px-8'>
                     <div className='flex justify-between h-20'>
                         <div className='flex items-center'>
@@ -148,8 +175,9 @@ export default function Header() {
                                     About
                                     <ChevronDown
                                         size={16}
-                                        className={`transition-transform duration-300 ${isAboutOpen ? 'rotate-180' : ''
-                                            }`}
+                                        className={`transition-transform duration-300 ${
+                                            isAboutOpen ? 'rotate-180' : ''
+                                        }`}
                                         style={{
                                             color: isAboutOpen || isAboutActive ? '#ffb900' : '#ffffff',
                                         }}
@@ -237,8 +265,9 @@ export default function Header() {
                                     Products
                                     <ChevronDown
                                         size={16}
-                                        className={`transition-transform duration-300 ${isProductOpen ? 'rotate-180' : ''
-                                            }`}
+                                        className={`transition-transform duration-300 ${
+                                            isProductOpen ? 'rotate-180' : ''
+                                        }`}
                                         style={{
                                             color: isProductOpen ? '#ffb900' : '#ffffff',
                                         }}
@@ -329,7 +358,8 @@ export default function Header() {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        className='fixed inset-0 z-40 pt-16 lg:hidden bg-[#275669] overflow-y-auto overflow-x-hidden max-h-[calc(100vh-64px)]'
+                        className='fixed inset-0 z-40 pt-16 lg:hidden overflow-y-auto overflow-x-hidden max-h-[calc(100vh-64px)]'
+                        style={{ backgroundColor: getBackgroundColor() }}
                     >
                         <nav className='px-4 py-6 sm:px-6 md:px-8 space-y-3 sm:space-y-4'>
                             {/* Home */}
@@ -351,7 +381,9 @@ export default function Header() {
                                     About
                                     <ChevronDown
                                         size={18}
-                                        className={`flex-shrink-0 transition-transform duration-300 ${isMobileAboutOpen ? 'rotate-180' : ''}`}
+                                        className={`flex-shrink-0 transition-transform duration-300 ${
+                                            isMobileAboutOpen ? 'rotate-180' : ''
+                                        }`}
                                     />
                                 </button>
 
@@ -369,7 +401,9 @@ export default function Header() {
                                                 onClick={(e) => handleMobileAboutSectionClick(e, 'mission-section')}
                                             >
                                                 <span className='font-light'>Who We Are</span>
-                                                <span className='text-xs sm:text-sm block text-gray-200'>Our philosophy, vision and values</span>
+                                                <span className='text-xs sm:text-sm block text-gray-200'>
+                                                    Our philosophy, vision and values
+                                                </span>
                                             </a>
                                             <a
                                                 href='#leadership-section'
@@ -377,7 +411,9 @@ export default function Header() {
                                                 onClick={(e) => handleMobileAboutSectionClick(e, 'leadership-section')}
                                             >
                                                 <span className='font-light'>Team</span>
-                                                <span className='text-xs sm:text-sm block text-gray-200'>Investment and leadership team</span>
+                                                <span className='text-xs sm:text-sm block text-gray-200'>
+                                                    Investment and leadership team
+                                                </span>
                                             </a>
                                         </motion.div>
                                     )}
@@ -393,7 +429,9 @@ export default function Header() {
                                     Products
                                     <ChevronDown
                                         size={18}
-                                        className={`flex-shrink-0 transition-transform duration-300 ${isMobileProductOpen ? 'rotate-180' : ''}`}
+                                        className={`flex-shrink-0 transition-transform duration-300 ${
+                                            isMobileProductOpen ? 'rotate-180' : ''
+                                        }`}
                                     />
                                 </button>
 
@@ -411,7 +449,9 @@ export default function Header() {
                                                 onClick={() => setIsMobileMenuOpen(false)}
                                             >
                                                 <span className='font-light'>AIF</span>
-                                                <span className='text-xs sm:text-sm block text-gray-200'>Alternative Investment Funds</span>
+                                                <span className='text-xs sm:text-sm block text-gray-200'>
+                                                    Alternative Investment Funds
+                                                </span>
                                             </Link>
                                             <Link
                                                 href='/pms'
@@ -419,7 +459,9 @@ export default function Header() {
                                                 onClick={() => setIsMobileMenuOpen(false)}
                                             >
                                                 <span className='font-light'>PMS</span>
-                                                <span className='text-xs sm:text-sm block text-gray-200'>Portfolio Management Services</span>
+                                                <span className='text-xs sm:text-sm block text-gray-200'>
+                                                    Portfolio Management Services
+                                                </span>
                                             </Link>
                                         </motion.div>
                                     )}
@@ -444,8 +486,6 @@ export default function Header() {
                     </motion.div>
                 )}
             </AnimatePresence>
-
-
         </>
     )
 }
