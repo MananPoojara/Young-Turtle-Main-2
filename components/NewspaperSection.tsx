@@ -3,7 +3,7 @@ import { Quote, ArrowRight } from 'lucide-react';
 
 export const NewspaperSection = () => {
     return (
-        <div className="bg-white rounded-3xl p-6 sm:p-10 lg:p-12 shadow-xl border border-slate-100 overflow-hidden relative">
+        <div className="bg-[#275669] rounded-3xl p-6 sm:p-10 lg:p-12 shadow-xl border border-slate-100 overflow-hidden relative">
             {/* Background Texture Detail */}
             <div className="absolute top-0 right-0 -mt-16 -mr-16 w-64 h-64 bg-[#275669]/5 rounded-full blur-3xl"></div>
 
@@ -11,19 +11,19 @@ export const NewspaperSection = () => {
 
                 {/* Left: The Narrative (History of Turtle Strategy) */}
                 <div className="w-full lg:w-3/5 space-y-6">
-                    <h3 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 leading-tight">
+                    <h3 className="text-3xl md:text-4xl font-serif font-bold text-white leading-tight">
                         The Origin of <br />
-                        <span className="text-[#275669]">"The Turtle"</span>
+                        <span className="text-amber-400">"The Turtle"</span>
                     </h3>
 
-                    <div className="space-y-4 text-slate-600 leading-relaxed text-lg">
+                    <div className="space-y-4 text-white leading-relaxed text-lg">
                         <p>
                             The name <strong>Young Turtle</strong> is a homage to the most famous experiment in financial history. In 1983, legendary commodities trader <strong>Richard Dennis</strong> wagered that trading was a learned science, not an innate gift.
                         </p>
                         <p>
-                            He recruited a group of novices—called the <strong>"Turtles"</strong>—and taught them a specific set of trend-following rules. He famously said, <span className="italic text-slate-800">"We are going to grow traders just like they grow turtles in Singapore."</span>
+                            He recruited a group of novices—called the <strong>"Turtles"</strong>—and taught them a specific set of trend-following rules. He famously said, <span className="italic text-white">"We are going to grow traders just like they grow turtles in Singapore."</span>
                         </p>
-                        <p className="text-sm text-slate-500 pt-2 border-t border-slate-100 mt-4">
+                        <p className="text-sm text-white pt-2 border-t border-slate-100 mt-4">
                             The result? His students earned over <strong>$175 million</strong> in four years, proving that with discipline, mathematics, and a robust system, consistency can be engineered.
                         </p>
                     </div>
@@ -32,12 +32,12 @@ export const NewspaperSection = () => {
                 {/* Right: The Evidence (Newspaper Image) */}
                 <div className="w-full lg:w-2/5 relative">
                     {/* Decorative Frame */}
-                    <div className="absolute inset-0 bg-slate-900/5 transform translate-x-3 translate-y-3 rounded-xl"></div>
-                    <div className="absolute -top-6 -right-6 text-[#275669]/10">
+                    <div className="absolute inset-0 bg-black/10 transform translate-x-3 translate-y-3 rounded-xl"></div>
+                    <div className="absolute -top-6 -right-6 text-white/30">
                         <Quote size={80} />
                     </div>
 
-                    <div className="relative bg-white p-2 rounded-xl shadow-lg border border-slate-200 group overflow-hidden">
+                    <div className="relative p-2 rounded-xl group overflow-hidden">
                         {/* 
                            Replace src with your actual image path: /perspective-img/wsj-article.jpg 
                         */}
