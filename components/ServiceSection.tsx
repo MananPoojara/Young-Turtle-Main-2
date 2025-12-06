@@ -1,7 +1,10 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
+
 import AnimatedTestimonialsDemo from './animated-testimonials-demo'
-// import { PerspectivesCarousel } from './perspective-carousel'
+import { PerspectivesCarousel } from './perspective-carousel'
+import { Activity, ArrowRight, Gem, Minimize2, Minus, Mountain, Plus, ShieldCheck, Sun, TrendingUp } from 'lucide-react'
+import { NewspaperSection } from './NewspaperSection'
 
 const perspectivesData = [
     {
@@ -56,17 +59,48 @@ const perspectivesData = [
     },
 ]
 
+const valuesData = [
+    {
+        id: 1,
+        title: 'Risk & Resilience',
+        description:
+            "We don't fear volatility; we harness it. Resilience isn't just about surviving drawdowns—it's about having the conviction to stick to the model when the noise is deafening.",
+        icon: Mountain,
+    },
+    {
+        id: 2,
+        title: 'Long-term Optimism',
+        description:
+            'We bet on human ingenuity. While markets fluctuate daily, the trajectory of innovation is upward. We structure our systems to capture this compounding growth over decades.',
+        icon: Sun,
+    },
+    {
+        id: 3,
+        title: 'Power of Simplicity',
+        description:
+            'Complexity is a liability. We strip away the unnecessary, believing that the most robust trading signals are often the simplest ones, executed with flawless precision.',
+        icon: Minimize2,
+    },
+    {
+        id: 4,
+        title: 'Relentless Excellence',
+        description:
+            'Innovation has no finish line. We are a team of perfectionists, constantly refining our code, data, and infrastructure in a never-ending pursuit of the theoretical limit.',
+        icon: Gem,
+    },
+]
+
 const ServiceSection = () => {
+    const [activeValueIndex, setActiveValueIndex] = useState(0)
+
     return (
         <main className='min-h-screen'>
             {/* Hero Section */}
             <section className='relative py-12 sm:py-16 overflow-hidden bg-gradient-to-br from-[#275669] via-[#2d6a7f] to-[#1e4552]'>
                 <div className='absolute inset-0 w-full h-full'></div>
-
-                {/* Overlay */}
                 <div className='absolute inset-0 bg-[#275669]'></div>
 
-                <div className='mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 relative z-10 '>
+                <div className='mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 relative z-10'>
                     <div className='max-w-3xl mx-auto text-center'>
                         <h1 className='text-2xl sm:text-3xl lg:text-4xl font-light tracking-wide text-white mb-4'>
                             <span className='block pb-6 text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-400 mt-1'>
@@ -83,86 +117,190 @@ const ServiceSection = () => {
                     </div>
                 </div>
             </section>
-
             {/* Core Philosophy */}
-            <section className='py-16 2xl:py-8 relative'>
+            <section className='py-8 sm:py-12 lg:py-16 relative'>
                 <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
-                    {/* Single Card Container */}
-                    <div className='relative rounded-3xl overflow-hidden shadow-2xl'>
-                        {/* Content */}
-                        <div className='bg-[#275669] relative z-10 flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 p-8 sm:p-12 lg:p-16'>
-                            {/* Left Section */}
+                    <div className='relative rounded-3xl overflow-hidden '>
+                        {/* Philosophy Section */}
+                        <div className='bg-[#275669] relative z-10 flex flex-col lg:flex-row items-center lg:items-stretch justify-between gap-6 sm:gap-8 lg:gap-12 p-6 sm:p-8 lg:p-12 xl:p-16'>
+                            {/* Left Section - Title */}
                             <div className='w-full lg:w-64 xl:w-80 lg:flex-shrink-0 text-center lg:text-left flex items-center justify-center lg:justify-start'>
-                                <h2 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-3 leading-tight'>
+                                <h2 className='text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight'>
                                     Our
                                     <br />
                                     <span className='text-amber-400'>Philosophy</span>
                                 </h2>
-
-                                {/* Underline */}
                             </div>
-                            <div
-                                className='
-        bg-amber-400 rounded-full
-        w-full h-[3px]
-        lg:w-1 lg:h-auto lg:self-stretch
-        lg:mx-0
-        '
-                            ></div>
-                            {/* Right Section */}
-                            <div className='w-full lg:flex-1 text-base sm:text-lg text-slate-200/90 leading-relaxed text-center lg:text-left flex items-center'>
+
+                            {/* Divider */}
+                            <div className='bg-amber-400 rounded-full w-full h-[3px] lg:w-1 lg:h-auto lg:self-stretch'></div>
+
+                            {/* Right Section - Content */}
+                            <div className='w-full lg:flex-1 text-base sm:text-lg text-slate-100/90 leading-relaxed text-center lg:text-left flex items-center'>
                                 <p>
-                                    <span className='text-amber-400'>Young Turtle</span> was founded by mathematicians
-                                    and engineers who have experienced the core challenges of quantitative
-                                    trading—limited technology, fragmented research, and a lack of precision. With deep
-                                    expertise in mathematics and finance, we&apos;re building algorithms that are
-                                    rigorous, transparent, and powerful. Through strong mathematical models, clear
-                                    analytics, and advanced infrastructure, we provide a trusted foundation for
-                                    systematic trading to thrive.
+                                    <span className='text-amber-400 font-bold'>Young Turtle</span> was built on the
+                                    belief that enduring performance comes from <b>disciplined science</b> , not
+                                    speculation. Our foundation rests on <b>data-driven decision making</b>, where{' '}
+                                    <b>mathematical models, statistical inference</b>, and <b>algorithmic research</b>{' '}
+                                    guide every action. We assemble teams of{' '}
+                                    <b>mathematicians, physicists, engineers, and computational thinkers</b> whose
+                                    collective rigor replaces the intuition and guesswork of traditional finance. Our
+                                    research focuses on identifying <b>subtle market anomalies</b> the small, temporary
+                                    inefficiencies that can be <b>systematically captured</b> with precision. We execute
+                                    our strategies with <b>complete dispassion</b>, removing emotion, bias, and ego to
+                                    maintain consistency across all market environments. Through deliberately engineered{' '}
+                                    <b>asymmetric payoff structures</b>, we design systems where the{' '}
+                                    <b>expected gain meaningfully exceeds the expected loss</b>. This philosophy defines
+                                    everything we build: transparent, resilient, and mathematically grounded
+                                    infrastructure that empowers modern systematic trading to thrive.
                                 </p>
                             </div>
                         </div>
 
-                        <div className='relative z-10 flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 p-8 sm:p-12 lg:p-16'>
-                            {/* Left Section */}
+                        {/* Mission Section 
+                        <div className=' relative z-10 flex flex-col lg:flex-row items-center lg:items-stretch justify-between gap-6 sm:gap-8 lg:gap-12 p-6 sm:p-8 lg:p-12 xl:p-16'>
                             <div className='w-full lg:w-64 xl:w-80 lg:flex-shrink-0 text-center lg:text-left flex items-center justify-center lg:justify-start'>
-                                <h2 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-3 leading-tight'>
+                                <h2 className='text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold leading-tight'>
                                     <span className='text-[#275669]'>Our</span>
                                     <br />
                                     <span className='text-amber-400'>Mission</span>
                                 </h2>
                             </div>
-                            {/* Underline */}
-                            <div
-                                className='
-        bg-amber-400 rounded-full
-        w-full h-[3px]
-        lg:w-1 lg:h-auto lg:self-stretch
-        lg:mx-0
-        '
-                            ></div>
-                            {/* Right Section */}
-                            <div className='text-[#275669] w-full lg:flex-1 text-base sm:text-lg leading-relaxed text-center lg:text-left flex items-center'>
-                                <p>
-                                    <span className='text-amber-400'>We</span> strive to generate superior risk-adjusted
-                                    returns for our investors by harnessing advanced mathematical models, cutting-edge
-                                    technology, and rigorous scientific research to identify and exploit persistent
-                                    market inefficiencies.
-                                </p>
-                                <p>
-                                    In an era of unprecedented data velocity and complexity, we remain committed to
-                                    intellectual honesty, continuous innovation, and disciplined execution—delivering
-                                    alpha through quantifiable edge while upholding the highest standards of integrity
-                                    and transparency.
-                                </p>
+
+                            <div className='bg-amber-400 rounded-full w-full h-[3px] lg:w-1 lg:h-auto lg:self-stretch'></div>
+
+                            <div className='w-full lg:flex-1 text-[#275669] text-base sm:text-lg leading-relaxed text-center lg:text-left space-y-4 flex items-center'>
+                                <div className='space-y-4'>
+                                    <p>
+                                        <span className='text-amber-400'>We</span> strive to generate superior risk-adjusted
+                                        returns for our investors by harnessing advanced mathematical models, cutting-edge
+                                        technology, and rigorous scientific research to identify and exploit persistent
+                                        market inefficiencies.
+                                    </p>
+                                    <p>
+                                        In an era of unprecedented data velocity and complexity, we remain committed to
+                                        intellectual honesty, continuous innovation, and disciplined execution—delivering
+                                        alpha through quantifiable edge while upholding the highest standards of integrity
+                                        and transparency.
+                                    </p>
+                                </div>
                             </div>
+                        </div> */}
+                    </div>
+                </div>
+            </section>
+            <section className='py-24 bg-white relative'>
+                <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 '>
+                    <div className='flex flex-col lg:flex-row gap-12 lg:gap-24'>
+                        {/* Left Side: Sticky Header */}
+                        <div className='w-full lg:w-1/3 lg:sticky lg:top-32 lg:self-start mb-8 lg:mb-0'>
+                            <div className='inline-flex items-center gap-3 mb-4'>
+                                <span className='h-px w-12 bg-[#275669]'></span>
+                                <span className='text-[#275669] uppercase tracking-widest text-sm font-semibold'>
+                                    Core Value
+                                </span>
+                            </div>
+                            <h2 className='text-4xl lg:text-5xl font-bold font-serif text-[#275669] mb-6'>
+                                Guiding <span className='text-amber-400'>Principles</span>
+                            </h2>
+                            <p className='text-lg text-slate-600 leading-relaxed font-light mb-8'>
+                                Our algorithms are complex, but the values driving them are simple. This is the code
+                                behind the code.
+                            </p>
+
+                            {/* Decorative Element on Desktop */}
+                            <div className='hidden lg:block w-32 h-32 opacity-10 rounded-full border-2 border-[#275669] border-dashed animate-spin-slow'></div>
+                        </div>
+
+                        {/* Right Side: Vertical Accordion */}
+                        <div className='w-full lg:w-2/3 flex flex-col gap-3'>
+                            {valuesData.map((item, index) => {
+                                const isActive = activeValueIndex === index
+                                const Icon = item.icon
+
+                                return (
+                                    <div
+                                        key={item.id}
+                                        onMouseEnter={() => setActiveValueIndex(index)}
+                                        className={`
+                                          relative overflow-hidden rounded-2xl transition-all duration-500 ease-in-out cursor-default
+                                          border 
+                                          ${
+                                              isActive
+                                                  ? 'bg-[#275669] border-[#275669] shadow-xl scale-[1.02] z-10'
+                                                  : 'bg-white border-slate-200 hover:bg-slate-50 hover:border-slate-300'
+                                          }
+                                       `}
+                                    >
+                                        {/* Row Header (Visible always, changes style) */}
+                                        <div
+                                            className='relative z-10 flex items-center justify-between p-6 sm:px-8 cursor-pointer'
+                                            onClick={() => setActiveValueIndex(index)}
+                                        >
+                                            <div className='flex items-center gap-6'>
+                                                <span
+                                                    className={`text-xl font-serif font-bold transition-colors duration-300 ${
+                                                        isActive ? 'text-amber-400' : 'text-slate-300'
+                                                    }`}
+                                                >
+                                                    0{index + 1}
+                                                </span>
+                                                <h3
+                                                    className={`text-xl font-bold transition-colors duration-300 ${
+                                                        isActive ? 'text-white' : 'text-slate-700'
+                                                    }`}
+                                                >
+                                                    {item.title}
+                                                </h3>
+                                            </div>
+                                            {/* Status Icon */}
+                                            <div
+                                                className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
+                                                    isActive ? 'bg-amber-400 rotate-90' : 'bg-slate-100'
+                                                }`}
+                                            >
+                                                {isActive ? (
+                                                    <Minus className='w-4 h-4 text-[#275669]' />
+                                                ) : (
+                                                    <Plus className='w-4 h-4 text-slate-400' />
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        {/* Expanded Content (Animate max-height) */}
+                                        <div
+                                            className={`
+                                            relative z-10 overflow-hidden transition-all duration-500 ease-in-out
+                                            ${isActive ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'}
+                                        `}
+                                        >
+                                            <div className='px-8 pb-8 pt-0 pl-20'>
+                                                <p className='text-slate-300 text-lg leading-relaxed border-l-2 border-amber-400/30 pl-6'>
+                                                    {item.description}
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        {/* Background Decorative Icon (Only visible when active) */}
+                                        <Icon
+                                            className={`
+                                            absolute -bottom-8 -right-8 w-64 h-64 text-white/5 pointer-events-none transition-opacity duration-700
+                                            ${isActive ? 'opacity-100' : 'opacity-0'}
+                                        `}
+                                        />
+                                    </div>
+                                )
+                            })}
                         </div>
                     </div>
                 </div>
             </section>
-
-            <AnimatedTestimonialsDemo />
-            {/* <PerspectivesCarousel perspectives={perspectivesData} /> */}
+            {/* Heritage Section (Newspaper) */}
+            <section className='bg-slate-50 pb-20 pt-8 lg:pb-24 lg:pt-8'>
+                <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
+                    <NewspaperSection />
+                </div>
+            </section>{' '}
         </main>
     )
 }

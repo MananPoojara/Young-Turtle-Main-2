@@ -92,12 +92,7 @@ export default function CareersPage() {
     return (
         <>
             {/* HERO */}
-            <PageHero
-                src={careers.src}
-                title='Join Young Turtle'
-                subtitle='Build your career at the forefront of quantitative finance'
-                variant='network'
-            />
+            <PageHero title='Join Young Turtle' subtitle='Build your career at the forefront of quantitative finance' />
 
             {/* WHY YOUNG TURTLE */}
             <SectionWrapper className='py-24 lg:py-32 relative overflow-hidden'>
