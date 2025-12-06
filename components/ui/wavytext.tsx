@@ -1,6 +1,6 @@
 export const TortoiseQuote = () => {
     return (
-        <div className='relative text-center px-4 sm:px-6 md:px-8 -mt-36 max-w-6xl mx-auto'>
+        <div className='relative text-center px-4 sm:px-6 md:px-8 max-w-6xl mx-auto'>
             {/* Subtle gradient overlay behind text */}
             <div className='absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-transparent rounded-3xl blur-3xl'></div>
 
@@ -12,9 +12,11 @@ export const TortoiseQuote = () => {
                         font-serif 
                         text-white 
                         text-4xl
+                        xl:text-6xl
+                        2xl:text-7xl
                         sm:text-5xl
                         md:text-6xl
-                        lg:text-7xl
+                        lg:text-6xl
                         leading-tight
                         tracking-tight
                         mb-6
