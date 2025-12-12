@@ -30,15 +30,42 @@ export default function ContactPage() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [result, setResult] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
-      console.log("Form submitted:", formData);
+    setResult("");
+
+    const formDataObj = new FormData(e.target as HTMLFormElement);
+    formDataObj.append("access_key", "ee9694e2-5e60-4807-add7-8bc08df0c439");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formDataObj
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setResult("Success! Thank you for your inquiry. We'll get back to you within 24 hours.");
+        setFormData({
+          name: "",
+          email: "",
+          organization: "",
+          investorType: "",
+          message: "",
+        });
+      } else {
+        setResult("Error submitting form. Please try again or email us directly.");
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setResult("Error submitting form. Please email us directly at career@younturtle.ooo");
+    } finally {
       setIsSubmitting(false);
-      alert("Thank you for your inquiry. We will be in touch shortly.");
-    }, 1000);
+    }
   };
 
   return (
@@ -57,7 +84,7 @@ export default function ContactPage() {
             className="max-w-7xl mx-auto shadow-2xl rounded-3xl overflow-hidden bg-white ring-1 ring-[#275669]/5"
           >
             <div className="grid md:grid-cols-1 lg:grid-cols-5">
-              {/* LEFT COLUMN: CONTACT FORM (3/5 width on lg, full on md and below) */}
+              {/* LEFT COLUMN: CONTACT FORM */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -90,6 +117,7 @@ export default function ContactPage() {
                       </label>
                       <input
                         type="text"
+                        name="name"
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -108,6 +136,7 @@ export default function ContactPage() {
                       </label>
                       <input
                         type="email"
+                        name="email"
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -129,6 +158,7 @@ export default function ContactPage() {
                       </label>
                       <input
                         type="text"
+                        name="organization"
                         value={formData.organization}
                         onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
                         placeholder="Company Name"
@@ -146,6 +176,7 @@ export default function ContactPage() {
                       </label>
                       <div className="relative">
                         <select
+                          name="investorType"
                           value={formData.investorType}
                           onChange={(e) => setFormData({ ...formData, investorType: e.target.value })}
                           className="w-full bg-slate-50 border-0 border-b-2 border-slate-200 px-4 py-3 text-abyssal-blue focus:ring-0 focus:bg-white focus:border-aqua-mist transition-all duration-300 appearance-none cursor-pointer"
@@ -172,6 +203,7 @@ export default function ContactPage() {
                       Message
                     </label>
                     <textarea
+                      name="message"
                       required
                       rows={4}
                       value={formData.message}
@@ -182,6 +214,11 @@ export default function ContactPage() {
                   </motion.div>
 
                   <div className="pt-4">
+                    {result && (
+                      <div className={`mb-4 p-4 rounded-lg ${result.includes('Success') ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>
+                        <p className="text-sm font-medium">{result}</p>
+                      </div>
+                    )}
                     <button
                       type="submit"
                       disabled={isSubmitting}
@@ -196,7 +233,7 @@ export default function ContactPage() {
                 </form>
               </motion.div>
 
-              {/* RIGHT COLUMN: INFO SIDEBAR (2/5 width on lg) */}
+              {/* RIGHT COLUMN: INFO SIDEBAR */}
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -210,13 +247,13 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-serif text-2xl mb-6">Direct Contact</h3>
                     <div className="space-y-6">
-                      <a href="mailto:career@youngturtle.ooo" className="flex items-start gap-4 group">
+                      <a href="mailto:career@younturtle.ooo" className="flex items-start gap-4 group">
                         <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-aqua-mist transition-colors">
                           <Mail size={18} className="text-white" />
                         </div>
                         <div>
                           <p className="text-xs uppercase tracking-wider text-white mb-1">General Inquiries</p>
-                          <p className="text-lg font-light text-white group-hover:text-aqua-mist transition-colors">info@youngturtle.ooo</p>
+                          <p className="text-lg font-light text-white group-hover:text-aqua-mist transition-colors">career@younturtle.ooo</p>
                         </div>
                       </a>
 
@@ -244,7 +281,7 @@ export default function ContactPage() {
                             Headquarters
                           </span>
                         )}
-                        <h4 className="font-serif text-xl text-abyssal-blue mb-2">{office.city}</h4>
+                        <h4 className="font-serif text-xl text-white mb-2">{office.city}</h4>
                         <div className="space-y-3">
                           <div className="flex items-start gap-3 text-white text-sm">
                             <MapPin size={16} className="mt-0.5 shrink-0 text-aqua-mist" />
