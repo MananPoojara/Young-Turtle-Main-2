@@ -40,8 +40,6 @@ const slides: SlideContent[] = [
                 { text: "Precision", highlight: true },
                 { text: "is", highlight: false },
                 { text: "achieved", highlight: false },
-            ],
-            [
                 { text: "by", highlight: false },
                 { text: "Consistency", highlight: true },
             ],
@@ -54,9 +52,7 @@ const slides: SlideContent[] = [
                 { text: "Consistency", highlight: true },
                 { text: "comes", highlight: false },
                 { text: "from", highlight: false },
-            ],
-            [
-                { text: "System", highlight: true, main: true },
+                { text: "Systems", highlight: true, main: true },
             ],
         ],
     },
@@ -110,7 +106,7 @@ const Slide: React.FC<{ content: SlideContent }> = ({ content }) => {
 
 const LineRow: React.FC<{ words: { text: string; highlight?: boolean; main?: boolean }[], isLastLine: boolean }> = ({ words }) => {
     return (
-        <div className="flex flex-wrap justify-center gap-x-[0.35em] 2xl:gap-x-[1em] xl:gap-x-[1em] md:gap-x-[0.45em] leading-[1.2] py-1 md:py-2">
+        <div className="flex flex-wrap justify-center gap-x-[0.35em] 2xl:gap-x-[0.60em] xl:gap-x-[0.90em] md:gap-x-[0.45em] leading-[1.2] py-1 md:py-2">
             {words.map((word, i) => (
                 <Word key={i} {...word} />
             ))}
@@ -160,8 +156,8 @@ const Word: React.FC<{ text: string; highlight?: boolean; main?: boolean }> = ({
             className={`
         inline-block relative
         ${main
-                    ? 'text-3xl 2xl:text-7xl xl:text-6xl md:text-4xl lg:text-5xl font-light tracking-wide'
-                    : 'text-3xl 2xl:text-7xl xl:text-6xl md:text-4xl lg:text-5xl font-light tracking-tight'
+                    ? 'text-3xl 2xl:text-5xl xl:text-4xl md:text-3xl lg:text-4xl font-light tracking-wide'
+                    : 'text-3xl 2xl:text-5xl xl:text-4xl md:text-3xl lg:text-4xl font-light tracking-tight'
                 }
         ${highlight ? 'text-[#ffb900]' : 'text-white/90'}
     `}

@@ -223,7 +223,7 @@ export default function RegulatoryPage() {
                                 <span className='block text-xs text-gray-400 uppercase tracking-wider mb-1'>
                                   Phone
                                 </span>
-                                <span>+538-6777 6555</span>
+                                <span>+079-6777 6538</span>
                               </div>
                               <div>
                                 <span className='block text-xs text-gray-400 uppercase tracking-wider mb-1'>
@@ -288,7 +288,7 @@ export default function RegulatoryPage() {
 
                           <div className='grid md:grid-cols-2 gap-4'>
                             <a
-                              href='https://scores.gov.in/scores/Welcome.html'
+                              href='https://scores.sebi.gov.in/'
                               className='group block p-4 bg-gray-50 hover:bg-brand-gold/5 border border-transparent hover:border-brand-gold/30 rounded-sm transition-all'
                             >
                               <div className='flex items-start gap-3'>
@@ -309,16 +309,18 @@ export default function RegulatoryPage() {
                               className='group block p-4 bg-gray-50 hover:bg-brand-gold/5 border border-transparent hover:border-brand-gold/30 rounded-sm transition-all'
                             >
                               <div className='flex items-start gap-3'>
-                                <ShieldAlert className='w-5 h-5 text-brand-gold mt-0.5' />
-                                <div>
-                                  <span className='font-bold text-brand-dark block mb-1 group-hover:text-brand-gold transition-colors'>
-                                    SMART ODR
-                                  </span>
-                                  <span className='text-xs text-gray-500 leading-snug block'>
-                                    Online Dispute Resolution Portal. Can be
-                                    initiated at any stage.
-                                  </span>
-                                </div>
+                                <a href='https://smartodr.in/login'>
+                                  <ShieldAlert className='w-5 h-5 text-brand-gold mt-0.5' />
+                                  <div>
+                                    <span className='font-bold text-brand-dark block mb-1 group-hover:text-brand-gold transition-colors'>
+                                      SMART ODR
+                                    </span>
+                                    <span className='text-xs text-gray-500 leading-snug block'>
+                                      Online Dispute Resolution Portal. Can be
+                                      initiated at any stage.
+                                    </span>
+                                  </div>
+                                </a>
                               </div>
                             </a>
                           </div>

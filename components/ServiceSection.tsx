@@ -224,6 +224,7 @@ const ServiceSection = () => {
                     "
                     >
                         “You can’t connect the dots looking forward; you can only connect them <span className="text-[#fbbf24] font-normal italic">looking backward</span>.”
+                        <br /> <span className="text-md 2xl:text-md xl:text-lg md:text-base lg:text-lg text-white/70 font-light tracking-normal">– Steve Jobs</span>
                     </motion.h2>
                 </div>
             </section>

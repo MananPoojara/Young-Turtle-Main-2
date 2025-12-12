@@ -159,28 +159,52 @@
 // };
 
 
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-
-// SECOND THEME 
-
-import React from 'react';
-import { motion } from 'framer-motion';
-
+// Added description field for the 3-line paragraph
 const PHILOSOPHY_POINTS = [
-    { id: "01", title: "Relentless Pattern Recognition" },
-    { id: "02", title: "Mathematics Over Intuition" },
-    { id: "03", title: "Exploit, Don't Predict" },
-    { id: "04", title: "Scientific Rigor & Testing" },
-    { id: "05", title: "Secrecy + Excellence" },
-    { id: "06", title: "Scale with Discipline" }
+    {
+        id: "01",
+        title: "Relentless Pattern Recognition",
+        description: "We analyze vast datasets to identify recurring market behaviors. By spotting trends before they become obvious, we position ourselves ahead of the curve."
+    },
+    {
+        id: "02",
+        title: "Mathematics Over Intuition",
+        description: "Gut feelings are often biased and unreliable in high-stakes environments. We rely strictly on probability, statistical models, and quantitative rigor."
+    },
+    {
+        id: "03",
+        title: "Exploit, Don't Predict",
+        description: "Prediction is a fool's errand in a chaotic system. Instead, we identify structural inefficiencies and systematically exploit them for consistent yield."
+    },
+    {
+        id: "04",
+        title: "Scientific Rigor & Testing",
+        description: "Every hypothesis is subjected to brutal stress testing. Only strategies that survive historical simulations and forward-testing make it to production."
+    },
+    {
+        id: "05",
+        title: "Secrecy + Excellence",
+        description: "We operate in silence to protect our edge. Excellence is not just about results, but about maintaining the discipline to keep our methods opaque."
+    },
+    {
+        id: "06",
+        title: "Scale with Discipline",
+        description: "Growth without structure leads to collapse. We scale our operations only when our infrastructure and risk management protocols are bulletproof."
+    }
 ];
 
 export const OurPhilosophy = () => {
+    // State to track which item is currently hovered
+    const [activeId, setActiveId] = useState<string | null>(null);
+
     return (
-        <section className="relative  bg-[#ffffff] overflow-hidden flex items-center justify-center py-20">
+        <section className="relative bg-[#ffffff] overflow-hidden flex items-center justify-center -mt-20 py-20 min-h-screen">
 
             {/* Ambient Background Elements */}
-            <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 z-0 pointer-events-none">
                 <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-[#275669] rounded-full opacity-20 animate-pulse" />
                 <div className="absolute bottom-1/3 right-1/4 w-3 h-3 bg-[#275669] rounded-full opacity-10 animate-pulse delay-700" />
             </div>
@@ -188,10 +212,10 @@ export const OurPhilosophy = () => {
             <div className="relative z-10 container mx-auto px-6 h-full flex flex-col items-center justify-center">
 
                 {/* --- DESKTOP ORBITAL LAYOUT (md+) --- */}
-                <div className="hidden md:block relative w-[800px] h-[600px]">
+                <div className="hidden md:block relative w-[900px] h-[700px]">
 
                     {/* CENTER SUN: 'OUR PHILOSOPHY' */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-20">
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10 pointer-events-none">
                         <motion.div
                             initial={{ scale: 0.8, opacity: 0 }}
                             whileInView={{ scale: 1, opacity: 1 }}
@@ -200,10 +224,10 @@ export const OurPhilosophy = () => {
                             className="relative"
                         >
                             {/* Decorative Central Ring */}
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] border border-[#275669] rounded-full animate-[spin_60s_linear_infinite]" />
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-[#275669] rounded-full animate-[spin_60s_linear_infinite] opacity-30" />
 
                             {/* Main Title */}
-                            <h2 className="font-serif text-5xl lg:text-6xl text-[#275669] tracking-tight leading-tight">
+                            <h2 className="font-serif text-5xl lg:text-6xl text-[#275669] tracking-tight leading-tight select-none">
                                 Our<br />
                                 <span className="text-[#fbbf24] italic font-light">Philosophy</span>
                             </h2>
@@ -213,27 +237,18 @@ export const OurPhilosophy = () => {
 
                     {/* ORBITING NODES */}
                     {PHILOSOPHY_POINTS.map((item, index) => {
-                        // Calculate positions based on 6 items distributed in an ellipse
-                        // 3 on left, 3 on right for readability
-
-                        // Right Side (0, 1, 2) | Left Side (3, 4, 5)
                         const isRightSide = index < 3;
-
-                        // Vertical Spread
-                        // 0 & 5: Top
-                        // 1 & 4: Middle
-                        // 2 & 3: Bottom
-                        const yOffsets = [-200, 0, 200, 200, 0, -200];
-                        const xOffsets = [350, 420, 350, -350, -420, -350];
-
+                        const yOffsets = [-220, 0, 220, 220, 0, -220];
+                        const xOffsets = [380, 460, 380, -380, -460, -380];
                         const x = xOffsets[index];
                         const y = yOffsets[index];
+                        const isActive = activeId === item.id;
 
                         return (
                             <motion.div
                                 key={item.id}
-                                initial={{ opacity: 0, x: 0, y: 0 }} // Start from center
-                                whileInView={{ opacity: 1, x: x, y: y }} // Explode outwards
+                                initial={{ opacity: 0, x: 0, y: 0 }}
+                                whileInView={{ opacity: 1, x: x, y: y }}
                                 viewport={{ once: true }}
                                 transition={{
                                     duration: 0.8,
@@ -241,30 +256,78 @@ export const OurPhilosophy = () => {
                                     type: "spring",
                                     stiffness: 50
                                 }}
-                                className="absolute top-1/2 left-1/2 w-64 -mt-6 -ml-32 flex items-center"
+                                // Z-index boost when active so the popup overlaps the center if needed
+                                className={`absolute top-1/2 left-1/2 w-64 -mt-6 -ml-32 flex items-center ${isActive ? 'z-50' : 'z-20'}`}
                                 style={{
                                     justifyContent: isRightSide ? 'flex-start' : 'flex-end',
-                                    textAlign: isRightSide ? 'left' : 'right'
                                 }}
                             >
-                                {/* Connector Line (Visual only) */}
+                                {/* Connector Line */}
                                 <motion.div
                                     initial={{ width: 0 }}
                                     whileInView={{ width: 80 }}
                                     transition={{ delay: 0.8 + (index * 0.1), duration: 0.5 }}
-                                    className={`absolute top-1/2 h-[1px] bg-gradient-to-r from-transparent via-[#275669] to-transparent
+                                    className={`absolute top-1/2 h-[1px] bg-gradient-to-r from-transparent via-[#275669] to-transparent pointer-events-none
                                         ${isRightSide ? '-left-[80px]' : '-right-[80px]'}
                                     `}
                                 />
 
-                                {/* Node Content */}
-                                <div className={`flex flex-col ${isRightSide ? 'items-start' : 'items-end'}`}>
-                                    <div className="text-[#fbbf24] font-bold font-mono text-sm mb-1 tracking-widest opacity-80">
-                                        {item.id}
+                                {/* Interactive Wrapper */}
+                                <div
+                                    className="relative group"
+                                    onMouseEnter={() => setActiveId(item.id)}
+                                    onMouseLeave={() => setActiveId(null)}
+                                >
+                                    {/* Text Content */}
+                                    <div
+                                        className={`
+                                            flex flex-col cursor-pointer transition-all duration-300
+                                            ${isRightSide ? 'items-start text-left' : 'items-end text-right'}
+                                            ${isActive ? 'scale-105' : 'scale-100'}
+                                        `}
+                                    >
+                                        <div className="text-[#fbbf24] font-bold font-mono text-sm mb-1 tracking-widest opacity-80">
+                                            {item.id}
+                                        </div>
+                                        <h3 className="text-xl lg:text-2xl text-[#275669] font-serif font-medium leading-tight hover:text-[#275669]/80 transition-colors">
+                                            {item.title}
+                                        </h3>
                                     </div>
-                                    <h3 className="text-xl lg:text-2xl text-[#275669] font-serif font-medium leading-tight">
-                                        {item.title}
-                                    </h3>
+
+                                    {/* HOVER SIDE DIV (Tooltip) */}
+                                    <AnimatePresence>
+                                        {isActive && (
+                                            <motion.div
+                                                initial={{ opacity: 0, x: isRightSide ? 10 : -10, scale: 0.95 }}
+                                                animate={{ opacity: 1, x: 0, scale: 1 }}
+                                                exit={{ opacity: 0, x: isRightSide ? 10 : -10, scale: 0.95 }}
+                                                transition={{ duration: 0.2 }}
+                                                className={`
+                                                    absolute top-1/2 -translate-y-1/2 w-72 p-5 
+                                                    bg-white shadow-2xl rounded-sm border-t-4 border-[#fbbf24]
+                                                    text-left pointer-events-none
+                                                    ${isRightSide
+                                                        ? 'left-[110%]' // Show to the right of text
+                                                        : 'right-[110%]' // Show to the left of text
+                                                    }
+                                                `}
+                                            >
+                                                {/* Tooltip Content */}
+                                                <h4 className="font-serif text-[#275669] text-lg mb-2 leading-none">{item.title}</h4>
+                                                <div className="w-8 h-[2px] bg-[#fbbf24] mb-3"></div>
+                                                <p className="text-sm text-slate-600 leading-relaxed font-sans">
+                                                    {item.description}
+                                                </p>
+
+                                                {/* Decorative triangle arrow */}
+                                                <div
+                                                    className={`absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-white rotate-45 border-b border-l border-gray-100
+                                                    ${isRightSide ? '-left-1.5' : '-right-1.5'}
+                                                    `}
+                                                />
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
                                 </div>
                             </motion.div>
                         );
@@ -272,47 +335,74 @@ export const OurPhilosophy = () => {
                 </div>
 
                 {/* --- MOBILE STACK LAYOUT (< md) --- */}
-                <div className="md:hidden flex flex-col gap-12 w-full py-10 relative">
+                {/* Simplified for mobile: Click to expand or just show text */}
+                <div className="md:hidden flex flex-col gap-8 w-full py-10 relative">
 
                     {/* Center Line */}
-                    <div className="absolute left-[22px] top-40 bottom-20 w-[1px] bg-[#275669]" />
+                    <div className="absolute left-[22px] top-40 bottom-20 w-[1px] bg-[#275669]/30" />
 
                     <div className="text-center mb-8">
                         <h2 className="font-serif text-4xl text-[#275669]">
                             Our <span className="text-[#fbbf24] italic">Philosophy</span>
                         </h2>
                         <div className="w-16 h-1 bg-[#275669] mx-auto mt-4 rounded-full" />
-
                     </div>
 
                     {PHILOSOPHY_POINTS.map((item, index) => (
-                        <motion.div
-                            key={item.id}
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            className="flex gap-6 items-start pl-1 relative"
-                        >
-                            {/* Dot */}
-                            <div className="relative z-10 w-9 h-9 rounded-full bg-[#275669] border border-[#275669] flex items-center justify-center shrink-0">
-                                <div className="w-2 h-2 bg-[#fbbf24] rounded-full" />
-                            </div>
-
-                            {/* Text */}
-                            <div className="pt-1">
-                                <span className="text-[#275669] text-xs font-bold tracking-widest mb-1 block">
-                                    {item.id}
-                                </span>
-                                <h3 className="text-2xl text-[#275669] font-serif leading-tight">
-                                    {item.title}
-                                </h3>
-                            </div>
-                        </motion.div>
+                        <MobileItem key={item.id} item={item} index={index} />
                     ))}
                 </div>
 
             </div>
         </section>
+    );
+};
+
+// Helper component for Mobile Interaction
+const MobileItem = ({ item, index }: { item: any, index: number }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
+            className="flex gap-6 items-start pl-1 relative"
+            onClick={() => setIsOpen(!isOpen)}
+        >
+            {/* Dot */}
+            <div className={`relative z-10 w-9 h-9 rounded-full border transition-colors duration-300 flex items-center justify-center shrink-0
+                ${isOpen ? 'bg-[#fbbf24] border-[#fbbf24]' : 'bg-[#275669] border-[#275669]'}
+            `}>
+                <div className={`w-2 h-2 rounded-full transition-colors duration-300 ${isOpen ? 'bg-[#275669]' : 'bg-[#fbbf24]'}`} />
+            </div>
+
+            {/* Text */}
+            <div className="pt-1 pr-4">
+                <span className="text-[#275669] text-xs font-bold tracking-widest mb-1 block">
+                    {item.id}
+                </span>
+                <h3 className="text-2xl text-[#275669] font-serif leading-tight mb-2">
+                    {item.title}
+                </h3>
+
+                <AnimatePresence>
+                    {isOpen && (
+                        <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            className="overflow-hidden"
+                        >
+                            <p className="text-slate-600 text-sm leading-relaxed border-l-2 border-[#fbbf24] pl-3 py-1">
+                                {item.description}
+                            </p>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+                {!isOpen && <p className="text-xs text-slate-400 mt-1 italic">Tap to learn more</p>}
+            </div>
+        </motion.div>
     );
 };

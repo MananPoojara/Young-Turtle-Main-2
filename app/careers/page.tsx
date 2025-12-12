@@ -6,16 +6,10 @@ import { SectionWrapper } from "@/components/section-wrapper"
 import { ArrowRight, BookOpen, Clock, Heart, MapPin, ShieldCheck, TrendingUp, Users } from "lucide-react"
 import React, { useState } from "react"
 import careers from '@/public/Hero-img/career-hero.jpg'
+import team from '@/public/misc-img/hired.jpeg'
+import Image from "next/image"
 
-// ===== BENEFITS =====
-const benefitsList = [
-  { icon: TrendingUp, text: "Competitive compensation with performance incentives" },
-  { icon: Heart, text: "Comprehensive health, dental, and vision coverage" },
-  { icon: ShieldCheck, text: "Generous retirement contributions & matching" },
-  { icon: BookOpen, text: "Professional development & education support" },
-  { icon: Clock, text: "Flexible working arrangements & remote options" },
-  { icon: Users, text: "Collaborative, intellectually stimulating environment" },
-]
+
 
 // ===== JOB OPENINGS =====
 type Opening = {
@@ -89,85 +83,6 @@ export default function CareersPage() {
         subtitle="“The people who are crazy enough to think they can change the world are the ones who do.”"
       />
 
-      {/* WHY YOUNG TURTLE */}
-      <SectionWrapper className="py-24 lg:py-32 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-64 h-64 bg-aqua-mist/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-12 gap-16 items-start">
-
-            {/* LEFT SIDE CONTENT */}
-            <div className="lg:col-span-5 sticky top-24">
-              <motion.span
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="inline-block py-1 px-3 border border-aqua-mist/40 rounded-full text-[10px] uppercase tracking-[0.2em] text-abyssal-blue font-semibold mb-6"
-              >
-                Why Young Turtle
-              </motion.span>
-
-              <h2 className="font-serif text-4xl md:text-5xl text-abyssal-blue leading-tight">
-                Where intellect meets{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-abyssal-blue to-aqua-mist/80">
-                  impact.
-                </span>
-              </h2>
-
-              <p className="mt-8 text-muted-foreground leading-relaxed text-lg font-light">
-                We seek exceptional individuals who combine intellectual curiosity with rigorous analytical skills.
-                At Young Turtle, you won’t just analyze the market—you’ll help shape its future alongside some of the
-                brightest minds in quantitative finance.
-              </p>
-
-              <div className="mt-10 flex gap-4">
-                <div className="flex -space-x-4">
-                  {[1, 2, 3].map((i) => (
-                    <div key={i} className="w-12 h-12 rounded-full border-2 border-sunbeam-pearl bg-gray-200 overflow-hidden">
-                      <img src={`https://picsum.photos/100/100?random=${i}`} className="w-full h-full object-cover" />
-                    </div>
-                  ))}
-                </div>
-
-                <div className="flex flex-col justify-center">
-                  <span className="text-abyssal-blue font-bold">150+</span>
-                  <span className="text-xs text-muted-foreground uppercase tracking-wide">Global Experts</span>
-                </div>
-              </div>
-            </div>
-
-            {/* RIGHT SIDE – BENEFITS GRID */}
-            <div className="lg:col-span-7">
-              <h3 className="font-serif text-2xl text-abyssal-blue mb-8 flex items-center gap-3">
-                <span className="w-8 h-[2px] bg-[#275669]"></span>
-                Benefits & Perks
-              </h3>
-
-              <div className="grid md:grid-cols-2 gap-4">
-                {benefitsList.map((benefit, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    whileHover={{ y: -5 }}
-                    className="p-6 bg-white border border-border rounded-xl shadow-sm hover:shadow-md transition-all duration-300 group"
-                  >
-                    <div className="w-10 h-10 rounded-lg bg-aqua-mist/10 flex items-center justify-center text-[#275669] group-hover:bg-transparent group-hover:text-aqua-mist transition-colors duration-300 mb-4">
-                      <benefit.icon size={20} />
-                    </div>
-                    <p className="text-sm text-abyssal-blue/80 font-medium leading-relaxed">
-                      {benefit.text}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </SectionWrapper>
 
 
 
@@ -296,6 +211,7 @@ export default function CareersPage() {
           </motion.div>
         </div>
       </SectionWrapper>
+
     </>
   )
 }
