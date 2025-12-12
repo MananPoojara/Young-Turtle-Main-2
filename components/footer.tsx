@@ -1,6 +1,6 @@
 'use client'
 
-import { Mail, MapPin, Linkedin, Twitter, Facebook, Instagram, Phone, FileText, ArrowUpRight } from 'lucide-react'
+import { Mail, MapPin, Linkedin, Twitter, Facebook, Instagram, Phone, ArrowUpRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -8,7 +8,7 @@ export function Footer() {
     const year = new Date().getFullYear()
 
     return (
-        <footer className='relative bg-gradient-to-br from-[#275669] via-[#1e4552] to-[#1a3d4a] text-white'>
+        <footer className='relative bg-linear-to-br from-[#275669] via-[#1e4552] to-[#1a3d4a] text-white'>
             {/* decorative top border */}
             <div className='h-1 bg-white' />
 
