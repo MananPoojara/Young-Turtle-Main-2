@@ -169,6 +169,7 @@ const ServiceSection = () => {
                     </div>
                 </div>
             </section>
+
             <section className="py-24 bg-slate-50 relative">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
@@ -198,11 +199,6 @@ const ServiceSection = () => {
 
                                         {/* 1. The Curtain Reveal Background */}
                                         <div className="absolute inset-0 bg-[#275669] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] origin-bottom"></div>
-
-                                        {/* 2. Watermark Number */}
-                                        <div className="absolute top-4 right-6 text-8xl font-serif font-bold text-slate-100 group-hover:text-white/5 transition-colors duration-500 select-none pointer-events-none">
-                                            0{index + 1}
-                                        </div>
 
                                         {/* 3. Content Wrapper */}
                                         <div className="relative z-10 flex flex-col h-full">

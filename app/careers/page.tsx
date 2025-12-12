@@ -24,55 +24,48 @@ type Opening = {
   location: string
   type: string
   department: string
-  description: string
-  tags: string[]
 }
 
 const openings: Opening[] = [
   {
     id: 1,
     title: "Quantitative Researcher",
-    location: "New York",
+    location: "Ahmedabad, India",
     type: "Full-time",
     department: "Research",
-    description: "Develop and implement systematic trading strategies using advanced statistical and machine learning techniques.",
-    tags: ["Python", "C++", "ML"]
+
   },
   {
     id: 2,
     title: "Senior Software Engineer",
-    location: "London",
+    location: "Ahmedabad, India",
     type: "Full-time",
     department: "Technology",
-    description: "Build high-performance trading systems and data infrastructure supporting our quantitative strategies.",
-    tags: ["Low Latency", "Rust", "Distributed Systems"]
+
   },
   {
-    id: 3,
-    title: "Portfolio Manager - Macro",
-    location: "Singapore",
+    id: 2,
+    title: "Senior Research Analyst",
+    location: "Ahmedabad, India",
     type: "Full-time",
-    department: "Investment",
-    description: "Lead development and management of systematic macro strategies across Asia-Pacific markets.",
-    tags: ["Alpha Generation", "Risk Mgmt"]
+    department: "Technology",
+
+  },
+  {
+    id: 2,
+    title: "Junior Research Analyst",
+    location: "Ahmedabad, India",
+    type: "Full-time",
+    department: "Technology",
+
   },
   {
     id: 4,
     title: "Risk Analyst",
-    location: "New York",
+    location: "Ahmedabad, India",
     type: "Full-time",
     department: "Risk",
-    description: "Monitor and analyze portfolio risks, develop risk models, and enhance our risk management framework.",
-    tags: ["SQL", "Tableau", "Modeling"]
-  },
-  {
-    id: 5,
-    title: "Data Engineer",
-    location: "Remote",
-    type: "Full-time",
-    department: "Technology",
-    description: "Architect and maintain the data pipelines that fuel our research engine.",
-    tags: ["ETL", "Big Data", "Cloud"]
+
   },
 ]
 
@@ -234,20 +227,12 @@ export default function CareersPage() {
                         {job.title}
                       </h3>
 
-                      <p className="text-sm text-muted-foreground mb-4">
-                        {job.description}
-                      </p>
-
                       <div className="flex flex-wrap items-center gap-4">
                         <div className="flex items-center gap-1.5 text-xs font-medium text-abyssal-blue/70">
                           <MapPin size={12} className="text-aqua-mist" />
                           {job.location}
                         </div>
-                        {job.tags.map((tag) => (
-                          <span key={tag} className="text-[10px] text-muted-foreground bg-black/5 px-2 py-0.5 rounded">
-                            {tag}
-                          </span>
-                        ))}
+
                       </div>
                     </div>
 
