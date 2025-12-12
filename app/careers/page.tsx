@@ -397,7 +397,7 @@ export default function CareersPage() {
                         name="name"
                         value={formData.name}
                         onChange={handleInputChange}
-                        placeholder="John Doe"
+                        placeholder=""
                         className="w-full px-4 py-3.5 bg-white border border-gray-300 focus:border-[#5db3c9] focus:ring-2 focus:ring-[#5db3c9]/20 outline-none transition-all placeholder:text-gray-400 text-[15px]"
                       />
                     </div>
@@ -412,7 +412,7 @@ export default function CareersPage() {
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
-                        placeholder="john@example.com"
+                        placeholder=""
                         className="w-full px-4 py-3.5 bg-white border border-gray-300 focus:border-[#5db3c9] focus:ring-2 focus:ring-[#5db3c9]/20 outline-none transition-all placeholder:text-gray-400 text-[15px]"
                       />
                     </div>
@@ -427,7 +427,7 @@ export default function CareersPage() {
                         name="phone"
                         value={formData.phone}
                         onChange={handleInputChange}
-                        placeholder="+91 98765 43210"
+                        placeholder=""
                         className="w-full px-4 py-3.5 bg-white border border-gray-300 focus:border-[#5db3c9] focus:ring-2 focus:ring-[#5db3c9]/20 outline-none transition-all placeholder:text-gray-400 text-[15px]"
                       />
                     </div>
