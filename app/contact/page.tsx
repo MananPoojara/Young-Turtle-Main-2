@@ -210,7 +210,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-serif text-2xl mb-6">Direct Contact</h3>
                     <div className="space-y-6">
-                      <a href="mailto:info@youngturtle.com" className="flex items-start gap-4 group">
+                      <a href="mailto:career@youngturtle.ooo" className="flex items-start gap-4 group">
                         <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-aqua-mist transition-colors">
                           <Mail size={18} className="text-white" />
                         </div>
