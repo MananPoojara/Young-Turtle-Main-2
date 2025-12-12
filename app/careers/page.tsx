@@ -3,8 +3,8 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { PageHero } from "@/components/page-hero"
 import { SectionWrapper } from "@/components/section-wrapper"
-import { ArrowRight, BookOpen, Clock, Heart, MapPin, ShieldCheck, TrendingUp, Users } from "lucide-react"
-import React, { useState } from "react"
+import { ArrowRight, BookOpen, Clock, Heart, MapPin, ShieldCheck, TrendingUp, Users, X, Upload, CheckCircle2, Loader2 } from "lucide-react"
+import React, { useState, ChangeEvent, FormEvent } from "react"
 import careers from '@/public/Hero-img/career-hero.jpg'
 
 // ===== BENEFITS =====
@@ -33,7 +33,6 @@ const openings: Opening[] = [
     location: "Ahmedabad, India",
     type: "Full-time",
     department: "Research",
-
   },
   {
     id: 2,
@@ -41,31 +40,27 @@ const openings: Opening[] = [
     location: "Ahmedabad, India",
     type: "Full-time",
     department: "Technology",
-
   },
   {
-    id: 2,
+    id: 3,
     title: "Senior Research Analyst",
     location: "Ahmedabad, India",
     type: "Full-time",
     department: "Technology",
-
   },
   {
-    id: 2,
+    id: 4,
     title: "Junior Research Analyst",
     location: "Ahmedabad, India",
     type: "Full-time",
     department: "Technology",
-
   },
   {
-    id: 4,
+    id: 5,
     title: "Risk Analyst",
     location: "Ahmedabad, India",
     type: "Full-time",
     department: "Risk",
-
   },
 ]
 
@@ -76,10 +71,61 @@ export default function CareersPage() {
   const departments = ["All", ...Array.from(new Set(openings.map(o => o.department)))]
   const [selectedDept, setSelectedDept] = useState("All")
 
+  // --- Modal & Form State ---
+  const [selectedJob, setSelectedJob] = useState<Opening | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSuccess, setIsSuccess] = useState(false)
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    cv: null as File | null,
+  })
+
   const filteredOpenings =
     selectedDept === "All"
       ? openings
       : openings.filter((o) => o.department === selectedDept)
+
+  // --- Handlers ---
+  const handleApplyClick = (job: Opening) => {
+    setSelectedJob(job)
+    setIsSuccess(false)
+    setFormData({ name: "", email: "", phone: "", cv: null })
+  }
+
+  const handleCloseModal = () => {
+    setSelectedJob(null)
+  }
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: value }))
+  }
+
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setFormData((prev) => ({ ...prev, cv: e.target.files![0] }))
+    }
+  }
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    // Simulate API call to career@youngturtle.ooo
+    console.log("Submitting application to career@youngturtle.ooo", {
+      job: selectedJob?.title,
+      ...formData
+    })
+    
+    // Simulate network delay
+    await new Promise((resolve) => setTimeout(resolve, 2000))
+
+    // Reset and show success
+    setIsSubmitting(false)
+    setIsSuccess(true)
+  }
 
   return (
     <>
@@ -116,7 +162,7 @@ export default function CareersPage() {
 
               <p className="mt-8 text-muted-foreground leading-relaxed text-lg font-light">
                 We seek exceptional individuals who combine intellectual curiosity with rigorous analytical skills.
-                At Young Turtle, you won’t just analyze the market—you’ll help shape its future alongside some of the
+                At Young Turtle, you won't just analyze the market—you'll help shape its future alongside some of the
                 brightest minds in quantitative finance.
               </p>
 
@@ -237,7 +283,10 @@ export default function CareersPage() {
                     </div>
 
                     <div className="flex items-center">
-                      <button className="relative overflow-hidden pl-6 pr-12 py-3 bg-[#275669] text-white text-xs uppercase tracking-widest transition-all duration-300 group/btn cursor-pointer">
+                      <button 
+                        onClick={() => handleApplyClick(job)}
+                        className="relative overflow-hidden pl-6 pr-12 py-3 bg-[#275669] text-white text-xs uppercase tracking-widest transition-all duration-300 group/btn cursor-pointer"
+                      >
                         <span className="relative z-10">Apply Now</span>
                         <div className="absolute inset-0 bg-aqua-mist w-full h-full -translate-x-full group-hover/btn:translate-x-0 transition-transform duration-300 ease-out z-0 opacity-20" />
                         <ArrowRight size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-aqua-mist group-hover/btn:right-3 transition-all duration-300" />
@@ -287,7 +336,7 @@ export default function CareersPage() {
             </p>
 
             <a
-              href="mailto:careers@youngturtle.com"
+              href="mailto:career@youngturtle.ooo"
               className="inline-flex items-center gap-3 px-8 py-4 bg-transparent border border-aqua-mist text-aqua-mist hover:bg-[#275669] hover:text-white transition-all duration-300 text-sm uppercase tracking-widest"
             >
               Email Your Resume
@@ -296,6 +345,168 @@ export default function CareersPage() {
           </motion.div>
         </div>
       </SectionWrapper>
+
+      {/* ================= MODAL ================= */}
+      <AnimatePresence>
+        {selectedJob && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={handleCloseModal}
+              className="absolute inset-0 bg-black/70 backdrop-blur-md"
+            />
+
+            {/* Modal Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 100, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 50, scale: 0.95 }}
+              className="relative w-full max-w-md bg-white shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
+            >
+              {/* Header */}
+              <div className="px-8 pt-8 pb-6 bg-[#1a3a47] text-white flex justify-between items-start">
+                <div>
+                  <span className="text-[#5db3c9] text-[10px] font-semibold tracking-[0.15em] uppercase mb-2 block">
+                    APPLYING FOR
+                  </span>
+                  <h3 className="font-serif text-3xl leading-tight">{selectedJob.title}</h3>
+                  <p className="text-sm text-white/50 mt-2">{selectedJob.location}</p>
+                </div>
+                <button
+                  onClick={handleCloseModal}
+                  className="p-1 hover:bg-white/10 rounded transition-colors -mt-1"
+                >
+                  <X size={22} />
+                </button>
+              </div>
+
+              {/* Form Content */}
+              <div className="px-8 py-8 overflow-y-auto bg-white">
+                {!isSuccess ? (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div>
+                      <label className="block text-[11px] font-bold text-gray-900 uppercase tracking-[0.1em] mb-3">
+                        Full Name
+                      </label>
+                      <input
+                        required
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        placeholder="John Doe"
+                        className="w-full px-4 py-3.5 bg-white border border-gray-300 focus:border-[#5db3c9] focus:ring-2 focus:ring-[#5db3c9]/20 outline-none transition-all placeholder:text-gray-400 text-[15px]"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-[11px] font-bold text-gray-900 uppercase tracking-[0.1em] mb-3">
+                        Email Address
+                      </label>
+                      <input
+                        required
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        placeholder="john@example.com"
+                        className="w-full px-4 py-3.5 bg-white border border-gray-300 focus:border-[#5db3c9] focus:ring-2 focus:ring-[#5db3c9]/20 outline-none transition-all placeholder:text-gray-400 text-[15px]"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-[11px] font-bold text-gray-900 uppercase tracking-[0.1em] mb-3">
+                        Phone Number
+                      </label>
+                      <input
+                        required
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        placeholder="+91 98765 43210"
+                        className="w-full px-4 py-3.5 bg-white border border-gray-300 focus:border-[#5db3c9] focus:ring-2 focus:ring-[#5db3c9]/20 outline-none transition-all placeholder:text-gray-400 text-[15px]"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-[11px] font-bold text-gray-900 uppercase tracking-[0.1em] mb-3">
+                        Upload CV / Resume
+                      </label>
+                      <div className="relative group">
+                        <input
+                          required
+                          type="file"
+                          accept=".pdf,.doc,.docx"
+                          onChange={handleFileChange}
+                          id="file-upload"
+                          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                        />
+                        <div className={`border-2 border-dashed ${formData.cv ? 'border-[#5db3c9] bg-[#5db3c9]/5' : 'border-gray-300'} p-8 flex flex-col items-center justify-center text-center transition-all group-hover:border-[#5db3c9]/60`}>
+                          {formData.cv ? (
+                             <>
+                               <CheckCircle2 className="text-[#5db3c9] mb-2" size={28} />
+                               <span className="text-sm font-medium text-gray-900">{formData.cv.name}</span>
+                               <span className="text-xs text-gray-500 mt-1.5">Click to change</span>
+                             </>
+                          ) : (
+                            <>
+                              <Upload className="text-gray-400 mb-3 group-hover:text-[#5db3c9] transition-colors" size={28} />
+                              <span className="text-sm text-gray-900 font-medium block mb-1">Click to upload or drag and drop</span>
+                              <span className="text-xs text-gray-500">PDF, DOCX up to 10MB</span>
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full py-4 bg-[#2c5f6f] text-white font-semibold text-sm uppercase tracking-[0.15em] hover:bg-[#234852] transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-6"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="animate-spin" size={18} />
+                          SENDING...
+                        </>
+                      ) : (
+                        "SUBMIT APPLICATION"
+                      )}
+                    </button>
+                    
+                    <p className="text-[11px] text-gray-500 text-center mt-4">
+                      By submitting, you agree to our privacy policy.
+                    </p>
+                  </form>
+                ) : (
+                  <div className="flex flex-col items-center justify-center py-10 text-center space-y-4">
+                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-2">
+                      <CheckCircle2 className="text-green-600 w-8 h-8" />
+                    </div>
+                    <h4 className="text-2xl font-serif text-abyssal-blue">Application Received!</h4>
+                    <p className="text-muted-foreground max-w-xs">
+                      Thank you, {formData.name}. We have received your application for <strong>{selectedJob.title}</strong>.
+                    </p>
+                    <p className="text-xs text-muted-foreground pt-4 border-t border-border w-full">
+                       A confirmation email has been sent to career@youngturtle.ooo
+                    </p>
+                    <button
+                      onClick={handleCloseModal}
+                      className="mt-6 px-6 py-2 border border-border text-abyssal-blue text-xs uppercase tracking-widest hover:bg-sunbeam-pearl transition-colors"
+                    >
+                      Close
+                    </button>
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </>
   )
 }
