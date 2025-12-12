@@ -135,7 +135,7 @@ const ServiceSection = () => {
             {/* Hero Section */}
             <section className='relative py-12 sm:py-16 overflow-hidden bg-gradient-to-br from-[#275669] via-[#2d6a7f] to-[#1e4552]'>
                 <div className='absolute inset-0 w-full h-full'></div>
-                <div className='absolute inset-0 bg-[#112733]'></div>
+                <div className='absolute inset-0 bg-[#275669]'></div>
 
                 <div className='mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 relative z-10'>
                     <div className='max-w-3xl mx-auto text-center'>

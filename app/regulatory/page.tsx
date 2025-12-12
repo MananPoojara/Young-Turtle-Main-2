@@ -15,12 +15,23 @@ interface DocumentItem {
     id: string
     title: string
     url: string
+    downloadName: string
 }
 
 // Data Content
 const complianceDocs: DocumentItem[] = [
-    { id: '1', title: 'PMS Investor Charter', url: '#' },
-    { id: '2', title: 'PMS Disclosure Document', url: '#' },
+    {
+        id: '1',
+        title: 'AIF Stewardship Code',
+        url: '/regulatory-pdfs/aif-stewardship-code.pdf',
+        downloadName: 'AIF_Stewardship_Code.pdf', // Add this
+    },
+    {
+        id: '2',
+        title: 'AIF Stewardship Compliance Disclosure',
+        url: '/regulatory-pdfs/aif-stewardship-compliance-disclosure.pdf',
+        downloadName: 'AIF_Stewardship_Compliance_Disclosure.pdf', // Add this
+    },
 ]
 
 export default function RegulatoryPage() {
@@ -37,12 +48,14 @@ export default function RegulatoryPage() {
                     className='group flex items-center justify-between p-6 bg-white border border-border hover:border-brand-gold/50 hover:shadow-lg transition-all duration-300 rounded-sm'
                 >
                     <div className='flex items-center gap-4'>
-                        <div className='flex-shrink-0 w-10 h-10 rounded-full bg-sunbeam-pearl flex items-center justify-center text-brand-gold transition-colors duration-300'>
+                        <div className='hidden sm:flex shrink-0 w-10 h-10 rounded-full bg-sunbeam-pearl items-center justify-center text-brand-gold transition-colors duration-300'>
+                            {' '}
                             <FileText size={20} />
                         </div>
                         <span className='text-brand-dark font-medium text-lg'>{doc.title}</span>
                     </div>
                     <div className='flex items-center gap-3'>
+                        {/* View PDF - Opens in new tab */}
                         <Link
                             href={doc.url}
                             target='_blank'
@@ -54,14 +67,15 @@ export default function RegulatoryPage() {
                                 <div className='absolute bottom-0 left-0 h-[2px] bg-[#275669] transition-all duration-300 ease-in-out w-0 group-hover/btn:w-full' />
                             </span>
                         </Link>
+                        {/* Download PDF - Downloads the file */}
                         <Link
                             href={doc.url}
-                            download
+                            download={doc.downloadName || true}
                             className='relative bg-white px-4 py-2 text-[#275669] font-medium text-md transition-colors duration-200 group/btn inline-block'
                         >
                             <span className='relative pb-1.5'>
                                 Download PDF
-                                <div className='mt-1 absolute bottom-0 left-0 h-[2px] bg-[#275669] transition-all duration-300 ease-in-out w-0 group-hover/btn:w-full' />
+                                <div className='absolute bottom-0 left-0 h-[2px] bg-[#275669] transition-all duration-300 ease-in-out w-0 group-hover/btn:w-full' />
                             </span>
                         </Link>
                     </div>
@@ -77,13 +91,13 @@ export default function RegulatoryPage() {
                 subtitle='Transparency and compliance are the cornerstones of our relationship with investors.'
             />
 
-            <SectionWrapper className='pt-20 lg:py-24'>
+            <SectionWrapper className='pt-20 lg:pt-24 xl:pt-20 2xl:pt-24'>
                 <div className='max-w-5xl mx-auto px-6 lg:px-8'>
                     {/* Top Tab Navigation */}
                     <div className='flex flex-col md:flex-row bg-white rounded-md shadow-sm border border-border p-1 mb-12'>
                         <button
                             onClick={() => setActiveTab('disclosure')}
-                            className={`relative flex-1 flex items-center justify-center gap-3 py-4 px-6 text-sm md:text-base font-semibold transition-all duration-300 rounded-sm
+                            className={`hover:cursor-pointer relative flex-1 flex items-center justify-center gap-3 py-4 px-6 text-sm md:text-base font-semibold transition-all duration-300 rounded-sm
                 ${
                     activeTab === 'disclosure'
                         ? 'bg-[#275669]/90 text-white/90'
@@ -102,7 +116,7 @@ export default function RegulatoryPage() {
                         <div className='hidden md:block w-px bg-gray-100 my-3'></div>
                         <button
                             onClick={() => setActiveTab('complaints')}
-                            className={`relative flex-1 flex items-center justify-center gap-3 py-4 px-6 text-sm md:text-base font-semibold transition-all duration-300 rounded-sm
+                            className={`hover:cursor-pointer relative flex-1 flex items-center justify-center gap-3 py-4 px-6 text-sm md:text-base font-semibold transition-all duration-300 rounded-sm
                 ${
                     activeTab === 'complaints'
                         ? 'bg-[#275669]/90 text-white/90'
@@ -121,7 +135,7 @@ export default function RegulatoryPage() {
                     </div>
 
                     {/* Content Area */}
-                    <div className='min-h-[400px]'>
+                    <div className=''>
                         <AnimatePresence mode='wait'>
                             {activeTab === 'disclosure' && (
                                 <motion.div
@@ -153,9 +167,6 @@ export default function RegulatoryPage() {
                                     className='bg-white p-8 md:p-10 border border-border shadow-sm rounded-sm'
                                 >
                                     <div className='border-b border-gray-100 pb-6 mb-8'>
-                                        <h2 className='font-serif text-3xl text-abyssal-blue mb-4'>
-                                            Grievance Redressal
-                                        </h2>
                                         <p className='text-gray-600 leading-relaxed'>
                                             At Young Turtle Capital, we are committed to handling complaints in a timely
                                             and effective manner. If you have any concerns or wish to register a
@@ -165,10 +176,7 @@ export default function RegulatoryPage() {
 
                                     <div className='space-y-10'>
                                         {/* Step 1 */}
-                                        <div className='relative pl-8 md:pl-0'>
-                                            <div className='md:hidden absolute left-0 top-1 w-6 h-6 bg-brand-gold text-black rounded-full flex items-center justify-center text-xs font-bold'>
-                                                1
-                                            </div>
+                                        <div className='relative md:pl-0'>
                                             <div className='grid md:grid-cols-[100px_1fr] gap-6'>
                                                 <div className='hidden md:flex flex-col items-center'>
                                                     <div className='w-10 h-10 bg-white border-2 border-brand-gold text-brand-gold rounded-full flex items-center justify-center font-bold text-lg mb-2'>
@@ -187,7 +195,7 @@ export default function RegulatoryPage() {
                                                                     Name
                                                                 </span>
                                                                 <span className='font-semibold text-base'>
-                                                                    Mr. Anil Ture
+                                                                    Mr. Hitesh Panara
                                                                 </span>
                                                             </div>
                                                             <div>
@@ -202,26 +210,32 @@ export default function RegulatoryPage() {
                                                                 <span className='block text-xs text-gray-400 uppercase tracking-wider mb-1'>
                                                                     Address
                                                                 </span>
-                                                                <span>
-                                                                    B-4, Amerchand Mansion, 16 Madame Cama Road, Colaba,
-                                                                    Mumbai – 400 001
-                                                                </span>
+                                                                <Link
+                                                                    href='https://maps.app.goo.gl/Eq3CUBqQEbxmaKAc9'
+                                                                    target='_blank'
+                                                                    rel='noopener noreferrer'
+                                                                    className='hover:underline block opacity-90 text-xs sm:text-sm leading-relaxed hover:text-brand-gold hover:opacity-100 transition-all duration-300 cursor-pointer'
+                                                                >
+                                                                    4th Floor, Safal Profitaire, A-6, Corporate Rd, opp.
+                                                                    AUDA Garden, Satellite, Prahlad Nagar, Ahmedabad,
+                                                                    Gujarat, India – 380015
+                                                                </Link>
                                                             </div>
                                                             <div>
                                                                 <span className='block text-xs text-gray-400 uppercase tracking-wider mb-1'>
                                                                     Phone
                                                                 </span>
-                                                                <span>+91 22 66171700</span>
+                                                                <span>+538-079 6777 6555</span>
                                                             </div>
                                                             <div>
                                                                 <span className='block text-xs text-gray-400 uppercase tracking-wider mb-1'>
                                                                     Email
                                                                 </span>
                                                                 <a
-                                                                    href='mailto:complaints@youngturtle.com'
+                                                                    href='mailto:complaints@youngturtle.ooo'
                                                                     className='text-brand-gold font-medium hover:underline'
                                                                 >
-                                                                    complaints@youngturtle.com
+                                                                    complaints@youngturtle.ooo
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -231,10 +245,7 @@ export default function RegulatoryPage() {
                                         </div>
 
                                         {/* Step 2 */}
-                                        <div className='relative pl-8 md:pl-0'>
-                                            <div className='md:hidden absolute left-0 top-1 w-6 h-6 bg-brand-gold text-white rounded-full flex items-center justify-center text-xs font-bold'>
-                                                2
-                                            </div>
+                                        <div className='relative md:pl-0'>
                                             <div className='grid md:grid-cols-[100px_1fr] gap-6'>
                                                 <div className='hidden md:flex flex-col items-center'>
                                                     <div className='w-10 h-10 bg-white border-2 border-brand-gold text-brand-gold rounded-full flex items-center justify-center font-bold text-lg mb-2'>
@@ -251,20 +262,17 @@ export default function RegulatoryPage() {
                                                         you may escalate the concern with all relevant details to:
                                                     </p>
                                                     <a
-                                                        href='mailto:escalations@youngturtle.com'
+                                                        href='mailto:escalations@youngturtle.ooo'
                                                         className='inline-flex items-center gap-2 text-brand-gold font-semibold hover:underline'
                                                     >
-                                                        escalations@youngturtle.com <ChevronRight size={14} />
+                                                        escalations@youngturtle.ooo <ChevronRight size={14} />
                                                     </a>
                                                 </div>
                                             </div>
                                         </div>
 
                                         {/* Step 3 */}
-                                        <div className='relative pl-8 md:pl-0'>
-                                            <div className='md:hidden absolute left-0 top-1 w-6 h-6 bg-brand-gold text-white rounded-full flex items-center justify-center text-xs font-bold'>
-                                                3
-                                            </div>
+                                        <div className='relative md:pl-0'>
                                             <div className='grid md:grid-cols-[100px_1fr] gap-6'>
                                                 <div className='hidden md:flex flex-col items-center'>
                                                     <div className='w-10 h-10 bg-white border-2 border-brand-gold text-brand-gold rounded-full flex items-center justify-center font-bold text-lg'>
@@ -298,7 +306,6 @@ export default function RegulatoryPage() {
                                                                 </div>
                                                             </div>
                                                         </a>
-
                                                         <a
                                                             href='#'
                                                             className='group block p-4 bg-gray-50 hover:bg-brand-gold/5 border border-transparent hover:border-brand-gold/30 rounded-sm transition-all'
@@ -330,7 +337,7 @@ export default function RegulatoryPage() {
 
             {/* Footer-like Policy Links */}
             <div className='bg-brand-dark py-16 mx-16'>
-                <div className='max-w-7xl mx-auto px-6 lg:px-8'>
+                <div className='max-w-7xl mx-auto px-0 md:px-6 lg:px-8'>
                     <h2 className='text-2xl font-serif text-[#275669] font-bold mb-6'>Additional Information</h2>
                     <div className='grid md:grid-cols-2 gap-12 text-sm text-gray-400'>
                         <div>
