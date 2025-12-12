@@ -110,7 +110,7 @@ const Slide: React.FC<{ content: SlideContent }> = ({ content }) => {
 
 const LineRow: React.FC<{ words: { text: string; highlight?: boolean; main?: boolean }[], isLastLine: boolean }> = ({ words }) => {
     return (
-        <div className="flex flex-wrap justify-center gap-x-[0.35em] 2xl:gap-x-[0.90em] md:gap-x-[0.45em] leading-[1.2] py-1 md:py-2">
+        <div className="flex flex-wrap justify-center gap-x-[0.35em] 2xl:gap-x-[1em] xl:gap-x-[1em] md:gap-x-[0.45em] leading-[1.2] py-1 md:py-2">
             {words.map((word, i) => (
                 <Word key={i} {...word} />
             ))}
@@ -150,7 +150,13 @@ const Word: React.FC<{ text: string; highlight?: boolean; main?: boolean }> = ({
 
     return (
         <motion.span
-            variants={blurVariants}
+            initial={{ opacity: 0, scale: 1.1, filter: "blur(12px)" }}
+            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            exit={{ opacity: 0, scale: 0.95, filter: "blur(8px)" }}
+            transition={{
+                duration: 1.2,
+                ease: [0.25, 0.4, 0.25, 1],
+            }}
             className={`
         inline-block relative
         ${main
@@ -158,10 +164,10 @@ const Word: React.FC<{ text: string; highlight?: boolean; main?: boolean }> = ({
                     : 'text-3xl 2xl:text-7xl xl:text-6xl md:text-4xl lg:text-5xl font-light tracking-tight'
                 }
         ${highlight ? 'text-[#ffb900]' : 'text-white/90'}
-      `}
+    `}
         >
             {text}
-            {/* Add a subtle glow behind main words for depth */}
         </motion.span>
+
     );
 };
