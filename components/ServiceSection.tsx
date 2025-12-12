@@ -1,6 +1,5 @@
 'use client'
-import React, { useState } from 'react'
-
+import React, { useState, useEffect, useRef } from 'react'
 import AnimatedTestimonialsDemo from './animated-testimonials-demo'
 import { PerspectivesCarousel } from './perspective-carousel'
 import { Activity, ArrowRight, Gem, Minimize2, Minus, Mountain, Plus, ShieldCheck, Sun, TrendingUp } from 'lucide-react'
@@ -85,7 +84,34 @@ const valuesData = [
         icon: Gem,
     }
 ]
+const RevealSection = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => {
+    const [isVisible, setIsVisible] = useState(false);
+    const ref = useRef<HTMLDivElement>(null);
 
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.1, rootMargin: "50px" }
+        );
+        if (ref.current) observer.observe(ref.current);
+        return () => observer.disconnect();
+    }, []);
+
+    return (
+        <div
+            ref={ref}
+            style={{ transitionDelay: `${delay}ms` }}
+            className={`transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'} ${className}`}
+        >
+            {children}
+        </div>
+    );
+};
 
 const ServiceSection = () => {
     const [activeValueIndex, setActiveValueIndex] = useState(0);
@@ -136,128 +162,79 @@ const ServiceSection = () => {
                             {/* Right Section - Content */}
                             <div className='w-full lg:flex-1 text-base sm:text-lg text-slate-100/90 leading-relaxed text-center lg:text-left flex items-center'>
                                 <p>
-                                    <span className='text-amber-400 font-bold'>Young Turtle</span> was built on the belief that enduring performance comes from <b>disciplined science</b> , not speculation. Our foundation rests on <b>data-driven decision making</b>, where <b>mathematical models, statistical inference</b>, and <b>algorithmic research</b> guide every action. We assemble teams of <b>mathematicians, physicists, engineers, and computational thinkers</b> whose collective rigor replaces the intuition and guesswork of traditional finance. Our research focuses on identifying <b>subtle market anomalies</b> the small, temporary inefficiencies that can be <b>systematically captured</b> with precision. We execute our strategies with <b>complete dispassion</b>, removing emotion, bias, and ego to maintain consistency across all market environments. Through deliberately engineered <b>asymmetric payoff structures</b>, we design systems where the <b>expected gain meaningfully exceeds the expected loss</b>. This philosophy defines everything we build: transparent, resilient, and mathematically grounded infrastructure that empowers modern systematic trading to thrive.
+                                    <span className='text-amber-400 font-bold'>Young Turtle</span> was built on disciplined science, not speculation. We make data-driven decisions guided by mathematical models, statistical inference, and algorithmic research. Our teams of mathematicians, physicists, and engineers replace traditional finance's intuition with rigorous analysis. We identify market inefficiencies and capture them systematically. We execute with complete dispassion—removing emotion, bias, and ego. Through engineered asymmetric payoff structures, we design systems where expected gains exceed expected losses. Everything we build is transparent, resilient, and mathematically grounded.
                                 </p>
                             </div>
                         </div>
-
-
-                        {/* Mission Section 
-                        <div className=' relative z-10 flex flex-col lg:flex-row items-center lg:items-stretch justify-between gap-6 sm:gap-8 lg:gap-12 p-6 sm:p-8 lg:p-12 xl:p-16'>
-                            <div className='w-full lg:w-64 xl:w-80 lg:flex-shrink-0 text-center lg:text-left flex items-center justify-center lg:justify-start'>
-                                <h2 className='text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold leading-tight'>
-                                    <span className='text-[#275669]'>Our</span>
-                                    <br />
-                                    <span className='text-amber-400'>Mission</span>
-                                </h2>
-                            </div>
-
-                            <div className='bg-amber-400 rounded-full w-full h-[3px] lg:w-1 lg:h-auto lg:self-stretch'></div>
-
-                            <div className='w-full lg:flex-1 text-[#275669] text-base sm:text-lg leading-relaxed text-center lg:text-left space-y-4 flex items-center'>
-                                <div className='space-y-4'>
-                                    <p>
-                                        <span className='text-amber-400'>We</span> strive to generate superior risk-adjusted
-                                        returns for our investors by harnessing advanced mathematical models, cutting-edge
-                                        technology, and rigorous scientific research to identify and exploit persistent
-                                        market inefficiencies.
-                                    </p>
-                                    <p>
-                                        In an era of unprecedented data velocity and complexity, we remain committed to
-                                        intellectual honesty, continuous innovation, and disciplined execution—delivering
-                                        alpha through quantifiable edge while upholding the highest standards of integrity
-                                        and transparency.
-                                    </p>
-                                </div>
-                            </div>
-                        </div> */}
                     </div>
                 </div>
             </section>
-            <section className="py-24 bg-white relative">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
 
-                    <div className="flex flex-col lg:flex-row gap-12 lg:gap-24">
+            <section className="py-24 bg-slate-50 relative">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-                        {/* Left Side: Sticky Header */}
-                        <div className="w-full lg:w-1/3 lg:sticky lg:top-32 lg:self-start mb-8 lg:mb-0">
-                            <div className="inline-flex items-center gap-3 mb-4">
-                                <span className="h-px w-12 bg-[#275669]"></span>
-                                <span className="text-[#275669] uppercase tracking-widest text-sm font-semibold">Core Value</span>
-                            </div>
-                            <h2 className="text-4xl lg:text-5xl font-bold font-serif text-[#275669] mb-6">
-                                Guiding <span className="text-amber-400">Principles</span>
-                            </h2>
-                            <p className="text-lg text-slate-600 leading-relaxed font-light mb-8">
-                                Our algorithms are complex, but the values driving them are simple. This is the code behind the code.
-                            </p>
-
-                            {/* Decorative Element on Desktop */}
-                            <div className="hidden lg:block w-32 h-32 opacity-10 rounded-full border-2 border-[#275669] border-dashed animate-spin-slow"></div>
+                    {/* Centered Header */}
+                    <div className="text-center max-w-3xl mx-auto mb-16">
+                        <div className="inline-flex items-center gap-3 mb-4">
+                            <span className="h-px w-12 bg-[#275669]"></span>
+                            <span className="text-[#275669] uppercase tracking-widest text-sm font-semibold">Core DNA</span>
+                            <span className="h-px w-12 bg-[#275669]"></span>
                         </div>
+                        <h2 className="text-4xl lg:text-5xl font-bold font-serif text-[#275669] mb-6">
+                            Guiding <span className="text-amber-400">Principles</span>
+                        </h2>
+                        <p className="text-lg text-slate-600 leading-relaxed font-light">
+                            Our algorithms are complex, but the values driving them are simple. This is the code behind the code.
+                        </p>
+                    </div>
 
-                        {/* Right Side: Vertical Accordion */}
-                        <div className="w-full lg:w-2/3 flex flex-col gap-3">
-                            {valuesData.map((item, index) => {
-                                const isActive = activeValueIndex === index;
-                                const Icon = item.icon;
+                    {/* Unique Card Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                        {valuesData.map((item, index) => {
+                            const Icon = item.icon;
 
-                                return (
-                                    <div
-                                        key={item.id}
-                                        onMouseEnter={() => setActiveValueIndex(index)}
-                                        className={`
-                                          relative overflow-hidden rounded-2xl transition-all duration-500 ease-in-out cursor-default
-                                          border 
-                                          ${isActive
-                                                ? 'bg-[#275669] border-[#275669] shadow-xl scale-[1.02] z-10'
-                                                : 'bg-white border-slate-200 hover:bg-slate-50 hover:border-slate-300'
-                                            }
-                                       `}
-                                    >
-                                        {/* Row Header (Visible always, changes style) */}
-                                        <div className="relative z-10 flex items-center justify-between p-6 sm:px-8 cursor-pointer" onClick={() => setActiveValueIndex(index)}>
-                                            <div className="flex items-center gap-6">
-                                                <span className={`text-xl font-serif font-bold transition-colors duration-300 ${isActive ? 'text-amber-400' : 'text-slate-300'}`}>
-                                                    0{index + 1}
-                                                </span>
-                                                <h3 className={`text-xl font-bold transition-colors duration-300 ${isActive ? 'text-white' : 'text-slate-700'}`}>
-                                                    {item.title}
-                                                </h3>
+                            return (
+                                <RevealSection key={item.id} delay={index * 100}>
+                                    <div className="group relative h-full bg-white rounded-3xl border border-slate-200 p-8 lg:p-10 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-default">
+
+                                        {/* 1. The Curtain Reveal Background */}
+                                        <div className="absolute inset-0 bg-[#275669] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] origin-bottom"></div>
+
+                                        {/* 3. Content Wrapper */}
+                                        <div className="relative z-10 flex flex-col h-full">
+
+                                            {/* Icon Box */}
+                                            <div className="w-16 h-16 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-8 group-hover:bg-white/10 group-hover:border-white/20 group-hover:scale-110 transition-all duration-500">
+                                                <Icon className="w-8 h-8 text-[#275669] group-hover:text-amber-400 transition-colors duration-500" />
                                             </div>
-                                            {/* Status Icon */}
-                                            <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isActive ? 'bg-amber-400 rotate-90' : 'bg-slate-100'}`}>
-                                                {isActive ? <Minus className="w-4 h-4 text-[#275669]" /> : <Plus className="w-4 h-4 text-slate-400" />}
-                                            </div>
-                                        </div>
 
-                                        {/* Expanded Content (Animate max-height) */}
-                                        <div className={`
-                                            relative z-10 overflow-hidden transition-all duration-500 ease-in-out
-                                            ${isActive ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'}
-                                        `}>
-                                            <div className="px-8 pb-8 pt-0 pl-20">
-                                                <p className="text-slate-300 text-lg leading-relaxed border-l-2 border-amber-400/30 pl-6">
-                                                    {item.description}
-                                                </p>
+                                            {/* Title */}
+                                            <h3 className="text-2xl lg:text-3xl font-bold font-serif text-[#275669] mb-4 group-hover:text-white transition-colors duration-500">
+                                                {item.title}
+                                            </h3>
+
+                                            {/* Description */}
+                                            <p className="text-slate-600 text-lg leading-relaxed group-hover:text-slate-300 transition-colors duration-500">
+                                                {item.description}
+                                            </p>
+
+                                            {/* Animated Progress Line at Bottom */}
+                                            <div className="mt-auto pt-8">
+                                                <div className="w-full h-1 bg-slate-100 rounded-full overflow-hidden group-hover:bg-white/20 transition-colors duration-500">
+                                                    <div className="h-full bg-amber-400 w-0 group-hover:w-full transition-all duration-700 ease-out delay-100"></div>
+                                                </div>
                                             </div>
                                         </div>
-
-                                        {/* Background Decorative Icon (Only visible when active) */}
-                                        <Icon className={`
-                                            absolute -bottom-8 -right-8 w-64 h-64 text-white/5 pointer-events-none transition-opacity duration-700
-                                            ${isActive ? 'opacity-100' : 'opacity-0'}
-                                        `} />
                                     </div>
-                                );
-                            })}
-                        </div>
+                                </RevealSection>
+                            );
+                        })}
                     </div>
                 </div>
             </section>
 
             {/* Heritage Section (Newspaper) */}
-            <section className="bg-slate-50 pb-20 pt-8 lg:pb-24 lg:pt-8">
+            <section className="bg-white pb-20 pt-8 lg:pb-24 lg:pt-8">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <NewspaperSection />
                 </div>

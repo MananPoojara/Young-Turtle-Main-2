@@ -49,14 +49,15 @@ export function Footer() {
                             <span className="grid h-8 w-8 place-items-center rounded-lg bg-white/10">
                                 <Mail size={16} />
                             </span>
-                            info@youngturtle.in
+                            info@youngturtle.ooo
                         </a>
 
                         <a href="tel:+910000000000" className="flex items-center gap-3 text-sm hover:text-white">
                             <span className="grid h-8 w-8 place-items-center rounded-lg bg-white/10">
                                 <Phone size={16} />
                             </span>
-                            +91-0000000000
+                            Lan No. : +079-6777 8555
+                            Mobile No. : +91-94290 60835
                         </a>
 
                         <div className="flex items-start gap-3 text-sm">
@@ -126,29 +127,29 @@ export function Footer() {
                 {/* REGULATORY BOX */}
                 <div className="border-t border-white/10 py-10">
                     <div className="space-y-4 rounded-2xl bg-white/5 p-5 text-xs leading-relaxed backdrop-blur sm:p-6 sm:text-sm">
-                        <p className="font-semibold">Young Turtle Investment Advisors LLP (PMS)</p>
+                        <p className="font-semibold">Young Turtle LLP</p>
                         <p className="opacity-90">
-                            SEBI Registered Portfolio Manager. Registration and other regulatory details will be updated here.
+                            SEBI Registered CAT-III AIF. Registration and other regulatory details will be updated here.
                             Young Turtle is committed to transparency and investor protection.
                         </p>
 
                         <div className="grid grid-cols-1 gap-4 pt-4 sm:grid-cols-2">
                             <div className="space-y-1">
                                 <p className="font-semibold">Principal Officer</p>
-                                <p>[Name Here]</p>
+                                <p>Uppma Ginotra</p>
                                 <p>
-                                    Email:{' '}
-                                    <a href="mailto:compliance@youngturtle.in" className="underline">
-                                        compliance@youngturtle.ooo
+                                    Email:{''}
+                                    <a href="mailto:info@youngturtle.ooo" className="underline">
+                                        info@youngturtle.ooo
                                     </a>
                                 </p>
-                                <p>Phone: +91-0000000000</p>
+                                <p>Phone: +91-9530903324</p>
                             </div>
                             <div className="space-y-1">
                                 <p className="font-semibold">SEBI Local Office</p>
-                                <p>[Office Name], [Road Name]</p>
-                                <p>[Area], Bengaluru 5600xx</p>
-                                <p>Tel: +91-080-00000000</p>
+                                <p>PN-C/7, G Block BKC, Bandra Kurla Complex</p>
+                                <p> Bandra East, Mumbai, Maharashtra 400051</p>
+                                <p>Tel: +022-26449000</p>
                             </div>
                         </div>
 
@@ -156,6 +157,7 @@ export function Footer() {
                             <strong>Disclaimer:</strong> Read all scheme-related documents carefully before investing.
                             Past performance is not indicative of future returns.
                         </p>
+
                     </div>
                 </div>
 
