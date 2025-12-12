@@ -223,7 +223,7 @@ export default function RegulatoryPage() {
                                 <span className='block text-xs text-gray-400 uppercase tracking-wider mb-1'>
                                   Phone
                                 </span>
-                                <span>+538-079 6777 6555</span>
+                                <span>+538-6777 6555</span>
                               </div>
                               <div>
                                 <span className='block text-xs text-gray-400 uppercase tracking-wider mb-1'>
