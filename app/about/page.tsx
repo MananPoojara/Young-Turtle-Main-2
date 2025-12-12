@@ -6,6 +6,7 @@ import PeoplePage from '@/components/team'
 import Image from 'next/image'
 import team from '@/public/misc-img/hired.jpeg'
 import About from '@/public/Hero-img/about-hero.png'
+import { OurPhilosophy } from '@/components/ui/ourPhilosophy'
 
 export default function AboutPage() {
     return (
@@ -52,6 +53,8 @@ export default function AboutPage() {
                     </div>
                 </SectionWrapper>
             </div>
+
+            <OurPhilosophy />
 
             {/* Team Section */}
             <div id='leadership-section'>

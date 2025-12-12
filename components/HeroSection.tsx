@@ -1,6 +1,6 @@
 'use client'
 
-import { TortoiseQuote } from './ui/wavytext'
+import { HeroQuote } from './ui/wavytext'
 
 export default function HeroSection() {
     return (
@@ -18,8 +18,8 @@ export default function HeroSection() {
             </video>
 
             {/* Content */}
-            <div className='relative -mt-50 z-20 w-full max-w-7xl mx-auto px-6 flex flex-col items-center text-center'>
-                <TortoiseQuote />
+            <div className='relative -mt-30 z-20 w-full max-w-7xl mx-auto px-6 flex flex-col items-center text-center'>
+                <HeroQuote />
             </div>
         </section>
     )

@@ -86,7 +86,7 @@ export default function CareersPage() {
       {/* HERO */}
       <PageHero
         title="Join Young Turtle"
-        subtitle="Build your career at the forefront of quantitative finance"
+        subtitle="“The people who are crazy enough to think they can change the world are the ones who do.”"
       />
 
       {/* WHY YOUNG TURTLE */}

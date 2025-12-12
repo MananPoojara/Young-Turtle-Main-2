@@ -1,9 +1,9 @@
 'use client'
 import React, { useState, useEffect, useRef } from 'react'
-import AnimatedTestimonialsDemo from './animated-testimonials-demo'
-import { PerspectivesCarousel } from './perspective-carousel'
-import { Activity, ArrowRight, Gem, Minimize2, Minus, Mountain, Plus, ShieldCheck, Sun, TrendingUp } from 'lucide-react'
+import { Gem, Minimize2, Mountain, Sun, } from 'lucide-react'
 import { NewspaperSection } from './NewspaperSection'
+import { motion } from 'framer-motion';
+
 
 const perspectivesData = [
     {
@@ -113,41 +113,126 @@ const RevealSection = ({ children, delay = 0, className = "" }: { children: Reac
     );
 };
 
+const NODES = [
+    { id: 1, x: 850, y: 120 }, // Future (Right)
+    { id: 2, x: 680, y: 180 },
+    { id: 3, x: 500, y: 100 },
+    { id: 4, x: 320, y: 160 },
+    { id: 5, x: 150, y: 130 }, // Past (Left)
+];
+
+// Define paths to draw. We draw from higher index (right) to lower index (left)
+// to visually simulate looking backward.
+const PATHS = [
+    { start: 0, end: 1 }, // Node 1 -> Node 2
+    { start: 1, end: 2 }, // Node 2 -> Node 3
+    { start: 2, end: 3 }, // Node 3 -> Node 4
+    { start: 3, end: 4 }, // Node 4 -> Node 5
+    // Add a couple of subtle cross-connections for geometric depth
+    { start: 0, end: 2 },
+    { start: 2, end: 4 },
+];
+
 const ServiceSection = () => {
     const [activeValueIndex, setActiveValueIndex] = useState(0);
 
     return (
         <main className='min-h-screen'>
             {/* Hero Section */}
-            <section className='relative py-12 sm:py-16 overflow-hidden bg-gradient-to-br from-[#275669] via-[#2d6a7f] to-[#1e4552]'>
-                <div className='absolute inset-0 w-full h-full'></div>
-                <div className='absolute inset-0 bg-[#275669]'></div>
+            <section className="relative w-full py-28 overflow-hidden bg-[#275669] flex items-center justify-center border-t border-white/[0.03]">
 
-                <div className='mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 relative z-10'>
-                    <div className='max-w-3xl mx-auto text-center'>
-                        <h1 className='text-2xl sm:text-3xl lg:text-4xl font-light tracking-wide text-white mb-4'>
-                            <span className='block pb-6 text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-400 mt-1'>
-                                Precision Over Pace
-                            </span>
-                        </h1>
+                {/* Minimal Professional Pattern: Reverse Constellation */}
+                <div className="absolute inset-0 w-full h-full pointer-events-none opacity-60">
+                    <svg className="w-full h-full" viewBox="0 0 1000 300" preserveAspectRatio="xMidYMid slice">
+                        <defs>
+                            <linearGradient id="gold-fade" x1="1" y1="0" x2="0" y2="0">
+                                <stop offset="0%" stopColor="rgba(251, 191, 36, 0.0)" />
+                                <stop offset="50%" stopColor="rgba(251, 191, 36, 0.3)" />
+                                <stop offset="100%" stopColor="rgba(251, 191, 36, 0.0)" />
+                            </linearGradient>
+                        </defs>
 
-                        <p className='text-base sm:text-lg text-slate-200 leading-relaxed'>
-                            Our name isn&apos;t incidental. In a world racing toward short-term noise, we build
-                            deliberate quant systems—strategies that measure thoroughly, validate rigorously, and
-                            execute precisely. We&apos;re not trying to be the hare. We&apos;re engineering a better
-                            tortoise.
-                        </p>
-                    </div>
+                        {/* Draw Lines - Animating from Right (Future) to Left (Past) */}
+                        {PATHS.map((path, i) => {
+                            const startNode = NODES[path.start];
+                            const endNode = NODES[path.end];
+                            return (
+                                <motion.line
+                                    key={`path-${i}`}
+                                    x1={startNode.x}
+                                    y1={startNode.y}
+                                    x2={endNode.x}
+                                    y2={endNode.y}
+                                    stroke="#fbbf24"
+                                    strokeWidth="0.5"
+                                    initial={{ pathLength: 0, opacity: 0 }}
+                                    whileInView={{ pathLength: 1, opacity: 0.3 }}
+                                    viewport={{ once: true, margin: "-100px" }}
+                                    transition={{
+                                        duration: 2.5,
+                                        delay: i * 0.3, // Stagger drawing
+                                        ease: "easeInOut"
+                                    }}
+                                />
+                            );
+                        })}
+
+                        {/* Nodes - Subtle pulsating dots */}
+                        {NODES.map((node, i) => (
+                            <motion.g key={`node-${i}`}>
+                                {/* Inner Dot */}
+                                <motion.circle
+                                    cx={node.x}
+                                    cy={node.y}
+                                    r="2.5"
+                                    fill="#fbbf24"
+                                    initial={{ opacity: 0, scale: 0 }}
+                                    whileInView={{ opacity: 0.8, scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: i * 0.2 }}
+                                />
+                                {/* Outer Glow Ring */}
+                                <motion.circle
+                                    cx={node.x}
+                                    cy={node.y}
+                                    r="8"
+                                    stroke="#fbbf24"
+                                    strokeWidth="0.5"
+                                    fill="none"
+                                    initial={{ opacity: 0, scale: 0.5 }}
+                                    whileInView={{ opacity: 0.15, scale: 1.2 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 1, delay: i * 0.2 + 0.2 }}
+                                />
+                            </motion.g>
+                        ))}
+                    </svg>
+                </div>
+
+                {/* Content - One Liner */}
+                <div className="relative z-20 container mx-auto px-6 text-center">
+                    <motion.h2
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
+                        className="
+                        font-serif 
+                        text-lg 2xl:text-4xl xl:text-3xl sm:text-xl md:text-2xl lg:text-3xl 
+                        text-white
+                        font-medium 
+                        tracking-wide
+                        max-w-5xl mx-auto
+                    "
+                    >
+                        “You can’t connect the dots looking forward; you can only connect them <span className="text-[#fbbf24] font-normal italic">looking backward</span>.”
+                    </motion.h2>
                 </div>
             </section>
 
             {/* Core Philosophy */}
-            <section className='py-8 sm:py-12 lg:py-16 relative'>
+            {/* <section className='py-8 sm:py-12 lg:py-16 relative'>
                 <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
                     <div className='relative rounded-3xl overflow-hidden '>
-                        {/* Philosophy Section */}
                         <div className='bg-[#275669] relative z-10 flex flex-col lg:flex-row items-center lg:items-stretch justify-between gap-6 sm:gap-8 lg:gap-12 p-6 sm:p-8 lg:p-12 xl:p-16'>
-                            {/* Left Section - Title */}
                             <div className='w-full lg:w-64 xl:w-80 lg:flex-shrink-0 text-center lg:text-left flex items-center justify-center lg:justify-start'>
                                 <h2 className='text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight'>
                                     Our
@@ -156,10 +241,8 @@ const ServiceSection = () => {
                                 </h2>
                             </div>
 
-                            {/* Divider */}
                             <div className='bg-amber-400 rounded-full w-full h-[3px] lg:w-1 lg:h-auto lg:self-stretch'></div>
 
-                            {/* Right Section - Content */}
                             <div className='w-full lg:flex-1 text-base sm:text-lg text-slate-100/90 leading-relaxed text-center lg:text-left flex items-center'>
                                 <p>
                                     <span className='text-amber-400 font-bold'>Young Turtle</span> was built on disciplined science, not speculation. We make data-driven decisions guided by mathematical models, statistical inference, and algorithmic research. Our teams of mathematicians, physicists, and engineers replace traditional finance's intuition with rigorous analysis. We identify market inefficiencies and capture them systematically. We execute with complete dispassion—removing emotion, bias, and ego. Through engineered asymmetric payoff structures, we design systems where expected gains exceed expected losses. Everything we build is transparent, resilient, and mathematically grounded.
@@ -168,12 +251,11 @@ const ServiceSection = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             <section className="py-24 bg-slate-50 relative">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-                    {/* Centered Header */}
                     <div className="text-center max-w-3xl mx-auto mb-16">
                         <div className="inline-flex items-center gap-3 mb-4">
                             <span className="h-px w-12 bg-[#275669]"></span>
@@ -188,7 +270,6 @@ const ServiceSection = () => {
                         </p>
                     </div>
 
-                    {/* Unique Card Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                         {valuesData.map((item, index) => {
                             const Icon = item.icon;
@@ -197,28 +278,22 @@ const ServiceSection = () => {
                                 <RevealSection key={item.id} delay={index * 100}>
                                     <div className="group relative h-full bg-white rounded-3xl border border-slate-200 p-8 lg:p-10 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-default">
 
-                                        {/* 1. The Curtain Reveal Background */}
                                         <div className="absolute inset-0 bg-[#275669] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] origin-bottom"></div>
 
-                                        {/* 3. Content Wrapper */}
                                         <div className="relative z-10 flex flex-col h-full">
 
-                                            {/* Icon Box */}
                                             <div className="w-16 h-16 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-8 group-hover:bg-white/10 group-hover:border-white/20 group-hover:scale-110 transition-all duration-500">
                                                 <Icon className="w-8 h-8 text-[#275669] group-hover:text-amber-400 transition-colors duration-500" />
                                             </div>
 
-                                            {/* Title */}
                                             <h3 className="text-2xl lg:text-3xl font-bold font-serif text-[#275669] mb-4 group-hover:text-white transition-colors duration-500">
                                                 {item.title}
                                             </h3>
 
-                                            {/* Description */}
                                             <p className="text-slate-600 text-lg leading-relaxed group-hover:text-slate-300 transition-colors duration-500">
                                                 {item.description}
                                             </p>
 
-                                            {/* Animated Progress Line at Bottom */}
                                             <div className="mt-auto pt-8">
                                                 <div className="w-full h-1 bg-slate-100 rounded-full overflow-hidden group-hover:bg-white/20 transition-colors duration-500">
                                                     <div className="h-full bg-amber-400 w-0 group-hover:w-full transition-all duration-700 ease-out delay-100"></div>

@@ -46,7 +46,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
                 x: 0.1 + (i * 0.01),
                 y: 0,
                 z: 0,
-                color: i % 2 === 0 ? '#fbbf24' : '#2d6a7f', // Amber or Turtle Light
+                color: i % 2 === 0 ? '#ffffff' : '#fbbf24', // Amber or Turtle Light
                 history: []
             });
         }
@@ -70,7 +70,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
         const animate = () => {
             // Fade out effect for trails
             // We draw a semi-transparent rectangle over the previous frame
-            ctx.fillStyle = 'rgba(15, 41, 51, 0.15)'; // #0f2933 with opacity
+            ctx.fillStyle = '#275669'; // #0f2933 with opacity
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             // Smooth rotation interpolation
