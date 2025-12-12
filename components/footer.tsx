@@ -99,7 +99,7 @@ export function Footer() {
                             </div>
                             <div>
                                 <p className='text-xs text-slate-400'>Write to us</p>
-                                <p className='text-sm font-medium text-white group-hover: transition-colors'>
+                                <p className='underline text-sm font-medium text-white group-hover:text-slate-300 transition-colors '>
                                     info@youngturtle.ooo
                                 </p>
                             </div>
@@ -110,22 +110,47 @@ export function Footer() {
                         </Link>
 
                         {/* Phone Card */}
-                        <Link
-                            href='tel:+910000000000'
-                            className='group flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/20 transition-all duration-300'
-                        >
-                            <div className='h-10 w-10 rounded-full bg-transparent border border-white flex items-center justify-center group-hover:text-white transition-colors'>
-                                <Phone size={18} />
+                        <div className='group flex flex-col p-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/20 transition-all duration-300'>
+                            <div className='flex items-center gap-5'>
+                                <div className='h-10 w-10 rounded-full bg-transparent border border-white flex items-center justify-center group-hover:text-white transition-colors'>
+                                    <Phone size={18} />
+                                </div>
+                                <p className='text-sm text-slate-400'>Call us</p>
                             </div>
-                            <div>
-                                <p className='text-xs text-slate-400'>Call us</p>
-                                <p className='text-sm font-medium text-white transition-colors'>+91-0000000000</p>
+
+                            <div className='space-y-2 pl-14'>
+                                <Link
+                                    href='tel:+07967776555'
+                                    className='underline flex items-center justify-between text-sm font-medium text-white hover:text-slate-300 transition-colors group/phone'
+                                >
+                                    <span>+079-6777 6555</span>
+                                    <ArrowUpRight
+                                        size={14}
+                                        className='opacity-0 group-hover/phone:opacity-100 transition-opacity'
+                                    />
+                                </Link>
+                                <Link
+                                    href='tel:+919429060835'
+                                    className='underline flex items-center justify-between text-sm font-medium text-white hover:text-slate-300 transition-colors group/phone'
+                                >
+                                    <span>+91-94290 60835</span>
+                                    <ArrowUpRight
+                                        size={14}
+                                        className='opacity-0 group-hover/phone:opacity-100 transition-opacity'
+                                    />
+                                </Link>
+                                <Link
+                                    href='tel:+918905740815'
+                                    className='underline flex items-center justify-between text-sm font-medium text-white hover:text-slate-300 transition-colors group/phone'
+                                >
+                                    <span>+91-89057 40815</span>
+                                    <ArrowUpRight
+                                        size={14}
+                                        className='opacity-0 group-hover/phone:opacity-100 transition-opacity'
+                                    />
+                                </Link>
                             </div>
-                            <ArrowUpRight
-                                size={16}
-                                className='ml-auto opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-slate-400'
-                            />
-                        </Link>
+                        </div>
                     </div>
 
                     {/* COL 4: MAP with FLOATING ADDRESS (5 cols) */}
