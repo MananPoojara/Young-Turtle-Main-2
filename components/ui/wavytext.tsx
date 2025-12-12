@@ -13,9 +13,9 @@ export const TortoiseQuote = () => {
                         text-white 
                         text-4xl
                         md:text-6xl
-                        lg:text-7xl
-                        xl:text-7xl
-                        2xl:text-8xl
+                        lg:text-6xl
+                        xl:text-6xl
+                        2xl:text-7xl
                         leading-tight
                         tracking-tight
                         mb-6
