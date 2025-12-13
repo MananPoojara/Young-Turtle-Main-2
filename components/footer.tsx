@@ -212,13 +212,13 @@ export function Footer() {
                                         info@youngturtle.ooo
                                     </a>
                                 </p>
-                                <p>Phone: +91-9530903324</p>
+                                <p>Phone: <a href='tel:+919530903324' className='underline'>+91-9530903324</a></p>
                             </div>
                             <div className="space-y-1">
                                 <p className="font-semibold">SEBI Local Office</p>
                                 <p>PN-C/7, G Block BKC, Bandra Kurla Complex</p>
                                 <p> Bandra East, Mumbai, Maharashtra 400051</p>
-                                <p>Tel: +022-26449000</p>
+                                <p>Tel: <a href='tel:+2226449000' className='underline'>+022-26449000</a></p>
                             </div>
                         </div>
 
