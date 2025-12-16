@@ -2,7 +2,7 @@
 
 import { PageHero } from '@/components/page-hero'
 import { SectionWrapper } from '@/components/section-wrapper'
-import PeoplePage from '@/components/team'
+import { Team } from '@/components/team'
 import Image from 'next/image'
 import team from '@/public/misc-img/hired.jpeg'
 import About from '@/public/Hero-img/about-hero.png'
@@ -48,7 +48,7 @@ export default function AboutPage() {
             {/* Team Section */}
             <div id='leadership-section'>
                 <SectionWrapper className='pt-32 bg-sunbeam-pearl'>
-                    <PeoplePage />
+                    <Team />
                 </SectionWrapper>
             </div>
 

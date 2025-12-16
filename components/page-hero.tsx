@@ -4,7 +4,7 @@ import { ArrowDown } from 'lucide-react';
 interface PageHeroProps {
     title: string;
     subtitle?: string;
-    src?: string; // Kept for compatibility, though unused in this unique variant
+    src?: string;
 }
 
 export const PageHero: React.FC<PageHeroProps> = ({
@@ -24,14 +24,14 @@ export const PageHero: React.FC<PageHeroProps> = ({
         if (!ctx) return;
 
         // --- Configuration ---
-        const particleCount = 40; // Number of distinct tracers
+        const particleCount = 60;
         const particles: any[] = [];
 
         // Lorenz Attractor Constants
         const SIGMA = 10;
         const RHO = 28;
         const BETA = 8 / 3;
-        const DT = 0.008; // Speed of simulation
+        const DT = 0.006;
 
         // Interaction State
         let rotationX = 0;
@@ -40,49 +40,55 @@ export const PageHero: React.FC<PageHeroProps> = ({
         let targetRotationY = 0;
 
         // Initialize Particles
-        // We start them slightly offset to create a "ribbon" effect
         for (let i = 0; i < particleCount; i++) {
             particles.push({
-                x: 0.1 + (i * 0.01),
-                y: 0,
-                z: 0,
-                color: i % 2 === 0 ? '#ffffff' : '#fbbf24', // Amber or Turtle Light
+                x: (Math.random() - 0.5) * 20,
+                y: (Math.random() - 0.5) * 20,
+                z: (Math.random() - 0.5) * 20 + 25,
+                color: Math.random() > 0.4 ? '#ffffff' : '#fbbf24', // White or Amber
                 history: []
             });
         }
 
         const resize = () => {
-            canvas.width = container.clientWidth;
-            canvas.height = container.clientHeight;
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = container.clientWidth * dpr;
+            canvas.height = container.clientHeight * dpr;
+            ctx.scale(dpr, dpr);
+            canvas.style.width = `${container.clientWidth}px`;
+            canvas.style.height = `${container.clientHeight}px`;
         };
         window.addEventListener('resize', resize);
         resize();
 
         const handleMouseMove = (e: MouseEvent) => {
             const { innerWidth, innerHeight } = window;
-            // Map mouse to rotation angles (-1 to 1)
             targetRotationY = (e.clientX / innerWidth - 0.5) * 2;
             targetRotationX = (e.clientY / innerHeight - 0.5) * 2;
         };
         window.addEventListener('mousemove', handleMouseMove);
 
+        let animationFrameId: number;
+
         // --- Animation Loop ---
         const animate = () => {
-            // Fade out effect for trails
-            // We draw a semi-transparent rectangle over the previous frame
-            ctx.fillStyle = '#275669'; // #0f2933 with opacity
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            const width = container.clientWidth;
+            const height = container.clientHeight;
 
-            // Smooth rotation interpolation
-            rotationX += (targetRotationX - rotationX) * 0.05;
-            rotationY += (targetRotationY - rotationY) * 0.05;
+            // Trail Effect: Fade out previous frame using semi-transparent background
+            ctx.fillStyle = 'rgba(39, 86, 105, 0.15)'; // #275669 with opacity
+            ctx.fillRect(0, 0, width, height);
 
-            const cx = canvas.width / 2;
-            const cy = canvas.height / 2;
-            const scale = Math.min(canvas.width, canvas.height) / 50; // Scale based on screen size
+            // Smooth rotation
+            rotationX += (targetRotationX - rotationX) * 0.02;
+            rotationY += (targetRotationY - rotationY) * 0.02;
+
+            const cx = width / 2;
+            const cy = height / 2;
+            const scale = Math.min(width, height) / 45;
 
             particles.forEach((p) => {
-                // 1. Calculate Lorenz Attractor Math (Differential Equations)
+                // 1. Lorenz Attractor Equations
                 const dx = (SIGMA * (p.y - p.x)) * DT;
                 const dy = (p.x * (RHO - p.z) - p.y) * DT;
                 const dz = (p.x * p.y - BETA * p.z) * DT;
@@ -91,50 +97,38 @@ export const PageHero: React.FC<PageHeroProps> = ({
                 p.y += dy;
                 p.z += dz;
 
-                // 2. 3D Rotation Math
-                // Rotate around Y axis
+                // 2. 3D Rotation
                 let x1 = p.x * Math.cos(rotationY) - p.z * Math.sin(rotationY);
                 let z1 = p.z * Math.cos(rotationY) + p.x * Math.sin(rotationY);
                 let y1 = p.y;
 
-                // Rotate around X axis
                 let y2 = y1 * Math.cos(rotationX) - z1 * Math.sin(rotationX);
                 let z2 = z1 * Math.cos(rotationX) + y1 * Math.sin(rotationX);
                 let x2 = x1;
 
-                // 3. Projection (3D to 2D)
+                // 3. Projection
                 const x2d = cx + x2 * scale;
-                const y2d = cy + y2 * scale; // Flip Y for canvas
+                const y2d = cy + y2 * scale;
 
                 // 4. Draw
                 ctx.beginPath();
-                // If we have a history, draw line from last point
                 if (p.history.length > 0) {
                     ctx.moveTo(p.history[p.history.length - 1].x, p.history[p.history.length - 1].y);
                     ctx.lineTo(x2d, y2d);
                 } else {
-                    // First frame
-                    ctx.fillRect(x2d, y2d, 2, 2);
+                    ctx.fillRect(x2d, y2d, 1, 1);
                 }
 
-                // Style
                 ctx.strokeStyle = p.color;
                 ctx.lineWidth = 1.5;
                 ctx.lineCap = 'round';
                 ctx.stroke();
 
-                // Glow effect
-                if (Math.random() > 0.98) {
-                    ctx.fillStyle = '#fff';
-                    ctx.fillRect(x2d - 1, y2d - 1, 3, 3);
-                }
-
-                // Update History
                 p.history.push({ x: x2d, y: y2d });
-                if (p.history.length > 2) p.history.shift(); // Keep trail short, the rect fade handles the rest
+                if (p.history.length > 8) p.history.shift();
             });
 
-            requestAnimationFrame(animate);
+            animationFrameId = requestAnimationFrame(animate);
         };
 
         animate();
@@ -143,70 +137,50 @@ export const PageHero: React.FC<PageHeroProps> = ({
         return () => {
             window.removeEventListener('resize', resize);
             window.removeEventListener('mousemove', handleMouseMove);
+            cancelAnimationFrame(animationFrameId);
         };
     }, []);
 
     return (
         <section ref={containerRef} className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#275669]">
-            {/* 1. Generative Canvas Layer */}
             <canvas
                 ref={canvasRef}
                 className={`absolute inset-0 z-0 transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
             />
 
-            {/* Vignette Overlay to focus center */}
-            <div className="absolute inset-0 z-10 bg-radial-gradient via-[#275669] to-[#275669] pointer-events-none" />
+            {/* Gradient Overlay for Text Readability and Vignette */}
+            <div className="absolute inset-0 z-10 bg-radial-gradient pointer-events-none" />
 
-            {/* 2. Content Layer */}
-            <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-8 text-center flex flex-col items-center">
-
-
-
-                {/* Main Title */}
-                <h1 className="max-w-5xl text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-medium text-white tracking-tight leading-[1.1] mb-8 opacity-0 animate-fade-in-up mix-blend-overlay" style={{ animationDelay: '0.4s' }}>
+            <div className="relative z-20 max-w-6xl mx-auto px-6 text-center">
+                {/* Title Animation */}
+                <h1 className="text-5xl sm:text-7xl md:text-8xl font-serif font-medium text-white mb-6 tracking-tight leading-tight opacity-0 animate-[fadeInUp_1s_ease-out_forwards_0.2s] mix-blend-overlay">
                     {title}
                 </h1>
 
-                {/* Subtitle */}
+                {/* Subtitle Animation */}
                 {subtitle && (
-                    <p className="max-w-2xl text-lg md:text-xl text-slate-300 font-light leading-relaxed opacity-0 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+                    <p className="text-lg sm:text-2xl text-[#a5c0cc] font-light max-w-3xl mx-auto leading-relaxed opacity-0 animate-[fadeInUp_1s_ease-out_forwards_0.5s]">
                         {subtitle}
                     </p>
                 )}
             </div>
 
-
-
-            {/* Scroll Indicator */}
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 opacity-0 animate-fade-in" style={{ animationDelay: '1.5s' }}>
-                <span className="text-[10px] uppercase tracking-[0.2em] text-white/50">Scroll</span>
-                <ArrowDown className="w-4 h-4 text-amber-400/70 animate-bounce" />
+            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-20 opacity-0 animate-[fadeIn_1s_ease-out_forwards_1.5s]">
+                <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">Scroll</span>
+                <ArrowDown className="w-5 h-5 text-[#fbbf24] animate-bounce" />
             </div>
 
             <style>{`
                 .bg-radial-gradient {
-                    background: radial-gradient(circle at center, transparent 0%, rgba(15, 41, 51, 0.4) 60%, rgba(15, 41, 51, 1) 100%);
-                }
-                @keyframes slideDown {
-                    from { opacity: 0; transform: translateY(-20px); }
-                    to { opacity: 1; transform: translateY(0); }
-                }
-                .animate-slide-down {
-                    animation: slideDown 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+                    background: radial-gradient(circle at center, transparent 20%, rgba(39, 86, 105, 0.4) 60%, rgba(39, 86, 105, 1) 100%);
                 }
                 @keyframes fadeInUp {
                     from { opacity: 0; transform: translateY(30px); }
                     to { opacity: 1; transform: translateY(0); }
                 }
-                .animate-fade-in-up {
-                    animation: fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-                }
                 @keyframes fadeIn {
                     from { opacity: 0; }
                     to { opacity: 1; }
-                }
-                .animate-fade-in {
-                    animation: fadeIn 1.5s ease-out forwards;
                 }
             `}</style>
         </section>
