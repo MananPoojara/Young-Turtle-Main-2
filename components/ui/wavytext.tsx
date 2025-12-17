@@ -40,8 +40,6 @@ const slides: SlideContent[] = [
                 { text: 'Precision', highlight: true },
                 { text: 'is', highlight: false },
                 { text: 'achieved', highlight: false },
-            ],
-            [
                 { text: 'by', highlight: false },
                 { text: 'Consistency', highlight: true },
             ],
@@ -54,6 +52,7 @@ const slides: SlideContent[] = [
                 { text: 'Consistency', highlight: true },
                 { text: 'comes', highlight: false },
                 { text: 'from', highlight: false },
+                { text: 'Systems', highlight: true, main: true },
             ],
             [{ text: 'System', highlight: true, main: true }],
         ],
@@ -109,7 +108,7 @@ const LineRow: React.FC<{ words: { text: string; highlight?: boolean; main?: boo
     words,
 }) => {
     return (
-        <div className='flex flex-wrap justify-center gap-x-[0.35em] md:gap-x-[0.45em] leading-[1.2] py-1 md:py-2'>
+        <div className='flex flex-wrap justify-center gap-x-[0.35em] 2xl:gap-x-[0.60em] xl:gap-x-[0.90em] md:gap-x-[0.45em] leading-[1.2] py-1 md:py-2'>
             {words.map((word, i) => (
                 <Word key={i} {...word} />
             ))}
@@ -148,19 +147,24 @@ const Word: React.FC<{ text: string; highlight?: boolean; main?: boolean }> = ({
 
     return (
         <motion.span
-            variants={blurVariants}
+            initial={{ opacity: 0, scale: 1.1, filter: 'blur(12px)' }}
+            animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+            exit={{ opacity: 0, scale: 0.95, filter: 'blur(8px)' }}
+            transition={{
+                duration: 1.2,
+                ease: [0.25, 0.4, 0.25, 1],
+            }}
             className={`
         inline-block relative
         ${
             main
-                ? 'text-4xl 2xl:text-8xl xl:text-7xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tighter'
-                : 'text-3xl 2xl:text-7xl xl:text-6xl md:text-4xl lg:text-5xl font-light tracking-tight'
+                ? 'text-3xl 2xl:text-5xl xl:text-4xl md:text-3xl lg:text-4xl font-light tracking-wide'
+                : 'text-3xl 2xl:text-5xl xl:text-4xl md:text-3xl lg:text-4xl font-light tracking-tight'
         }
         ${highlight ? 'text-[#ffb900]' : 'text-white/90'}
-      `}
+    `}
         >
             {text}
-            {/* Add a subtle glow behind main words for depth */}
         </motion.span>
     )
 }

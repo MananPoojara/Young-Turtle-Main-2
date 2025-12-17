@@ -2,7 +2,7 @@
 
 import { PageHero } from '@/components/page-hero'
 import { SectionWrapper } from '@/components/section-wrapper'
-import PeoplePage from '@/components/team'
+import { Team } from '@/components/team'
 import Image from 'next/image'
 import team from '@/public/misc-img/hired.jpeg'
 import About from '@/public/Hero-img/about-hero.png'
@@ -37,17 +37,6 @@ export default function AboutPage() {
                                     complexity, and ambiguity into vision, understanding, clarity, and adaptability
                                     through our proprietary Quantical Models.
                                 </p>
-                                <p className='text-muted-foreground leading-relaxed'>
-                                    These Quantical Models integrate quantitative analysis with technical analysis,
-                                    combining data-driven mathematical modelling with advanced price and volume pattern
-                                    recognition to deliver a disciplined and systematic trading framework.
-                                </p>
-                                <p className='text-muted-foreground leading-relaxed'>
-                                    This fusion harnesses the strengths of both disciplines—combining rigorous
-                                    statistical validation with behaviour-driven price signals—to refine trade timing,
-                                    enhance robustness across diverse market regimes, and elevate risk-adjusted returns
-                                    through the seamless integration of mathematical precision and real-market dynamics.
-                                </p>
                             </div>
                         </div>
                     </div>
@@ -59,20 +48,12 @@ export default function AboutPage() {
             {/* Team Section */}
             <div id='leadership-section'>
                 <SectionWrapper className='pt-32 bg-sunbeam-pearl'>
-                    <PeoplePage />
+                    <Team />
                 </SectionWrapper>
             </div>
 
-            <SectionWrapper className='px-4 py-20 bg-white'>
-                <div className='relative rounded-3xl max-w-6xl mx-auto w-full h-[350px] sm:h-[420px]'>
-                    <div className='w-full h-full relative overflow-hidden rounded-3xl'>
-                        <Image
-                            src={team.src}
-                            alt='Community'
-                            className='object-cover hover:scale-105 transition-transform duration-1000'
-                            fill
-                        />
 
+<<<<<<< HEAD
                         <div className='absolute inset-0 bg-[#275669]/40 pointer-events-none'></div>
 
                         <div className='absolute inset-0 flex flex-col items-center justify-center text-center px-6 pointer-events-none'>
@@ -90,5 +71,8 @@ export default function AboutPage() {
                 </div>
             </SectionWrapper>
         </div>
+=======
+        </>
+>>>>>>> 0d9a738f6b5c1daeb2db304b6c255711b53346fd
     )
 }

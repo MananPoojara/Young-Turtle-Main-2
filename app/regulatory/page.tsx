@@ -81,6 +81,172 @@ export default function RegulatoryPage() {
                     </div>
                 </motion.div>
             ))}
+
+            {activeTab === 'complaints' && (
+                <motion.div
+                    key='complaints'
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                    className='bg-white p-8 md:p-10 border border-border shadow-sm rounded-sm'
+                >
+                    <div className='border-b border-gray-100 pb-6 mb-8'>
+                        <p className='text-gray-600 leading-relaxed'>
+                            At Young Turtle Capital, we are committed to handling complaints in a timely and effective
+                            manner. If you have any concerns or wish to register a complaint, please follow the process
+                            outlined below.
+                        </p>
+                    </div>
+
+                    <div className='space-y-10'>
+                        {/* Step 1 */}
+                        <div className='relative md:pl-0'>
+                            <div className='grid md:grid-cols-[100px_1fr] gap-6'>
+                                <div className='hidden md:flex flex-col items-center'>
+                                    <div className='w-10 h-10 bg-white border-2 border-brand-gold text-brand-gold rounded-full flex items-center justify-center font-bold text-lg mb-2'>
+                                        1
+                                    </div>
+                                    <div className='flex-1 w-px bg-gray-200 border-l border-dashed border-gray-300'></div>
+                                </div>
+                                <div>
+                                    <h3 className='text-lg font-bold text-abyssal-blue mb-4'>
+                                        Contact our Investor Relations Officer
+                                    </h3>
+                                    <div className='bg-sunbeam-pearl p-6 rounded-sm border border-border/50'>
+                                        <div className='grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8 text-sm text-gray-700'>
+                                            <div>
+                                                <span className='block text-xs text-gray-400 uppercase tracking-wider mb-1'>
+                                                    Name
+                                                </span>
+                                                <span className='font-semibold text-base'>Mr. Hitesh Panara</span>
+                                            </div>
+                                            <div>
+                                                <span className='block text-xs text-gray-400 uppercase tracking-wider mb-1'>
+                                                    Designation
+                                                </span>
+                                                <span className='font-semibold text-base'>Head - Operations</span>
+                                            </div>
+                                            <div className='md:col-span-2'>
+                                                <span className='block text-xs text-gray-400 uppercase tracking-wider mb-1'>
+                                                    Address
+                                                </span>
+                                                <Link
+                                                    href='https://maps.app.goo.gl/Eq3CUBqQEbxmaKAc9'
+                                                    target='_blank'
+                                                    rel='noopener noreferrer'
+                                                    className='hover:underline block opacity-90 text-xs sm:text-sm leading-relaxed hover:text-brand-gold hover:opacity-100 transition-all duration-300 cursor-pointer'
+                                                >
+                                                    4th Floor, Safal Profitaire, A-6, Corporate Rd, opp. AUDA Garden,
+                                                    Satellite, Prahlad Nagar, Ahmedabad, Gujarat, India – 380015
+                                                </Link>
+                                            </div>
+                                            <div>
+                                                <span className='block text-xs text-gray-400 uppercase tracking-wider mb-1'>
+                                                    Phone
+                                                </span>
+                                                <span>+079-6777 6538</span>
+                                            </div>
+                                            <div>
+                                                <span className='block text-xs text-gray-400 uppercase tracking-wider mb-1'>
+                                                    Email
+                                                </span>
+                                                <a
+                                                    href='mailto:complaints@youngturtle.ooo'
+                                                    className='text-brand-gold font-medium hover:underline'
+                                                >
+                                                    complaints@youngturtle.ooo
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Step 2 */}
+                        <div className='relative md:pl-0'>
+                            <div className='grid md:grid-cols-[100px_1fr] gap-6'>
+                                <div className='hidden md:flex flex-col items-center'>
+                                    <div className='w-10 h-10 bg-white border-2 border-brand-gold text-brand-gold rounded-full flex items-center justify-center font-bold text-lg mb-2'>
+                                        2
+                                    </div>
+                                    <div className='flex-1 w-px bg-gray-200 border-l border-dashed border-gray-300'></div>
+                                </div>
+                                <div>
+                                    <h3 className='text-lg font-bold text-abyssal-blue mb-2'>Escalation</h3>
+                                    <p className='text-gray-600 text-sm leading-relaxed mb-2'>
+                                        If you are not satisfied with the response received in Step 1, you may escalate
+                                        the concern with all relevant details to:
+                                    </p>
+                                    <a
+                                        href='mailto:escalations@youngturtle.ooo'
+                                        className='inline-flex items-center gap-2 text-brand-gold font-semibold hover:underline'
+                                    >
+                                        escalations@youngturtle.ooo <ChevronRight size={14} />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Step 3 */}
+                        <div className='relative md:pl-0'>
+                            <div className='grid md:grid-cols-[100px_1fr] gap-6'>
+                                <div className='hidden md:flex flex-col items-center'>
+                                    <div className='w-10 h-10 bg-white border-2 border-brand-gold text-brand-gold rounded-full flex items-center justify-center font-bold text-lg'>
+                                        3
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 className='text-lg font-bold text-abyssal-blue mb-4'>Regulatory Redressal</h3>
+                                    <p className='text-gray-600 text-sm mb-4'>
+                                        If the resolution provided does not meet your expectation, you may approach:
+                                    </p>
+
+                                    <div className='grid md:grid-cols-2 gap-4'>
+                                        <a
+                                            href='https://scores.sebi.gov.in/'
+                                            className='group block p-4 bg-gray-50 hover:bg-brand-gold/5 border border-transparent hover:border-brand-gold/30 rounded-sm transition-all'
+                                        >
+                                            <div className='flex items-start gap-3'>
+                                                <ShieldAlert className='w-5 h-5 text-brand-gold mt-0.5' />
+                                                <div>
+                                                    <span className='font-bold text-brand-dark block mb-1 group-hover:text-brand-gold transition-colors'>
+                                                        SEBI SCORES
+                                                    </span>
+                                                    <span className='text-xs text-gray-500 leading-snug block'>
+                                                        SEBI Complaints Redressal System. Visit scores.gov.in or
+                                                        download the mobile app.
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a
+                                            href='#'
+                                            className='group block p-4 bg-gray-50 hover:bg-brand-gold/5 border border-transparent hover:border-brand-gold/30 rounded-sm transition-all'
+                                        >
+                                            <div className='flex items-start gap-3'>
+                                                <a href='https://smartodr.in/login'>
+                                                    <ShieldAlert className='w-5 h-5 text-brand-gold mt-0.5' />
+                                                    <div>
+                                                        <span className='font-bold text-brand-dark block mb-1 group-hover:text-brand-gold transition-colors'>
+                                                            SMART ODR
+                                                        </span>
+                                                        <span className='text-xs text-gray-500 leading-snug block'>
+                                                            Online Dispute Resolution Portal. Can be initiated at any
+                                                            stage.
+                                                        </span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+            )}
         </div>
     )
 
