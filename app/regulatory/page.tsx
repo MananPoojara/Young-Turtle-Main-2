@@ -85,13 +85,13 @@ export default function RegulatoryPage() {
     )
 
     return (
-        <div className='pt-20'>
+        <>
             <PageHero
                 title='Regulatory'
                 subtitle='Transparency and compliance are the cornerstones of our relationship with investors.'
             />
 
-            <SectionWrapper className='pt-20 lg:pt-24 xl:pt-20 2xl:pt-24'>
+            <SectionWrapper className='pt-20  lg:pt-24 xl:pt-20 2xl:pt-24'>
                 <div className='max-w-5xl mx-auto px-6 lg:px-8'>
                     {/* Top Tab Navigation */}
                     <div className='flex flex-col md:flex-row bg-white rounded-md shadow-sm border border-border p-1 mb-12'>
@@ -243,31 +243,29 @@ export default function RegulatoryPage() {
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
 
-                                        {/* Step 2 */}
-                                        <div className='relative md:pl-0'>
-                                            <div className='grid md:grid-cols-[100px_1fr] gap-6'>
-                                                <div className='hidden md:flex flex-col items-center'>
-                                                    <div className='w-10 h-10 bg-white border-2 border-brand-gold text-brand-gold rounded-full flex items-center justify-center font-bold text-lg mb-2'>
-                                                        2
-                                                    </div>
-                                                    <div className='flex-1 w-px bg-gray-200 border-l border-dashed border-gray-300'></div>
+                                    {/* Step 2 */}
+                                    <div className='relative md:pl-0'>
+                                        <div className='grid md:grid-cols-[100px_1fr] gap-6'>
+                                            <div className='hidden md:flex flex-col items-center'>
+                                                <div className='w-10 h-10 bg-white border-2 border-brand-gold text-brand-gold rounded-full flex items-center justify-center font-bold text-lg mb-2'>
+                                                    2
                                                 </div>
-                                                <div>
-                                                    <h3 className='text-lg font-bold text-abyssal-blue mb-2'>
-                                                        Escalation
-                                                    </h3>
-                                                    <p className='text-gray-600 text-sm leading-relaxed mb-2'>
-                                                        If you are not satisfied with the response received in Step 1,
-                                                        you may escalate the concern with all relevant details to:
-                                                    </p>
-                                                    <a
-                                                        href='mailto:escalations@youngturtle.ooo'
-                                                        className='inline-flex items-center gap-2 text-brand-gold font-semibold hover:underline'
-                                                    >
-                                                        escalations@youngturtle.ooo <ChevronRight size={14} />
-                                                    </a>
-                                                </div>
+                                                <div className='flex-1 w-px bg-gray-200 border-l border-dashed border-gray-300'></div>
+                                            </div>
+                                            <div>
+                                                <h3 className='text-lg font-bold text-abyssal-blue mb-2'>Escalation</h3>
+                                                <p className='text-gray-600 text-sm leading-relaxed mb-2'>
+                                                    If you are not satisfied with the response received in Step 1, you
+                                                    may escalate the concern with all relevant details to:
+                                                </p>
+                                                <a
+                                                    href='mailto:escalations@youngturtle.ooo'
+                                                    className='inline-flex items-center gap-2 text-brand-gold font-semibold hover:underline'
+                                                >
+                                                    escalations@youngturtle.ooo <ChevronRight size={14} />
+                                                </a>
                                             </div>
                                         </div>
 
@@ -348,17 +346,9 @@ export default function RegulatoryPage() {
                                 industry-standard security measures to protect your information.
                             </p>
                         </div>
-                        <div>
-                            <h4 className='font-bold text-[#275669] mb-3 text-base'>Terms of Use</h4>
-                            <p className='leading-relaxed'>
-                                By accessing this website, you agree to these terms of use. The content is provided for
-                                informational purposes only and should not be construed as investment advice. All
-                                content on this website is the property of Young Turtle Capital.
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }

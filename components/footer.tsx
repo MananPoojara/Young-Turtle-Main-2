@@ -1,6 +1,6 @@
 'use client'
 
-import { Mail, MapPin, Linkedin, Twitter, Facebook, Instagram, Phone, ArrowUpRight } from 'lucide-react'
+import { Mail, MapPin, Linkedin, Twitter, Facebook, Instagram, Phone, FileText, ArrowUpRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -8,7 +8,7 @@ export function Footer() {
     const year = new Date().getFullYear()
 
     return (
-        <footer className='relative bg-linear-to-br from-[#275669] via-[#1e4552] to-[#1a3d4a] text-white'>
+        <footer className='relative bg-gradient-to-br from-[#275669] via-[#1e4552] to-[#1a3d4a] text-white'>
             {/* decorative top border */}
             <div className='h-1 bg-white' />
 
@@ -196,29 +196,29 @@ export function Footer() {
                 {/* REGULATORY BOX */}
                 <div className='border-t border-white/10 py-10'>
                     <div className='space-y-4 rounded-2xl bg-white/5 p-5 text-xs leading-relaxed backdrop-blur sm:p-6 sm:text-sm'>
-                        <p className='font-semibold'>Young Turtle Investment Advisors LLP (PMS)</p>
+                        <p className='font-semibold'>Young Turtle LLP</p>
                         <p className='opacity-90'>
-                            SEBI Registered Portfolio Manager. Registration and other regulatory details will be updated
-                            here. Young Turtle is committed to transparency and investor protection.
+                            SEBI Registered CAT-III AIF. Registration and other regulatory details will be updated here.
+                            Young Turtle is committed to transparency and investor protection.
                         </p>
 
                         <div className='grid grid-cols-1 gap-4 pt-4 sm:grid-cols-2'>
                             <div className='space-y-1'>
                                 <p className='font-semibold'>Principal Officer</p>
-                                <p>[Name Here]</p>
+                                <p>Uppma Ginotra</p>
                                 <p>
-                                    Email:{' '}
-                                    <Link href='mailto:compliance@youngturtle.in' className='underline'>
-                                        compliance@youngturtle.ooo
-                                    </Link>
+                                    Email:{''}
+                                    <a href='mailto:info@youngturtle.ooo' className='underline'>
+                                        info@youngturtle.ooo
+                                    </a>
                                 </p>
-                                <p>Phone: +91-0000000000</p>
+                                <p>Phone: +91-9530903324</p>
                             </div>
                             <div className='space-y-1'>
                                 <p className='font-semibold'>SEBI Local Office</p>
-                                <p>[Office Name], [Road Name]</p>
-                                <p>[Area], Bengaluru 5600xx</p>
-                                <p>Tel: +91-080-00000000</p>
+                                <p>PN-C/7, G Block BKC, Bandra Kurla Complex</p>
+                                <p> Bandra East, Mumbai, Maharashtra 400051</p>
+                                <p>Tel: +022-26449000</p>
                             </div>
                         </div>
 

@@ -20,64 +20,54 @@ const benefitsList = [
 
 // ===== JOB OPENINGS =====
 type Opening = {
-    id: number
-    title: string
-    location: string
-    type: string
-    department: string
-    description: string
-    tags: string[]
+  id: number
+  title: string
+  location: string
+  type: string
+  department: string
 }
 
 const openings: Opening[] = [
-    {
-        id: 1,
-        title: 'Quantitative Researcher',
-        location: 'New York',
-        type: 'Full-time',
-        department: 'Research',
-        description:
-            'Develop and implement systematic trading strategies using advanced statistical and machine learning techniques.',
-        tags: ['Python', 'C++', 'ML'],
-    },
-    {
-        id: 2,
-        title: 'Senior Software Engineer',
-        location: 'London',
-        type: 'Full-time',
-        department: 'Technology',
-        description:
-            'Build high-performance trading systems and data infrastructure supporting our quantitative strategies.',
-        tags: ['Low Latency', 'Rust', 'Distributed Systems'],
-    },
-    {
-        id: 3,
-        title: 'Portfolio Manager - Macro',
-        location: 'Singapore',
-        type: 'Full-time',
-        department: 'Investment',
-        description: 'Lead development and management of systematic macro strategies across Asia-Pacific markets.',
-        tags: ['Alpha Generation', 'Risk Mgmt'],
-    },
-    {
-        id: 4,
-        title: 'Risk Analyst',
-        location: 'New York',
-        type: 'Full-time',
-        department: 'Risk',
-        description:
-            'Monitor and analyze portfolio risks, develop risk models, and enhance our risk management framework.',
-        tags: ['SQL', 'Tableau', 'Modeling'],
-    },
-    {
-        id: 5,
-        title: 'Data Engineer',
-        location: 'Remote',
-        type: 'Full-time',
-        department: 'Technology',
-        description: 'Architect and maintain the data pipelines that fuel our research engine.',
-        tags: ['ETL', 'Big Data', 'Cloud'],
-    },
+  {
+    id: 1,
+    title: "Quantitative Researcher",
+    location: "Ahmedabad, India",
+    type: "Full-time",
+    department: "Research",
+
+  },
+  {
+    id: 2,
+    title: "Senior Software Engineer",
+    location: "Ahmedabad, India",
+    type: "Full-time",
+    department: "Technology",
+
+  },
+  {
+    id: 2,
+    title: "Senior Research Analyst",
+    location: "Ahmedabad, India",
+    type: "Full-time",
+    department: "Technology",
+
+  },
+  {
+    id: 2,
+    title: "Junior Research Analyst",
+    location: "Ahmedabad, India",
+    type: "Full-time",
+    department: "Technology",
+
+  },
+  {
+    id: 4,
+    title: "Risk Analyst",
+    location: "Ahmedabad, India",
+    type: "Full-time",
+    department: "Risk",
+
+  },
 ]
 
 // =======================================
@@ -89,10 +79,13 @@ export default function CareersPage() {
 
     const filteredOpenings = selectedDept === 'All' ? openings : openings.filter((o) => o.department === selectedDept)
 
-    return (
-        <div className='pt-20'>
-            {/* HERO */}
-            <PageHero title='Join Young Turtle' subtitle='Build your career at the forefront of quantitative finance' />
+  return (
+    <>
+      {/* HERO */}
+      <PageHero
+        title="Join Young Turtle"
+        subtitle="“The people who are crazy enough to think they can change the world are the ones who do.”"
+      />
 
             {/* WHY YOUNG TURTLE */}
             <SectionWrapper className='py-24 lg:py-32 relative overflow-hidden'>
@@ -118,73 +111,133 @@ export default function CareersPage() {
                                 </span>
                             </h2>
 
-                            <p className='mt-8 text-muted-foreground leading-relaxed text-lg font-light'>
-                                We seek exceptional individuals who combine intellectual curiosity with rigorous
-                                analytical skills. At Young Turtle, you won&apos;t just analyze the market—you’ll help
-                                shape its future alongside some of the brightest minds in quantitative finance.
-                            </p>
-                        </div>
+              <h2 className="font-serif text-4xl md:text-5xl text-abyssal-blue leading-tight">
+                Where intellect meets{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-abyssal-blue to-aqua-mist/80">
+                  impact.
+                </span>
+              </h2>
 
-                        {/* RIGHT SIDE – BENEFITS GRID */}
-                        <div className='lg:col-span-7'>
-                            <h3 className='font-serif text-2xl text-abyssal-blue mb-8 flex items-center gap-3'>
-                                <span className='w-8 h-1 rounded-2xl bg-[#275669]'></span>
-                                Benefits & Perks
-                            </h3>
+              <p className="mt-8 text-muted-foreground leading-relaxed text-lg font-light">
+                We seek exceptional individuals who combine intellectual curiosity with rigorous analytical skills.
+                At Young Turtle, you won’t just analyze the market—you’ll help shape its future alongside some of the
+                brightest minds in quantitative finance.
+              </p>
 
-                            <div className='grid md:grid-cols-2 gap-4'>
-                                {benefitsList.map((benefit, index) => (
-                                    <motion.div
-                                        key={index}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: index * 0.1 }}
-                                        whileHover={{ y: -5 }}
-                                        className='p-6 bg-white border border-border rounded-xl shadow-sm hover:shadow-md transition-all duration-300 group'
-                                    >
-                                        <p className='flex items-start gap-5 text-sm text-abyssal-blue/80 font-medium leading-relaxed'>
-                                            <svg className='w-4 h-4 mt-2 shrink-0' fill='#275669' viewBox='0 0 20 20'>
-                                                <path d='M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z' />
-                                            </svg>{' '}
-                                            <span>{benefit.text}</span>
-                                        </p>
-                                    </motion.div>
-                                ))}
-                            </div>
-                        </div>
+              <div className="mt-10 flex gap-4">
+                <div className="flex -space-x-4">
+                  {[1, 2, 3].map((i) => (
+                    <div key={i} className="w-12 h-12 rounded-full border-2 border-sunbeam-pearl bg-gray-200 overflow-hidden">
+                      <img src={`https://picsum.photos/100/100?random=${i}`} className="w-full h-full object-cover" />
                     </div>
+                  ))}
                 </div>
-            </SectionWrapper>
 
-            {/* FILTERED POSITIONS (INTERACTIVE GRID) */}
-            <SectionWrapper className='py-32 bg-white'>
-                <div className='max-w-7xl mx-auto px-6 lg:px-8'>
-                    {/* Filters */}
-                    <div className='flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8'>
-                        <div>
-                            <span className='text-xs uppercase tracking-[0.3em] text-[#275669] font-bold'>
-                                Opportunities
-                            </span>
-                            <h2 className='mt-4 font-serif text-4xl text-abyssal-blue'>Open Positions</h2>
-                        </div>
+                <div className="flex flex-col justify-center">
+                  <span className="text-abyssal-blue font-bold">150+</span>
+                  <span className="text-xs text-muted-foreground uppercase tracking-wide">Global Experts</span>
+                </div>
+              </div>
+            </div>
 
-                        <div className='flex flex-wrap gap-2 '>
-                            {departments.map((dept) => (
-                                <button
-                                    key={dept}
-                                    onClick={() => setSelectedDept(dept)}
-                                    className={`px-4 py-2 rounded-full text-xs uppercase tracking-wider transition-all duration-300 border cursor-pointer 
-                    ${
-                        selectedDept === dept
-                            ? 'bg-[#275669] text-white border-[#275669]'
-                            : 'bg-transparent text-muted-foreground border-border hover:bg-[#275669] hover:text-[#ffffff]'
+            {/* RIGHT SIDE – BENEFITS GRID */}
+            <div className="lg:col-span-7">
+              <h3 className="font-serif text-2xl text-abyssal-blue mb-8 flex items-center gap-3">
+                <span className="w-8 h-[2px] bg-[#275669]"></span>
+                Benefits & Perks
+              </h3>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                {benefitsList.map((benefit, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{ y: -5 }}
+                    className="p-6 bg-white border border-border rounded-xl shadow-sm hover:shadow-md transition-all duration-300 group"
+                  >
+                    <div className="w-10 h-10 rounded-lg bg-aqua-mist/10 flex items-center justify-center text-[#275669] group-hover:bg-transparent group-hover:text-aqua-mist transition-colors duration-300 mb-4">
+                      <benefit.icon size={20} />
+                    </div>
+                    <p className="text-sm text-abyssal-blue/80 font-medium leading-relaxed">
+                      {benefit.text}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </SectionWrapper>
+
+
+
+      {/* FILTERED POSITIONS (INTERACTIVE GRID) */}
+      <SectionWrapper className="py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+
+          {/* Filters */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+            <div>
+              <span className="text-xs uppercase tracking-[0.3em] text-aqua-mist font-bold">Opportunities</span>
+              <h2 className="mt-4 font-serif text-4xl text-abyssal-blue">Open Positions</h2>
+            </div>
+
+            <div className="flex flex-wrap gap-2 ">
+              {departments.map((dept) => (
+                <button
+                  key={dept}
+                  onClick={() => setSelectedDept(dept)}
+                  className={`px-4 py-2 rounded-full text-xs uppercase tracking-wider transition-all duration-300 border cursor-pointer 
+                    ${selectedDept === dept
+                      ? "bg-[#275669] text-white border-[#275669]"
+                      : "bg-transparent text-muted-foreground border-border hover:bg-[#275669] hover:text-[#ffffff]"
                     }`}
-                                >
-                                    {dept}
-                                </button>
-                            ))}
+                >
+                  {dept}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Filtered Results */}
+          <motion.div layout className="grid gap-4">
+            <AnimatePresence mode="popLayout">
+              {filteredOpenings.map((job) => (
+                <motion.div
+                  layout
+                  key={job.id}
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.2 }}
+                  className="group relative bg-sunbeam-pearl border border-border p-6 md:p-8 hover:border-aqua-mist/50 transition-colors duration-300 overflow-hidden"
+                >
+                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-abyssal-blue scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top" />
+
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="px-2 py-1 bg-white border border-border text-[10px] uppercase tracking-wider text-abyssal-blue font-semibold">
+                          {job.department}
+                        </span>
+                        <span className="text-xs text-muted-foreground">{job.type}</span>
+                      </div>
+
+                      <h3 className="font-serif text-2xl text-abyssal-blue mb-2 group-hover:text-[#275669] group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-abyssal-blue group-hover:to-aqua-mist transition-all duration-300">
+                        {job.title}
+                      </h3>
+
+                      <div className="flex flex-wrap items-center gap-4">
+                        <div className="flex items-center gap-1.5 text-xs font-medium text-abyssal-blue/70">
+                          <MapPin size={12} className="text-aqua-mist" />
+                          {job.location}
                         </div>
+
+                      </div>
                     </div>
 
                     {/* Filtered Results */}
@@ -297,5 +350,6 @@ export default function CareersPage() {
                 </div>
             </SectionWrapper>
         </div>
+        </>
     )
 }

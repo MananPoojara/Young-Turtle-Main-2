@@ -56,7 +56,7 @@ export default function Header() {
         if (isHomePage) {
             return '#275669' // Always original color on home page
         }
-        return isScrolled ? '#275669' : '#112733' // Dark initially, original after scroll
+        return isScrolled ? '#275669' : '#275669' // Dark initially, original after scroll
     }
 
     useEffect(() => {

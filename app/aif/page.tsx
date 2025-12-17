@@ -3,7 +3,7 @@ import { PageHero } from '@/components/page-hero'
 import React from 'react'
 import { SectionWrapper } from '@/components/section-wrapper'
 import { AnimatePresence, motion } from 'framer-motion'
-import aif from '@/public/Hero-img/aif-hero.png'
+import aif from '@/public/misc-img/new-fund-opration.jpg'
 
 interface Product {
     id: string
@@ -56,6 +56,77 @@ const page = () => {
                 title='Alternative Investment Funds'
                 subtitle='Build your career at the forefront of quantitative finance'
             />
+
+            <section className='relative w-full py-24 bg-[#ffffff] flex flex-col items-center border-t border-white/[0.03]'>
+                {/* Ambient Background Glow */}
+                <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[60%] bg-[#275669] opacity-10 blur-[120px] rounded-full pointer-events-none' />
+
+                {/* Header Section */}
+                <div className='relative z-10 text-center mb-16 px-6 max-w-4xl mx-auto'>
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className='font-serif text-3xl md:text-5xl text-[#275669] mb-6 tracking-tight'
+                    >
+                        Operational <span className='text-[#fbbf24]'>Structure</span>
+                    </motion.h2>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className='space-y-4'
+                    >
+                        <h3 className='font-serif text-xl md:text-2xl text-[#275669] italic font-light'>
+                            A rigorous framework ensuring transparency and alignment.
+                        </h3>
+                        <p className='font-sans text-[#275669] text-sm md:text-base tracking-wide leading-relaxed max-w-2xl mx-auto'>
+                            Our ecosystem integrates Investors, Sponsors, and Trustees with absolute precision, creating
+                            a seamless flow from contribution to realization.
+                        </p>
+                    </motion.div>
+                </div>
+
+                {/* Image Section */}
+                <motion.div
+                    className='relative z-10 w-full max-w-6xl px-4 md:px-8'
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                >
+                    {/* Image Container with Glass/Glow Effect */}
+                    <div
+                        className='
+                    relative rounded-lg overflow-hidden
+                    border border-[#fbbf24]/20
+                    bg-[#275669]/10 backdrop-blur-sm
+                    shadow-[0_0_40px_rgba(251,191,36,0.05)]
+                    p-2 md:p-4
+                '
+                    >
+                        <img
+                            src={aif.src}
+                            onError={(e) => {
+                                e.currentTarget.src =
+                                    "https://placehold.co/1200x800/0b222d/fbbf24?text=Place+'fund_structure.png'+in+root+folder"
+                            }}
+                            alt='Young Turtle Fund Structure Flowchart'
+                            className='w-full h-auto rounded shadow-lg'
+                        />
+
+                        {/* Corner Accents for technical/precision look */}
+                        <div className='absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#fbbf24] rounded-tl-md' />
+                        <div className='absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#fbbf24] rounded-tr-md' />
+                        <div className='absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-[#fbbf24] rounded-bl-md' />
+                        <div className='absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#fbbf24] rounded-br-md' />
+                    </div>
+                </motion.div>
+            </section>
+
             <div className='min-h-screen bg-deep-teal text-[#275669] selection:bg-rich-gold selection:text-deep-teal font-sans'>
                 <SectionWrapper className='py-24 px-6 md:px-12 max-w-6xl mx-auto'>
                     <header className='mb-24 md:mb-32'>
@@ -95,7 +166,7 @@ const page = () => {
                                         <h3 className='font-serif text-2xl md:text-3xl text-[#275669] mb-2 leading-tight group-hover:text-rich-gold transition-colors duration-300'>
                                             {product.title}
                                         </h3>
-                                        <span className='inline-block text-xs font-medium tracking-wider text-white/50 uppercase'>
+                                        <span className='inline-block text-xs font-medium tracking-wider text-[#275669] uppercase'>
                                             {product.category}
                                         </span>
                                     </div>
