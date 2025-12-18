@@ -18,13 +18,13 @@ const SENIOR_LEADERSHIP = [
 
     },
     {
-        name: "Chetan Bhagat",
+        name: "Chetan Radhnanpara",
         role: "Risk Management Director",
         bio: "Previously at Citadel, Sarah architects our proprietary risk engines, ensuring convex payoff profiles across all market conditions.",
         image: "/perspective-img/chetan.png"
     },
     {
-        name: "Jitin Gupta",
+        name: "Jitin Ginotra",
         role: "CTO & Systems Architect",
         bio: "David engineered low-latency trading systems for HFT firms in Chicago before leading our global infrastructure team.",
         image: "/perspective-img/jitin.png"
