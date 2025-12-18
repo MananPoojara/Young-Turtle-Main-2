@@ -18,7 +18,7 @@ const SENIOR_LEADERSHIP = [
 
     },
     {
-        name: "Chetan Radhnanpara",
+        name: "Chetan Chauhan",
         role: "Risk Management Director",
         bio: "Previously at Citadel, Sarah architects our proprietary risk engines, ensuring convex payoff profiles across all market conditions.",
         image: "/perspective-img/chetan.png"
